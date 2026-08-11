@@ -2,12 +2,26 @@
 
 import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
-import heroImage from "@/assets/hero-windows.jpg";
 import avatar1 from "@/assets/avatar-1.jpg";
 import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/avatar-3.jpg";
 import avatar4 from "@/assets/avatar-4.jpg";
 import { Reveal } from "./Reveal";
+
+const HERO_BACKGROUNDS = [
+  {
+    src: "/hero/upvc-sliding-window-1.png",
+    alt: "White uPVC sliding windows in a bright modern living room",
+  },
+  {
+    src: "/hero/upvc-sliding-window-2.png",
+    alt: "Premium uPVC sliding windows overlooking a landscaped courtyard",
+  },
+  {
+    src: "/hero/upvc-sliding-window-3.png",
+    alt: "uPVC sliding windows in an apartment with a city skyline view",
+  },
+];
 
 const trustedPeople = [
   { src: avatar1.src, name: "Sarah Whitfield" },
@@ -46,6 +60,7 @@ const HERO_REVIEWS = [
 export function Hero() {
   const [offset, setOffset] = useState(0);
   const [activeReview, setActiveReview] = useState(0);
+  const [activeBackground, setActiveBackground] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -73,6 +88,13 @@ export function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveBackground((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, []);
+
   const review = HERO_REVIEWS[activeReview] ?? HERO_REVIEWS[0]!;
 
   return (
@@ -81,13 +103,17 @@ export function Hero() {
         className="absolute inset-0 will-change-transform"
         style={{ transform: `translate3d(0, ${offset * 0.25}px, 0)` }}
       >
-        <img
-          src={heroImage.src}
-          alt="Modern living room with floor-to-ceiling windows overlooking a city skyline"
-          width={1920}
-          height={1200}
-          className="animate-kenburns size-full object-cover will-change-transform"
-        />
+        {HERO_BACKGROUNDS.map((image, index) => (
+          <img
+            key={image.src}
+            src={image.src}
+            alt={image.alt}
+            width={1536}
+            height={864}
+            className="absolute inset-0 animate-kenburns size-full object-cover will-change-transform transition-opacity duration-1000 ease-in-out"
+            style={{ opacity: index === activeBackground ? 1 : 0 }}
+          />
+        ))}
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/55" />
 

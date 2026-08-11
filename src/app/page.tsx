@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
-import { About } from "@/components/site/About";
-import { Services } from "@/components/site/Services";
-import { Portfolio } from "@/components/site/Portfolio";
-import { Faq } from "@/components/site/Faq";
-import { Testimonials } from "@/components/site/Testimonials";
-import { Blog } from "@/components/site/Blog";
 import { Footer } from "@/components/site/Footer";
+import { Services } from "@/components/site/Services";
+import {
+  BlogAndVentures,
+  FeatureHighlights,
+  LogoSliders,
+  ProductsGrid,
+  TextTestimonialsCarousel,
+  VideoStatsSection,
+  VideoTestimonialSection,
+} from "@/components/site/VeerWindowsSections";
 
 const TITLE = "Veer Windows — Premium Windows & Doors Installation";
 const DESCRIPTION =
@@ -33,12 +37,14 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <About />
+        <FeatureHighlights />
+        <VideoStatsSection />
         <Services />
-        <Portfolio />
-        <Faq />
-        <Testimonials />
-        <Blog />
+        <ProductsGrid />
+        <LogoSliders />
+        <TextTestimonialsCarousel />
+        <VideoTestimonialSection />
+        <BlogAndVentures />
       </main>
       <Footer />
     </div>

@@ -11,7 +11,7 @@ const STATS = [
 
 export function About() {
   return (
-    <section id="about" className="section">
+    <section className="section">
       <div className="mx-auto max-w-[1400px] px-6">
         <Reveal as="span" className="eyebrow">
           <span className="h-px w-8 bg-primary" />
@@ -23,6 +23,16 @@ export function About() {
           className="mt-6 block max-w-3xl text-4xl sm:text-5xl lg:text-6xl"
         >
           Dedicated to elevating every space we touch.
+        </Reveal>
+        <Reveal delay={240}>
+          <p className="mt-6 max-w-3xl text-lg text-muted-foreground">
+            We are a dedicated team of engineers and industry experts committed to transforming
+            spaces with high-performance fenestration. With a collective experience of over 9 years,
+            we bring technical precision and aesthetic elegance to every project. Originally founded
+            in 2022 as Veer Infratech, we have rebranded as Veer Windows Private Limited to sharpen
+            our focus on our specialized expertise: high-quality uPVC and System Aluminium windows
+            and doors.
+          </p>
         </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
@@ -68,7 +78,7 @@ export function About() {
                 high-level technical execution.
               </p>
               <a
-                href="#services"
+                href="/#portfolio"
                 className="mt-8 inline-block border-2 border-foreground px-8 py-3.5 text-xs font-extrabold uppercase tracking-[0.16em] transition-colors hover:bg-foreground hover:text-background"
               >
                 Discover More

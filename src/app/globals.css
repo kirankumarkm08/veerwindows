@@ -233,6 +233,14 @@
   animation: marquee 32s linear infinite;
 }
 
+@utility animate-marquee-slow {
+  animation: marquee 42s linear infinite;
+}
+
+@utility animate-testimonial-carousel {
+  animation: marquee 54s linear infinite;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
