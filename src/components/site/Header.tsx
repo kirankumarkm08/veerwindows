@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { cn } from "@/lib/utils";
 
 const NAV = [
   { label: "Home", href: "/#home" },
@@ -16,6 +19,7 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -42,15 +46,26 @@ export function Header() {
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground/85 transition-colors hover:text-primary-soft"
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV.map((item) => {
+            const itemPath = item.href.split("#")[0] || "/";
+            const isActive = pathname === itemPath;
+
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground/85 transition-colors hover:text-primary-soft",
+                  "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary-soft after:transition-transform",
+                  "hover:after:scale-x-100",
+                  isActive && "text-primary-soft after:scale-x-100",
+                )}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-4">
@@ -74,16 +89,25 @@ export function Header() {
       {open && (
         <div className="mx-6 bg-ink p-6 lg:hidden">
           <nav className="grid gap-4">
-            {NAV.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="text-sm font-bold uppercase tracking-[0.14em] text-ink-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
+            {NAV.map((item) => {
+              const itemPath = item.href.split("#")[0] || "/";
+              const isActive = pathname === itemPath;
+
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "border-l-2 border-transparent px-4 py-2 text-sm font-bold uppercase tracking-[0.14em] text-ink-foreground transition-colors",
+                    isActive && "border-primary-soft bg-primary-soft/10 text-primary-soft",
+                  )}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
         </div>
       )}
