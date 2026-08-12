@@ -31,7 +31,7 @@ export function Footer() {
                 "Custom Solutions",
               ].map((item) => (
                 <li key={item}>
-                  <a href="/#services" className="transition-colors hover:text-primary-soft">
+                  <a href="/services" className="transition-colors hover:text-primary-soft">
                     {item}
                   </a>
                 </li>

@@ -399,7 +399,7 @@ export function ProductsGrid() {
                 className="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <a
-                href="#contact"
+                href="/contact"
                 aria-label={`Explore ${product.title}`}
                 className="absolute right-5 top-5 flex size-12 items-center justify-center bg-primary text-primary-foreground transition-transform group-hover:rotate-90"
               >
@@ -580,7 +580,7 @@ export function BlogAndVentures() {
             {VENTURES.map((venture) => (
               <a
                 key={venture}
-                href="#contact"
+                href="/contact"
                 className="group flex min-h-32 items-center gap-4 bg-background p-6 transition-colors hover:bg-primary"
               >
                 <span className="flex size-12 shrink-0 items-center justify-center bg-secondary text-primary group-hover:bg-primary-foreground group-hover:text-primary">

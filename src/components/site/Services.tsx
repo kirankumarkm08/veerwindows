@@ -46,14 +46,16 @@ export function Services() {
               as="article"
               key={title}
               delay={index * 110}
-              className="group bg-background p-9 transition-colors hover:bg-primary"
+              className="group bg-background p-9 text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
             >
-              <Icon className="size-10 stroke-[1.5]" />
-              <h3 className="mt-8 text-2xl">{title}</h3>
+              <Icon className="size-10 stroke-[1.5] transition-colors" />
+              <h3 className="mt-8 text-2xl transition-colors group-hover:text-primary-foreground">
+                {title}
+              </h3>
               <p className="mt-4 text-sm text-muted-foreground group-hover:text-primary-foreground/80">
                 {text}
               </p>
-              <span className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em]">
+              <span className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] transition-colors">
                 Find Out More <ArrowUpRight className="size-4" />
               </span>
             </Reveal>
@@ -65,7 +67,7 @@ export function Services() {
             Secure your home with smart, reliable window and door solutions.
           </p>
           <a
-            href="#contact"
+            href="/contact"
             className="btn-sweep-light bg-primary-soft px-8 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft-foreground"
           >
             Get in Touch
