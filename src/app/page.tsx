@@ -39,12 +39,12 @@ export default function Home() {
         <Hero />
         <FeatureHighlights />
         <VideoStatsSection />
-        <Services />
-        <ProductsGrid />
+        {/* <Services /> */}
+        {/* <ProductsGrid /> */}
         <LogoSliders />
         <TextTestimonialsCarousel />
         <VideoTestimonialSection />
-        <BlogAndVentures />
+        {/* <BlogAndVentures /> */}
       </main>
       <Footer />
     </div>
