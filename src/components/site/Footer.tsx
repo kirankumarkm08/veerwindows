@@ -1,4 +1,22 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+
+const SOCIAL_LINKS = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61590418517607&sk=directory_intro",
+    icon: Facebook,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/veerwindows/",
+    icon: Instagram,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/veer-windows/about/?viewAsMember=true",
+    icon: Linkedin,
+  },
+] as const;
 
 export function Footer() {
   return (
@@ -64,6 +82,20 @@ export function Footer() {
             >
               Request a Quote
             </a>
+            <div className="mt-8 flex items-center gap-3" aria-label="Social media links">
+              {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit Veer Windows on ${label}`}
+                  className="flex size-10 items-center justify-center border border-ink-foreground/20 text-ink-foreground/65 transition-colors hover:border-primary-soft hover:text-primary-soft"
+                >
+                  <Icon className="size-4" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

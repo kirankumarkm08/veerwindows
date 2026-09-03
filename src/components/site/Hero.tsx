@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import avatar1 from "@/assets/avatar-1.jpg";
 import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/avatar-3.jpg";
@@ -10,16 +10,25 @@ import { Reveal } from "./Reveal";
 
 const HERO_BACKGROUNDS = [
   {
-    src: "/hero/upvc-sliding-window-1.png",
-    alt: "White uPVC sliding windows in a bright modern living room",
+    src: "/sliders/1.png",
   },
   {
-    src: "/hero/upvc-sliding-window-2.png",
-    alt: "Premium uPVC sliding windows overlooking a landscaped courtyard",
+    src: "/sliders/2.png",
   },
   {
-    src: "/hero/upvc-sliding-window-3.png",
-    alt: "uPVC sliding windows in an apartment with a city skyline view",
+    src: "/sliders/4.png",
+  },
+  {
+    src: "/sliders/5.png",
+  },
+  {
+    src: "/sliders/6.png",
+  },
+  {
+    src: "/sliders/7.png",
+  },
+  {
+    src: "/sliders/9.png",
   },
 ];
 
@@ -61,6 +70,7 @@ export function Hero() {
   const [offset, setOffset] = useState(0);
   const [activeReview, setActiveReview] = useState(0);
   const [activeBackground, setActiveBackground] = useState(0);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -89,35 +99,72 @@ export function Hero() {
   }, []);
 
   useEffect(() => {
+    if (isCarouselPaused) return;
+
     const interval = setInterval(() => {
       setActiveBackground((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
-    }, 5500);
+    }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isCarouselPaused]);
+
+  const goToPreviousBackground = () => {
+    setActiveBackground((prev) => (prev - 1 + HERO_BACKGROUNDS.length) % HERO_BACKGROUNDS.length);
+  };
+
+  const goToNextBackground = () => {
+    setActiveBackground((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
+  };
 
   const review = HERO_REVIEWS[activeReview] ?? HERO_REVIEWS[0]!;
 
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-ink">
       <div
-        className="absolute inset-0 will-change-transform"
+        className="absolute inset-0 overflow-hidden will-change-transform"
         style={{ transform: `translate3d(0, ${offset * 0.25}px, 0)` }}
       >
-        {HERO_BACKGROUNDS.map((image, index) => (
-          <img
-            key={image.src}
-            src={image.src}
-            alt={image.alt}
-            width={1536}
-            height={864}
-            className="absolute inset-0 animate-kenburns size-full object-cover will-change-transform transition-opacity duration-1000 ease-in-out"
-            style={{ opacity: index === activeBackground ? 1 : 0 }}
-          />
-        ))}
+        <div
+          className="flex h-full w-full transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${activeBackground * 100}%)` }}
+        >
+          {HERO_BACKGROUNDS.map((image) => (
+            <div
+              key={image.src}
+              aria-hidden="true"
+              className="h-full min-w-full bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url("${image.src}")` }}
+            />
+          ))}
+        </div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/55" />
+      <div
+        className="absolute right-6 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2 sm:right-10"
+        onMouseEnter={() => setIsCarouselPaused(true)}
+        onMouseLeave={() => setIsCarouselPaused(false)}
+      >
+        <button
+          type="button"
+          aria-label="Previous hero image"
+          onClick={goToPreviousBackground}
+          className="flex size-11 items-center justify-center border border-ink-foreground/45 bg-ink/30 text-ink-foreground backdrop-blur-sm transition-colors hover:border-primary-soft hover:bg-primary-soft hover:text-primary-soft-foreground"
+        >
+          <ChevronLeft className="size-5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next hero image"
+          onClick={goToNextBackground}
+          className="flex size-11 items-center justify-center border border-ink-foreground/45 bg-ink/30 text-ink-foreground backdrop-blur-sm transition-colors hover:border-primary-soft hover:bg-primary-soft hover:text-primary-soft-foreground"
+        >
+          <ChevronRight className="size-5" />
+        </button>
+      </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-[1400px] flex-col justify-center px-6 pt-32 pb-16">
+      <div
+        className="relative z-10 mx-auto flex min-h-screen max-w-[1400px] flex-col justify-center px-6 pt-32 pb-16"
+        onMouseEnter={() => setIsCarouselPaused(true)}
+        onMouseLeave={() => setIsCarouselPaused(false)}
+      >
         <div className="mx-auto max-w-4xl text-center">
           <Reveal>
             <img
@@ -239,6 +286,23 @@ export function Hero() {
             </figure>
           </Reveal>
         </div>
+      </div>
+
+      <div className="absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
+        {HERO_BACKGROUNDS.map((image, index) => (
+          <button
+            key={image.src}
+            type="button"
+            aria-label={`Show hero image ${index + 1}`}
+            aria-current={index === activeBackground ? "true" : undefined}
+            onClick={() => setActiveBackground(index)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              index === activeBackground
+                ? "w-10 bg-primary-soft"
+                : "w-5 bg-ink-foreground/45 hover:bg-ink-foreground/80"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
