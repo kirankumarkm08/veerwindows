@@ -16,7 +16,7 @@ const NAV = [
     children: [
       { label: "uPVC Windows & Doors", href: "/services/family/upvc", image: "/sliders/1.png" },
       {
-        label: "System Aluminium",
+        label: "System Aluminium Series",
         href: "/services/family/system-aluminium",
         image: "/sliders/9.png",
       },

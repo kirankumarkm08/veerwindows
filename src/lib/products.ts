@@ -301,7 +301,7 @@ export const PRODUCT_FAMILIES = {
   "system-aluminium": {
     slug: "system-aluminium",
     eyebrow: "System aluminium product range",
-    title: "System Aluminium",
+    title: "System Aluminium Series",
     description: "Slim frames. Strong performance. Expansive views.",
     intro:
       "Our system aluminium range brings narrow sightlines, durable finishes, and generous glass areas to contemporary windows and doors.",

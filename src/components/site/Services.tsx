@@ -68,7 +68,7 @@ export function Services() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
             <div className="relative flex h-full min-h-60 flex-col justify-end">
               <span className="eyebrow text-ink-foreground/70">02 / Aluminium</span>
-              <h3 className="mt-4 text-3xl text-ink-foreground">System Aluminium</h3>
+              <h3 className="mt-4 text-3xl text-ink-foreground">System Aluminium Series</h3>
               <span className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft">
                 View collection{" "}
                 <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
