@@ -5,7 +5,6 @@ import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
 import { Services } from "@/components/site/Services";
 import {
-  BlogAndVentures,
   FeatureHighlights,
   LogoSliders,
   ProductsGrid,
@@ -44,7 +43,6 @@ export default function Home() {
         <LogoSliders />
         <TextTestimonialsCarousel />
         <VideoTestimonialSection />
-        {/* <BlogAndVentures /> */}
       </main>
       <Footer />
     </div>

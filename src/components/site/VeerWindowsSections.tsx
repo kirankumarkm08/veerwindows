@@ -15,9 +15,6 @@ import {
 import { Reveal } from "./Reveal";
 import aboutDetail from "@/assets/about-detail.jpg";
 import aboutInstall from "@/assets/about-install.jpg";
-import blog1 from "@/assets/blog-1.jpg";
-import blog2 from "@/assets/blog-2.jpg";
-import blog3 from "@/assets/blog-3.jpg";
 import product1 from "@/assets/portfolio-1.jpg";
 import product2 from "@/assets/portfolio-2.jpg";
 import product3 from "@/assets/portfolio-3.jpg";
@@ -110,24 +107,6 @@ const REVIEWS = [
   {
     name: "Chandrasekhar Baruah",
     text: "I got the uPVC doors and windows done by Veer Windows. They did a good job with quality and schedule adherence, and the after-sales support has been prompt.",
-  },
-];
-
-const BLOG_POSTS = [
-  {
-    img: blog1.src,
-    date: "Aug 07, 2026",
-    title: "Veer Windows Expands Its Trusted Dealer Network Across Karnataka & Andhra Pradesh",
-  },
-  {
-    img: blog2.src,
-    date: "July 27, 2026",
-    title: "Reduce Dust, Pollution & Germs at Home with Airtight uPVC Windows",
-  },
-  {
-    img: blog3.src,
-    date: "July 03, 2026",
-    title: "Future of Windows: Top Trends in uPVC and System Aluminium for 2026",
   },
 ];
 
@@ -515,56 +494,10 @@ export function VideoTestimonialSection() {
   );
 }
 
-export function BlogAndVentures() {
+export function Ventures() {
   return (
-    <section id="blog" className="section bg-secondary">
+    <section id="ventures" className="section bg-secondary">
       <div className="mx-auto grid max-w-[1400px] gap-16 px-6">
-        <div>
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-px w-8 bg-primary" />
-              Article
-            </span>
-            <h2 className="mt-6 text-4xl sm:text-5xl">Latest Blog</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Our design services starts and ends with a best-in-class experience strategy that
-              builds brands.
-            </p>
-          </Reveal>
-
-          <div className="mt-10 grid gap-7 lg:grid-cols-3">
-            {BLOG_POSTS.map((post, index) => (
-              <Reveal
-                as="article"
-                key={post.title}
-                delay={index * 110}
-                className="group bg-background"
-              >
-                <img
-                  src={post.img}
-                  alt={post.title}
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  className="h-60 w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-                <div className="p-7">
-                  <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-muted-foreground">
-                    {post.date}
-                  </span>
-                  <h3 className="mt-4 text-2xl leading-tight">{post.title}</h3>
-                  <a
-                    href="#contact"
-                    className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary"
-                  >
-                    Read More <ArrowUpRight className="size-4" />
-                  </a>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
         <Reveal className="bg-background p-8 sm:p-10">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>

@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 import { Blog } from "@/components/site/Blog";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
-import { BlogAndVentures } from "@/components/site/VeerWindowsSections";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getPosts, PAGE_SIZE } from "@/lib/sanity/posts";
+import { Ventures } from "@/components/site/VeerWindowsSections";
 
 export const metadata: Metadata = {
   title: "Blog - Veer Windows Insights",
@@ -20,7 +23,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string | string[] }>;
+}) {
+  const { page: pageParam } = await searchParams;
+  if (
+    pageParam !== undefined &&
+    (typeof pageParam !== "string" || !/^[1-9]\d{0,5}$/.test(pageParam))
+  )
+    notFound();
+  const page = Number(pageParam ?? 1);
+  const { posts, total } = await getPosts(page);
+  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (page > pages) notFound();
   return (
     <div className="bg-background">
       <PageHero
@@ -28,8 +45,30 @@ export default function BlogPage() {
         title="Insights for better windows, doors, and long-lasting homes."
         description="Explore practical guidance, product updates, and design ideas for choosing and maintaining high-performance uPVC and aluminium systems."
       />
-      <BlogAndVentures />
-      <Blog />
+      <main>
+        <Blog posts={posts} />
+        {pages > 1 && (
+          <nav
+            aria-label="Blog pagination"
+            className="mx-auto flex max-w-[1400px] items-center justify-center gap-8 px-6 pb-16"
+          >
+            {page > 1 && (
+              <Link className="underline" href={page === 2 ? "/blog" : `/blog?page=${page - 1}`}>
+                Previous
+              </Link>
+            )}
+            <span>
+              Page {page} of {pages}
+            </span>
+            {page < pages && (
+              <Link className="underline" href={`/blog?page=${page + 1}`}>
+                Next
+              </Link>
+            )}
+          </nav>
+        )}
+      </main>
+      <Ventures />
       <Footer />
     </div>
   );
