@@ -42,7 +42,6 @@ export function ProductFamily({ title, intro, products }: ProductFamilyProps) {
                 {group.label && (
                   <div className="mb-6 flex items-end justify-between border-b border-border pb-4">
                     <h3 className="text-3xl sm:text-4xl">{group.label}</h3>
-                    <span className="eyebrow">{String(group.products.length).padStart(2, "0")} systems</span>
                   </div>
                 )}
                 <div className="grid gap-6 md:grid-cols-2">
@@ -62,9 +61,6 @@ export function ProductFamily({ title, intro, products }: ProductFamilyProps) {
                           sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <span className="absolute left-5 top-5 bg-ink px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
                       </div>
                       <div className="p-7 sm:p-9">
                         <h4 className="text-3xl">{product.title}</h4>

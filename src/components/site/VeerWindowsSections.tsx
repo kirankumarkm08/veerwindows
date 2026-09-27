@@ -55,30 +55,25 @@ const PRODUCTS = [
 
 const PARTNER_LOGOS = [
   {
-    name: "Quality partner 1",
+    name: "DNV",
     img: "/companies/Screenshot 2026-08-11 231342.png",
   },
   {
-    name: "Quality partner 2",
+    name: "Wallplast by Trends",
     img: "/companies/Screenshot 2026-08-11 231353.png",
   },
   {
-    name: "Quality partner 3",
+    name: "Pego",
     img: "/companies/Screenshot 2026-08-11 231409.png",
   },
   {
-    name: "Quality partner 4",
+    name: "Aluplast",
     img: "/companies/Screenshot 2026-08-11 231418.png",
   },
-];
-
-const CLIENT_LOGOS = [
-  "Shardhi Chit Funds",
-  "Prestige Homes",
-  "Metro Builders",
-  "Nagarabhavi",
-  "Bangalore Infra",
-  "Green Habitat",
+  { name: "Saint-Gobain", img: "/companies/saint-gobain.jpg" },
+  { name: "Soudal", img: "/companies/soudal.jpg" },
+  { name: "Siegenia", img: "/companies/siegenia.jpg" },
+  { name: "GU Gretsch-Unitas", img: "/companies/gu-gretsch-unitas.jpg" },
 ];
 
 const REVIEWS = [
@@ -129,23 +124,6 @@ function StarRating() {
   );
 }
 
-function LogoMarquee({ items }: { items: string[] }) {
-  return (
-    <div className="w-full max-w-full overflow-hidden border-y border-border py-6">
-      <div className="flex w-max animate-marquee-slow gap-5">
-        {[...items, ...items].map((item, index) => (
-          <span
-            key={`${item}-${index}`}
-            className="inline-flex h-20 w-44 shrink-0 items-center justify-center border border-border bg-background px-5 text-center text-xs font-black uppercase tracking-[0.08em] text-heading sm:w-48 sm:px-8 sm:text-sm sm:tracking-[0.12em]"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function PartnerLogoMarquee({
   items,
 }: {
@@ -160,11 +138,12 @@ function PartnerLogoMarquee({
         {[...items, ...items].map((item, index) => (
           <span
             key={`${item.name}-${index}`}
+            aria-hidden={index >= items.length}
             className="inline-flex h-24 w-44 shrink-0 items-center justify-center border border-border bg-background px-5 sm:w-56 sm:px-7"
           >
             <img
               src={item.img}
-              alt={item.name}
+              alt={index >= items.length ? "" : item.name}
               width={220}
               height={80}
               loading="lazy"
@@ -193,27 +172,6 @@ export function FeatureHighlights() {
             <h2 className="text-xl font-black leading-tight">{label}</h2>
           </Reveal>
         ))}
-      </div>
-    </section>
-  );
-}
-
-export function VideoSection() {
-  return (
-    <section className="section bg-secondary">
-      <div className="mx-auto max-w-[1100px] px-6">
-        <Reveal className="overflow-hidden bg-ink">
-          <div className="aspect-video w-full">
-            <iframe
-              className="h-full w-full"
-              src="https://www.youtube.com/embed/VMJiP3sTiBk?si=5Jtc31ONLlulpTEl"
-              title="Veer Windows uPVC, System Aluminium Windows and Doors"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          </div>
-        </Reveal>
       </div>
     </section>
   );
@@ -387,16 +345,12 @@ export function LogoSliders() {
     <section className="section overflow-hidden">
       <div className="mx-auto grid max-w-[1400px] gap-14 px-6">
         <Reveal className="min-w-0">
-          <h2 className="text-3xl sm:text-4xl">Quality Partner&apos;s</h2>
+          <h2 className="text-3xl sm:text-4xl">Our Quality Partners</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+            Trusted brands. Proven performance. We work with partners who share our commitment to quality and performance.
+          </p>
           <div className="mt-7 min-w-0">
             <PartnerLogoMarquee items={PARTNER_LOGOS} />
-          </div>
-        </Reveal>
-
-        <Reveal delay={140} className="min-w-0">
-          <h2 className="text-3xl sm:text-4xl">Our Esteem Clients</h2>
-          <div className="mt-7 min-w-0">
-            <LogoMarquee items={CLIENT_LOGOS} />
           </div>
         </Reveal>
       </div>
@@ -452,23 +406,20 @@ export function VideoTestimonialSection() {
             <span className="h-px w-8 bg-primary" />
           </span>
           <h2 className="mt-6 text-3xl sm:text-5xl">
-            Thanks to Manjunath Sir for sharing his feedback.
+            A closer look at Veer Windows.
           </h2>
         </Reveal>
         <Reveal delay={140} className="mt-12 overflow-hidden bg-ink text-left">
-          <div className="aspect-video w-full">
+          <div className="relative aspect-video w-full">
             <iframe
-              className="h-full w-full"
-              src="https://www.youtube.com/embed/-BxKIRlnhNw?si=nP7hd6BBAsNYsTgG"
-              title="Thanking Manjunath Sir for his feedback"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              className="absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/ewICfNs3cVg?autoplay=1&mute=1&playsinline=1&rel=0"
+              title="Veer Windows featured video"
+              allow="autoplay; encrypted-media; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </div>
-          <p className="p-5 text-sm font-bold uppercase tracking-[0.14em] text-ink-foreground/75">
-            Thanking Manjunath Sir for his feedback
-          </p>
         </Reveal>
       </div>
     </section>

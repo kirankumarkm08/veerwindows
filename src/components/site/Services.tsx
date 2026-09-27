@@ -137,9 +137,6 @@ export function Services() {
                   />
                 </div>
                 <div className="p-5">
-                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-primary">
-                    0{index + 1}
-                  </span>
                   <h3 className="mt-2 text-xl">{title}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
                 </div>

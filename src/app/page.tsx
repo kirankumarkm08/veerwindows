@@ -9,7 +9,6 @@ import {
   LogoSliders,
   ProductsGrid,
   TextTestimonialsCarousel,
-  VideoSection,
   VideoTestimonialSection,
 } from "@/components/site/VeerWindowsSections";
 
@@ -37,7 +36,6 @@ export default function Home() {
       <main>
         <Hero />
         <FeatureHighlights />
-        <VideoSection />
         {/* <Services /> */}
         {/* <ProductsGrid /> */}
         <LogoSliders />

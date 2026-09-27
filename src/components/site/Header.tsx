@@ -21,24 +21,15 @@ type NavItem = MenuEntry & {
   }>;
 };
 
-const windowProducts: MenuEntry[] = [
-  { label: "Casement Windows", href: "/services/casement-windows-doors" },
-  { label: "Sliding Windows", href: "/services/sliding-windows-doors" },
-  { label: "Tilt & Turn Windows", href: "/services/versatile-window-systems" },
-  { label: "Fixed & Sliding Windows", href: "/services/combination-windows" },
-  { label: "Ventilator Windows", href: "/services/casement-windows-doors" },
-  { label: "Top-Hung Windows", href: "/services/versatile-window-systems" },
-  { label: "Fold & Slide Windows", href: "/services/slide-fold-systems" },
+const upvcProducts: MenuEntry[] = [
+  { label: "Sliding Windows & Doors", href: "/services/sliding-windows-doors" },
+  { label: "Casement Windows & Doors", href: "/services/casement-windows-doors" },
   { label: "Combination Windows", href: "/services/combination-windows" },
-  { label: "Aluminium Sliding Windows", href: "/services/system-aluminium-series" },
-];
-const doorProducts: MenuEntry[] = [
-  { label: "Casement Doors", href: "/services/casement-windows-doors" },
-  { label: "Sliding Doors", href: "/services/sliding-windows-doors" },
-  { label: "French Doors", href: "/services/combination-windows" },
-  { label: "Slide & Fold Doors", href: "/services/slide-fold-systems" },
-  { label: "Low Threshold Sliding Doors", href: "/services/advanced-door-systems" },
-  { label: "Aluminium Sliding Doors", href: "/services/system-aluminium-series" },
+  { label: "Ventilator Windows", href: "/services/combination-windows" },
+  { label: "Lift & Slide Doors", href: "/services/lift-and-slide-door" },
+  { label: "Slide & Fold", href: "/services/slide-fold-systems" },
+  { label: "Tilt & Turn", href: "/services/versatile-window-systems" },
+  { label: "Twin Sash Windows", href: "/services/twin-sash-window" },
 ];
 
 const systemAluminiumWindows: MenuEntry[] = [
@@ -59,45 +50,35 @@ const systemAluminiumDoors: MenuEntry[] = [
   { label: "Railing System", slug: "system-aluminium-railing-system" },
 ].map(({ label, slug }) => ({ label, href: `/services/${slug}` }));
 
-const windowsWithAluminiumSubmenu = windowProducts.map((product) =>
-  product.label === "Aluminium Sliding Windows"
-    ? { ...product, children: systemAluminiumWindows }
-    : product,
-);
-
-const doorsWithAluminiumSubmenu = doorProducts.map((product) =>
-  product.label === "Aluminium Sliding Doors"
-    ? { ...product, children: systemAluminiumDoors }
-    : product,
-);
+const systemAluminiumProducts: MenuEntry[] = [
+  { label: "Sliding Windows & Doors", href: "/services/sliding-windows-doors" },
+  { label: "Casement Windows & Doors", href: "/services/system-aluminium-53-series-casement-window" },
+  { label: "Combination Windows", href: "/services/family/system-aluminium" },
+  { label: "Lift & Slide", href: "/services/system-aluminium-lift-slide-door" },
+  { label: "Slide & Fold", href: "/services/system-aluminium-fold-slide-door" },
+  { label: "Tilt & Turn", href: "/services/system-aluminium-tilt-turn-window" },
+];
 
 const NAV: NavItem[] = [
   { label: "About", href: "/about" },
   {
-    label: "Windows",
+    label: "uPVC",
     href: "/services/family/upvc",
-    children: windowsWithAluminiumSubmenu,
-  },
-  {
-    label: "Doors",
-    href: "/services/family/upvc",
-    children: doorsWithAluminiumSubmenu,
+    children: upvcProducts,
   },
   {
     label: "System Aluminium",
     href: "/services/family/system-aluminium",
-    groups: [
-      { label: "Windows", href: "/services/family/system-aluminium", children: systemAluminiumWindows },
-      { label: "Doors", href: "/services/family/system-aluminium", children: systemAluminiumDoors },
-    ],
+    children: systemAluminiumProducts,
   },
   { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 function isNavItemActive(label: string, pathname: string, href: string) {
-  if (label === "Windows") return pathname === "/services/family/upvc";
-  if (label === "Doors") return pathname === "/services/advanced-door-systems";
+  if (label === "uPVC") {
+    return pathname === "/services/family/upvc" || upvcProducts.some((product) => product.href === pathname);
+  }
   if (label === "System Aluminium") {
     return pathname === "/services/family/system-aluminium" || pathname.startsWith("/services/system-aluminium-");
   }
