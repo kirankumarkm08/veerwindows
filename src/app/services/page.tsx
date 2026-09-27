@@ -3,16 +3,15 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { Services } from "@/components/site/Services";
-import { VideoStatsSection } from "@/components/site/VeerWindowsSections";
 
 export const metadata: Metadata = {
-  title: "Services - Veer Windows Installation & Replacement",
+  title: "Services - Veer Windows",
   description:
-    "Explore Veer Windows services for uPVC and aluminium window installation, door installation, replacements, and custom fenestration solutions.",
+    "Explore Veer Windows uPVC and system aluminium products, plus our four-step process from site visit to professional installation.",
   openGraph: {
     title: "Veer Windows Services",
     description:
-      "Professional window and door installation, replacement, and custom solutions for homes, builders, and architects.",
+      "Browse our window and door systems and see the project process: visit, measure, design, and install.",
     type: "website",
   },
   twitter: {
@@ -24,12 +23,12 @@ export default function ServicesPage() {
   return (
     <div className="bg-background">
       <PageHero
-        eyebrow="Services"
-        title="Installation, replacement, and custom solutions for precise spaces."
-        description="From measurements and material selection to manufacturing and final installation, our team handles each step with clear timelines and durable workmanship."
+        eyebrow="Windows & doors"
+        title="Window and door systems for your space."
+        description="Explore our product systems and see how we take each project from site visit to installation."
+        compact
       />
       <Services />
-      <VideoStatsSection />
       <Footer />
     </div>
   );

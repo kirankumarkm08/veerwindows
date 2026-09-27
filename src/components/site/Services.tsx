@@ -1,165 +1,163 @@
-import { ArrowUpRight, DoorOpen, Hammer, PanelsTopLeft, Ruler } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { Reveal } from "./Reveal";
-import { PRODUCTS } from "@/lib/products";
 
-const SERVICES = [
+import { PRODUCTS } from "@/lib/products";
+import { Reveal } from "./Reveal";
+
+const SERVICE_OVERVIEW_PRODUCTS = PRODUCTS.filter(
+  (product) => product.family === "upvc" || product.slug === "system-aluminium-series",
+);
+
+const PROCESS_STEPS = [
   {
-    icon: PanelsTopLeft,
-    title: "Window Installation",
-    text: "Professional installation of energy-efficient windows for lasting performance.",
+    title: "We Visit",
+    text: "A site inspection helps us understand your space and project needs.",
+    image: "/services/process/visit.jpg",
+    imageAlt: "A site professional inspecting a window",
   },
   {
-    icon: DoorOpen,
-    title: "Door Installation",
-    text: "Stylish and secure doors designed to complement every property.",
+    title: "We Measure",
+    text: "Accurate dimensions provide the basis for a made-to-measure fit.",
+    image: "/services/process/measure.jpg",
+    imageAlt: "A worker measuring a window frame",
   },
   {
-    icon: Hammer,
-    title: "Replacement Services",
-    text: "Upgrade outdated windows and doors with durable modern solutions.",
+    title: "We Design",
+    text: "We design a custom solution around your chosen system and space.",
+    image: "/services/process/design.jpg",
+    imageAlt: "An architect reviewing a building design drawing",
   },
   {
-    icon: Ruler,
-    title: "Custom Solutions",
-    text: "Tailor-made window and door designs to match your vision and requirements.",
+    title: "We Install",
+    text: "Our team completes the project with professional installation.",
+    image: "/services/process/install.jpg",
+    imageAlt: "A tradesperson fitting a window in a home",
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="section bg-secondary">
-      <div className="mx-auto max-w-[1400px] px-6">
-        <Reveal as="span" className="eyebrow">
-          <span className="h-px w-8 bg-primary" /> Services
-        </Reveal>
-        <Reveal as="h2" delay={100} className="mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
-          Choose the right window and door system for your space.
-        </Reveal>
-        <div className="grid gap-6 lg:grid-cols-2">
-          <Link
-            href="/services/family/upvc"
-            className="group relative min-h-80 overflow-hidden bg-ink p-8 text-ink-foreground sm:p-10"
-          >
-            <img
-              src="/sliders/1.png"
-              alt="uPVC windows and doors"
-              className="absolute inset-0 size-full object-cover opacity-45 transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
-            <div className="relative flex h-full min-h-60 flex-col justify-end">
-              <span className="eyebrow text-ink-foreground/70">01 / uPVC</span>
-              <h3 className="mt-4 text-3xl text-ink-foreground">uPVC Windows & Doors</h3>
-              <span className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft">
-                View collection{" "}
-                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+    <>
+      <section id="product-range" className="scroll-mt-24 bg-secondary py-16 sm:py-20">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <span className="eyebrow">
+                <span className="h-px w-8 bg-primary" /> Product systems
               </span>
-            </div>
-          </Link>
-          <Link
-            href="/services/family/system-aluminium"
-            className="group relative min-h-80 overflow-hidden bg-ink p-8 text-ink-foreground sm:p-10"
-          >
-            <img
-              src="/sliders/9.png"
-              alt="System aluminium windows and doors"
-              className="absolute inset-0 size-full object-cover opacity-45 transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
-            <div className="relative flex h-full min-h-60 flex-col justify-end">
-              <span className="eyebrow text-ink-foreground/70">02 / Aluminium</span>
-              <h3 className="mt-4 text-3xl text-ink-foreground">System Aluminium Series</h3>
-              <span className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft">
-                View collection{" "}
-                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </span>
-            </div>
-          </Link>
-        </div>
-
-        <Reveal as="span" className="eyebrow">
-          <span className="h-px w-8 bg-primary" />
-          Installation Services
-        </Reveal>
-        <Reveal
-          delay={120}
-          as="h2"
-          className="mt-6 block max-w-3xl text-4xl sm:text-5xl lg:text-6xl"
-        >
-          Expert services crafted for success.
-        </Reveal>
-
-        <div className="mt-14 grid gap-px border border-border bg-border md:grid-cols-2 xl:grid-cols-4">
-          {SERVICES.map(({ icon: Icon, title, text }, index) => (
-            <Reveal
-              as="article"
-              key={title}
-              delay={index * 110}
-              className="group bg-background p-9 text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
-            >
-              <Icon className="size-10 stroke-[1.5] transition-colors" />
-              <h3 className="mt-8 text-2xl transition-colors group-hover:text-primary-foreground">
-                {title}
-              </h3>
-              <p className="mt-4 text-sm text-muted-foreground group-hover:text-primary-foreground/80">
-                {text}
+              <h2 className="mt-5 text-4xl sm:text-5xl">Explore product systems.</h2>
+              <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
+                Browse our uPVC and system aluminium windows and doors.
               </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
               <Link
-                href={`/services/${PRODUCTS[index]?.slug ?? "casement-windows-doors"}`}
-                className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] transition-colors"
+                href="/services/family/upvc"
+                className="border border-border bg-background px-4 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition-colors hover:border-primary hover:text-primary"
               >
-                Find Out More <ArrowUpRight className="size-4" />
+                uPVC collection <ArrowUpRight className="ml-1 inline size-4" />
               </Link>
-            </Reveal>
-          ))}
-        </div>
+              <Link
+                href="/services/family/system-aluminium"
+                className="border border-border bg-background px-4 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition-colors hover:border-primary hover:text-primary"
+              >
+                Aluminium collection <ArrowUpRight className="ml-1 inline size-4" />
+              </Link>
+            </div>
+          </div>
 
-        <div className="mt-24">
-          <Reveal as="span" className="eyebrow">
-            <span className="h-px w-8 bg-primary" /> Product range
-          </Reveal>
-          <Reveal as="h2" delay={100} className="mt-6 max-w-3xl text-4xl sm:text-5xl">
-            Explore the systems in our brochure.
-          </Reveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product, index) => (
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {SERVICE_OVERVIEW_PRODUCTS.map((product, index) => (
               <Reveal
                 key={product.slug}
-                delay={index * 70}
+                delay={index * 45}
                 as="article"
-                className="group border border-border bg-background p-7 transition-colors hover:border-primary"
+                className="group overflow-hidden border border-border bg-background transition-colors hover:border-primary"
               >
-                <span className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
-                  0{index + 1}
-                </span>
-                <h3 className="mt-8 text-2xl">{product.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  {product.description}
-                </p>
                 <Link
-                  href={`/services/${product.slug}`}
-                  className="mt-7 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.14em] text-primary"
+                  href={
+                    product.slug === "system-aluminium-series"
+                      ? "/services/family/system-aluminium"
+                      : `/services/${product.slug}`
+                  }
+                  className="block"
                 >
-                  View system{" "}
-                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <div className="relative aspect-[16/9] overflow-hidden bg-surface">
+                    <Image
+                      src={product.image}
+                      alt={product.imageAlt}
+                      fill
+                      unoptimized={product.family === "system-aluminium"}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <span className="text-[0.65rem] font-bold uppercase tracking-[0.15em] text-primary">
+                      {product.family === "upvc" ? "uPVC" : "System aluminium"}
+                    </span>
+                    <h3 className="mt-2 text-xl">{product.title}</h3>
+                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.13em] text-primary">
+                      View system
+                      <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-6 bg-ink px-9 py-8">
-          <p className="max-w-xl text-xl font-bold text-ink-foreground">
-            Secure your home with smart, reliable window and door solutions.
-          </p>
-          <a
-            href="/contact"
-            className="btn-sweep-light bg-primary-soft px-8 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft-foreground"
-          >
-            Get in Touch
-          </a>
+      <section id="process" className="scroll-mt-24 bg-background py-16 sm:py-20">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="max-w-2xl">
+            <span className="eyebrow">
+              <span className="h-px w-8 bg-primary" /> How we work
+            </span>
+            <h2 className="mt-5 text-4xl sm:text-5xl">A simple path to the right fit.</h2>
+          </div>
+
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {PROCESS_STEPS.map(({ title, text, image, imageAlt }, index) => (
+              <Reveal
+                as="article"
+                key={title}
+                delay={index * 55}
+                className="overflow-hidden border border-border bg-secondary"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+                  <Image
+                    src={image}
+                    alt={imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-primary">
+                    0{index + 1}
+                  </span>
+                  <h3 className="mt-2 text-xl">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-5 bg-ink px-6 py-6 text-ink-foreground sm:px-8">
+            <p className="text-xl font-bold">Planning a window or door project?</p>
+            <Link
+              href="/contact"
+              className="btn-sweep-light bg-primary-soft px-7 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft-foreground"
+            >
+              Talk to our team <ArrowUpRight className="ml-2 inline size-4" />
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

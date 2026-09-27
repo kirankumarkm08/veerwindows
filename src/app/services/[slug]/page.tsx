@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
-import { PageHero } from "@/components/site/PageHero";
 import { ProductDetail } from "@/components/site/ProductDetail";
 import { getProduct, PRODUCTS } from "@/lib/products";
 
@@ -30,8 +29,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className="bg-background">
-      <Header />
-      <PageHero eyebrow={product.eyebrow} title={product.title} description={product.description} />
+      <Header solid />
       <ProductDetail product={product} />
       <Footer />
     </div>

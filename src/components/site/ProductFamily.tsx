@@ -12,7 +12,13 @@ type ProductFamilyProps = {
 };
 
 export function ProductFamily({ title, intro, products }: ProductFamilyProps) {
-  const singleSeries = products.length === 1 ? products[0] : undefined;
+  const productGroups =
+    products[0]?.family === "system-aluminium"
+      ? [
+          { label: "Windows", products: products.filter((product) => product.menuGroup === "window") },
+          { label: "Doors", products: products.filter((product) => product.menuGroup === "door") },
+        ]
+      : [{ label: "", products }];
 
   return (
     <main>
@@ -30,90 +36,65 @@ export function ProductFamily({ title, intro, products }: ProductFamilyProps) {
             </Reveal>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {singleSeries
-              ? singleSeries.variants.map((variant, index) => (
-                  <Reveal
-                    key={variant.name}
-                    delay={index * 90}
-                    as="article"
-                    className="group overflow-hidden border border-border bg-secondary"
-                  >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-surface">
-                      <Image
-                        src={variant.image}
-                        alt={variant.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <span className="absolute left-5 top-5 bg-ink px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground">
-                        0{index + 1}
-                      </span>
-                    </div>
-                    <div className="p-7 sm:p-9">
-                      <span className="text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                        System Aluminium Series
-                      </span>
-                      <h3 className="mt-4 text-3xl">{variant.name}</h3>
-                      <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
-                        {variant.description}
-                      </p>
-                      <Link
-                        href={`/services/${singleSeries.slug}#product-range`}
-                        className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary"
-                      >
-                        View specifications
-                        <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </Link>
-                    </div>
-                  </Reveal>
-                ))
-              : products.map((product, index) => (
-                  <Reveal
-                    key={product.slug}
-                    delay={index * 90}
-                    as="article"
-                    className="group overflow-hidden border border-border bg-secondary"
-                  >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-surface">
-                      <Image
-                        src={product.image}
-                        alt={product.imageAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <span className="absolute left-5 top-5 bg-ink px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground">
-                        0{index + 1}
-                      </span>
-                    </div>
-                    <div className="p-7 sm:p-9">
-                      <h3 className="text-3xl">{product.title}</h3>
-                      <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
-                        {product.intro}
-                      </p>
-                      <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                        {product.benefits.slice(0, 4).map((benefit) => (
-                          <span
-                            key={benefit}
-                            className="flex items-start gap-2 text-sm text-foreground/80"
-                          >
-                            <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                            {benefit}
-                          </span>
-                        ))}
+          <div className="mt-14 space-y-14">
+            {productGroups.map((group) => (
+              <section key={group.label || "products"} aria-label={group.label || title}>
+                {group.label && (
+                  <div className="mb-6 flex items-end justify-between border-b border-border pb-4">
+                    <h3 className="text-3xl sm:text-4xl">{group.label}</h3>
+                    <span className="eyebrow">{String(group.products.length).padStart(2, "0")} systems</span>
+                  </div>
+                )}
+                <div className="grid gap-6 md:grid-cols-2">
+                  {group.products.map((product, index) => (
+                    <Reveal
+                      key={product.slug}
+                      delay={index * 90}
+                      as="article"
+                      className="group overflow-hidden border border-border bg-secondary"
+                    >
+                      <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+                        <Image
+                          src={product.image}
+                          alt={product.imageAlt}
+                          fill
+                          unoptimized={product.family === "system-aluminium"}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <span className="absolute left-5 top-5 bg-ink px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
                       </div>
-                      <Link
-                        href={`/services/${product.slug}`}
-                        className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary"
-                      >
-                        Explore product{" "}
-                        <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </Link>
-                    </div>
-                  </Reveal>
-                ))}
+                      <div className="p-7 sm:p-9">
+                        <h4 className="text-3xl">{product.title}</h4>
+                        <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
+                          {product.intro}
+                        </p>
+                        <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                          {product.benefits.slice(0, 4).map((benefit) => (
+                            <span
+                              key={benefit}
+                              className="flex items-start gap-2 text-sm text-foreground/80"
+                            >
+                              <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                              {benefit}
+                            </span>
+                          ))}
+                        </div>
+                        <Link
+                          href={`/services/${product.slug}`}
+                          className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary"
+                        >
+                          Explore product{" "}
+                          <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                        </Link>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
         </div>
       </section>

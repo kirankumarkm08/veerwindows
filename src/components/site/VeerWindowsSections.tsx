@@ -3,9 +3,7 @@ import {
   BadgeCheck,
   CheckCircle2,
   CircleDollarSign,
-  Factory,
   Headphones,
-  Leaf,
   Lightbulb,
   Plus,
   ShieldCheck,
@@ -200,11 +198,11 @@ export function FeatureHighlights() {
   );
 }
 
-export function VideoStatsSection() {
+export function VideoSection() {
   return (
     <section className="section bg-secondary">
-      <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
-        <Reveal from="left" className="overflow-hidden bg-ink">
+      <div className="mx-auto max-w-[1100px] px-6">
+        <Reveal className="overflow-hidden bg-ink">
           <div className="aspect-video w-full">
             <iframe
               className="h-full w-full"
@@ -215,23 +213,6 @@ export function VideoStatsSection() {
               allowFullScreen
             />
           </div>
-        </Reveal>
-
-        <Reveal from="right" delay={120} className="grid gap-px border border-border bg-border">
-          {[
-            { value: "85%", label: "Customizable", icon: Factory },
-            { value: "75%", label: "Eco friendly", icon: Leaf },
-          ].map(({ value, label, icon: Icon }) => (
-            <div key={label} className="bg-background p-9">
-              <Icon className="size-10 text-primary" />
-              <strong className="mt-7 block text-6xl font-black tracking-tight text-heading sm:text-7xl">
-                {value}
-              </strong>
-              <span className="mt-3 block text-sm font-extrabold uppercase tracking-[0.18em] text-muted-foreground">
-                {label}
-              </span>
-            </div>
-          ))}
         </Reveal>
       </div>
     </section>

@@ -5,11 +5,16 @@ type PageHeroProps = {
   eyebrow: string;
   title: string;
   description: string;
+  compact?: boolean;
 };
 
-export function PageHero({ eyebrow, title, description }: PageHeroProps) {
+export function PageHero({ eyebrow, title, description, compact = false }: PageHeroProps) {
   return (
-    <section className="relative bg-ink pb-24 pt-40 text-ink-foreground">
+    <section
+      className={`relative bg-ink text-ink-foreground ${
+        compact ? "pb-10 pt-24 sm:pb-12 sm:pt-28" : "pb-24 pt-40"
+      }`}
+    >
       <div className="absolute inset-0 top-0">
         <Header />
       </div>

@@ -7,6 +7,7 @@ export type ProductVariant = {
 export type Product = {
   slug: string;
   family: "upvc" | "system-aluminium";
+  menuGroup?: "window" | "door";
   eyebrow: string;
   title: string;
   description: string;
@@ -15,6 +16,7 @@ export type Product = {
   intro: string;
   variants: ProductVariant[];
   benefits: string[];
+  specifications?: string[];
 };
 
 export const PRODUCTS: Product[] = [
@@ -24,46 +26,47 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Window & door systems",
     title: "Casement Windows & Doors",
     description: "Precision in every opening.",
-    image: "/sliders/1.png",
-    imageAlt: "Modern casement window and door installation",
+    image: "/products/casement-window.jpg",
+    imageAlt: "Brochure photograph of a black-framed casement window",
     intro:
-      "High-performance hinged systems that bring generous daylight, dependable ventilation, and a clean architectural finish to every room.",
+      "Side-hinged windows and doors bring natural ventilation, clear views, and effortless access to everyday spaces.",
     variants: [
       {
         name: "Single Casement Window",
         image: "/products/single-casement-window.jpg",
         description:
-          "A practical inward or outward opening window designed for natural ventilation and easy everyday use.",
+          "A practical inward or outward opening window designed for natural ventilation, clear views, and secure everyday use.",
       },
       {
         name: "Double Casement Window",
         image: "/products/double-casement-window.jpg",
         description:
-          "Two opening sashes provide wider ventilation and a balanced, symmetrical look.",
-      },
-      {
-        name: "Fixed Window",
-        image: "/products/combination-casement.jpg",
-        description: "A clear, non-opening panel for uninterrupted views and additional daylight.",
+          "Two opening shutters provide a wider view and excellent airflow while maintaining reliable security and weather sealing.",
       },
       {
         name: "Top-Hung Window",
         image: "/products/top-hung-window.jpg",
         description:
-          "A top-hinged opening that supports ventilation while helping protect the interior from rain.",
+          "Hinged at the top and opening outward, it provides ventilation during light rain while helping keep interiors protected.",
       },
       {
         name: "Ventilator Window",
         image: "/products/ventilator-window.jpg",
         description:
-          "Compact ventilation for kitchens, bathrooms, and utility spaces where controlled airflow matters.",
+          "A compact solution for kitchens and bathrooms, allowing fresh air while supporting privacy and moisture control.",
+      },
+      {
+        name: "Casement Door",
+        image: "/products/casement-door.jpg",
+        description:
+          "Elegant hinged panels offer effortless access, abundant daylight, and lasting performance.",
       },
     ],
     benefits: [
-      "Slim, durable profiles",
-      "Smooth, secure hardware",
-      "Made-to-measure fabrication",
-      "Professional installation",
+      "Side-hinged opening",
+      "Natural ventilation and clear views",
+      "Secure everyday use",
+      "Window and door formats",
     ],
   },
   {
@@ -72,7 +75,7 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Wide-opening systems",
     title: "Slide & Fold Systems",
     description: "Open spaces without boundaries.",
-    image: "/sliders/2.png",
+    image: "/products/slide-fold-door.jpg",
     imageAlt: "Slide and fold glass doors opening to a terrace",
     intro:
       "Multi-panel systems designed to connect interiors and exteriors. Panels glide smoothly, then fold away neatly to create a wider, more open living space.",
@@ -81,20 +84,20 @@ export const PRODUCTS: Product[] = [
         name: "Slide & Fold Door",
         image: "/products/slide-fold-door.jpg",
         description:
-          "Flexible folding panels that open large elevations while keeping the closed system elegant and weather-resistant.",
+          "Folding panels stack neatly to one side, creating a wide opening with natural light, ventilation, and flexibility.",
       },
       {
         name: "Slide & Fold Window",
         image: "/products/slide-fold-window.jpg",
         description:
-          "A compact, light-filled solution for rooms that need flexible ventilation and a wider view.",
+          "Flexible folding panels open generously to improve airflow and provide uninterrupted views.",
       },
     ],
     benefits: [
-      "Large uninterrupted openings",
-      "Smooth-running panel systems",
-      "Space-saving operation",
-      "Suitable for residential and commercial spaces",
+      "Panels stack neatly to one side",
+      "Wide openings",
+      "Natural light and ventilation",
+      "Door and window formats",
     ],
   },
   {
@@ -103,7 +106,7 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Sliding systems",
     title: "Sliding Windows & Doors",
     description: "Smooth movement. Practical everyday performance.",
-    image: "/hero/upvc-sliding-window-1.png",
+    image: "/products/2-track-window.jpg",
     imageAlt: "Modern uPVC sliding window system",
     intro:
       "Space-efficient sliding systems with smooth operation, generous glass areas, and optional mesh protection for comfortable ventilation.",
@@ -112,32 +115,32 @@ export const PRODUCTS: Product[] = [
         name: "2 Track Sliding Window",
         image: "/products/2-track-window.jpg",
         description:
-          "Slim, practical, and two-track sliding window design with smooth operation, minimal maintenance, and a clear outside view.",
+          "A sleek and practical two-track window that slides smoothly for maximum ventilation and a clear outside view.",
       },
       {
         name: "2 Track Sliding Door",
         image: "/products/2-track-door.jpg",
         description:
-          "A functional two-track sliding door for balconies, patios, and larger openings where effortless access and daylight matter.",
+          "A two-track door designed for effortless operation, wide openings, and a seamless indoor-outdoor connection.",
       },
       {
         name: "3 Track - 2 Glass, 1 Mesh",
         image: "/products/3-track-2-glass-1-mesh.jpg",
         description:
-          "Two sliding glass panels and one mesh panel provide flexible ventilation while helping keep insects outside.",
+          "Two sliding glass panels and one mesh panel provide better ventilation while helping keep insects out.",
       },
       {
         name: "3 Track - 4 Glass, 2 Mesh",
         image: "/products/3-track-4-glass-2-mesh.jpg",
         description:
-          "Four sliding glass panels with mesh protection on both sides create maximum airflow and broad opening flexibility.",
+          "Four sliding glass panels and two mesh panels provide maximum airflow with complete insect protection.",
       },
     ],
     benefits: [
-      "Smooth, space-saving operation",
-      "Optional integrated mesh",
-      "Large glazed areas",
-      "Low-maintenance profiles",
+      "Smooth sliding movement",
+      "Maximum ventilation",
+      "Clear outside views",
+      "Mesh options for insect protection",
     ],
   },
   {
@@ -146,7 +149,7 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Ventilation-first design",
     title: "Versatile Window Systems",
     description: "Smart openings for modern spaces.",
-    image: "/sliders/4.png",
+    image: "/products/tilt-turn-window.jpg",
     imageAlt: "Tilt and turn window in a bright modern interior",
     intro:
       "Flexible window formats for homes and workspaces that need both controlled airflow and a refined, contemporary profile.",
@@ -155,26 +158,20 @@ export const PRODUCTS: Product[] = [
         name: "Tilt & Turn Window",
         image: "/products/tilt-turn-window.jpg",
         description:
-          "Dual opening positions allow secure top ventilation or full inward opening for cleaning and airflow.",
+          "Dual opening allows secure tilted ventilation and a wide inward opening for easy access.",
       },
       {
         name: "Top-Hung Window",
         image: "/products/versatile-top-hung-window.jpg",
         description:
-          "A practical top-hung format providing controlled airflow with a modern, minimal appearance.",
-      },
-      {
-        name: "Tilt & Slide Door",
-        image: "/products/low-threshold-sliding-door.jpg",
-        description:
-          "A flexible glazed door that tilts for secure ventilation and slides aside for easy access without occupying interior space.",
+          "Top hinges support outward opening, providing airflow while helping shield interiors from light rain.",
       },
     ],
     benefits: [
-      "Two opening modes",
-      "Easy cleaning access",
-      "Controlled ventilation",
-      "Contemporary profile design",
+      "Tilted ventilation",
+      "Wide inward opening",
+      "Outward top-hung opening",
+      "Helps shield interiors from light rain",
     ],
   },
   {
@@ -183,41 +180,35 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Composed fenestration",
     title: "Combination Windows",
     description: "One elevation, multiple possibilities.",
-    image: "/sliders/5.png",
+    image: "/products/combination-casement.jpg",
     imageAlt: "Combination window installation with fixed and opening panels",
     intro:
-      "Combine fixed, opening, sliding, and door elements into one considered elevation. These systems make it easier to balance daylight, ventilation, views, and access.",
+      "Combine fixed glazing, openable casement shutters, and sliding panels to balance clear views, natural light, and controlled ventilation.",
     variants: [
       {
         name: "Casement, Fixed & Openable",
         image: "/products/combination-casement.jpg",
         description:
-          "A coordinated combination for generous glazing with precisely placed ventilation panels.",
+          "A flexible combination of fixed glazing and openable casement shutters, created for clear views, natural light, and controlled ventilation.",
       },
       {
         name: "Fixed & Sliding Windows",
         image: "/products/fixed-sliding-window.jpg",
         description:
-          "Pair uninterrupted fixed glass with smooth sliding panels for a balanced, practical elevation.",
+          "Fixed panels provide uninterrupted views, while smooth sliding shutters offer practical ventilation and effortless everyday use.",
       },
       {
-        name: "French Window",
+        name: "French Doors",
         image: "/products/french-window-door.jpg",
         description:
-          "A classic paired-opening window that brings balanced proportions, generous ventilation, and uninterrupted views.",
-      },
-      {
-        name: "French Door",
-        image: "/products/french-window-door.jpg",
-        description:
-          "Classic double-opening doors that extend views and create a welcoming connection to the outdoors.",
+          "Classic double doors open from the centre, bringing natural light and elegant access to gardens, patios, and balconies.",
       },
     ],
     benefits: [
-      "Designed as one composition",
-      "Flexible panel configurations",
-      "Consistent sightlines",
-      "Custom sizes and layouts",
+      "Fixed and openable panels",
+      "Uninterrupted views",
+      "Natural light",
+      "Controlled ventilation",
     ],
   },
   {
@@ -226,29 +217,29 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Door systems",
     title: "Advanced Door Systems",
     description: "Seamless access. Flexible living.",
-    image: "/sliders/6.png",
+    image: "/products/low-threshold-sliding-door.jpg",
     imageAlt: "Contemporary sliding and folding door system",
     intro:
-      "Door systems that make everyday movement feel effortless, with durable construction and wide glazed openings for a stronger connection to the outdoors.",
+      "Low-threshold sliding and multi-panel folding doors connect indoor and outdoor spaces with wide openings and easy access.",
     variants: [
       {
         name: "Low Threshold Sliding Door",
         image: "/products/low-threshold-sliding-door.jpg",
         description:
-          "A slim, easy-access threshold paired with smooth sliding panels for a refined indoor-outdoor transition.",
+          "A slim, step-free threshold provides smooth access and an elegant connection between indoor and outdoor spaces.",
       },
       {
         name: "Slide & Fold Doors",
         image: "/products/advanced-slide-fold-door.jpg",
         description:
-          "Multi-panel folding doors that open wide and stack neatly when you want the room to breathe.",
+          "Multi-panel shutters fold neatly to one side, creating a wide opening with natural light, ventilation, and flexibility.",
       },
     ],
     benefits: [
-      "Low-threshold access",
-      "Smooth and quiet movement",
-      "Secure locking systems",
-      "Designed for large openings",
+      "Step-free threshold",
+      "Smooth access",
+      "Wide folding openings",
+      "Natural light and ventilation",
     ],
   },
   {
@@ -256,31 +247,199 @@ export const PRODUCTS: Product[] = [
     family: "system-aluminium",
     eyebrow: "System aluminium",
     title: "System Aluminium Series",
-    description: "Slim frames. Strong performance.",
-    image: "/sliders/9.png",
-    imageAlt: "Slim aluminium sliding window and door systems",
+    description: "Sliding windows & doors",
+    image: "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    imageAlt: "Contemporary home with panoramic windows and glass doors",
     intro:
-      "A refined aluminium range for projects that call for narrow sightlines, generous glass, and durable performance across windows and doors.",
+      "Explore the two systems featured in our brochure: sliding windows for brighter interiors and uninterrupted views, and sliding doors that connect indoor and outdoor spaces.",
     variants: [
       {
-        name: "Aluminium Sliding Window",
-        image: "/products/aluminium-sliding-window.jpg",
+        name: "Sliding Window",
+        image: "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&w=1200",
         description:
-          "Slim profiles and smooth operation create a light, contemporary window with a generous glazed area.",
+          "Slim profiles and smooth movement create brighter interiors with uninterrupted views.",
       },
       {
-        name: "Aluminium Sliding Door",
-        image: "/products/aluminium-sliding-door.jpg",
+        name: "Sliding Door",
+        image: "https://images.pexels.com/photos/7601181/pexels-photo-7601181.jpeg?auto=compress&cs=tinysrgb&w=1200",
         description:
-          "Wide glazed panels with durable aluminium framing for effortless movement and expansive views.",
+          "Wide glass panels connect indoor and outdoor spaces with effortless operation.",
       },
     ],
     benefits: [
-      "Slim, strong aluminium profiles",
-      "Generous glass areas",
-      "Durable powder-coated finishes",
-      "Built for modern elevations",
+      "Slim profiles",
+      "Smooth movement",
+      "Brighter interiors and clear views",
+      "Sliding window and door formats",
     ],
+  },
+  {
+    slug: "system-aluminium-53-series-casement-window",
+    family: "system-aluminium",
+    menuGroup: "window",
+    eyebrow: "Aluminium window system",
+    title: "53 Series Casement Window",
+    description: "Everyday casement performance with a considered profile.",
+    image: "/products/casement-window.jpg",
+    imageAlt: "Aluminium casement window in a contemporary home",
+    intro: "A value-focused aluminium casement system for residential and commercial projects, with ventilation, weather resistance, and glazing options for different requirements.",
+    variants: [],
+    benefits: ["Excellent ventilation and clear views", "Easy-to-operate casement opening", "Weather resistance and noise reduction", "Low-maintenance, versatile design"],
+    specifications: ["45 mm outer-frame depth", "Maximum frame: 3000 mm high × 1200 mm wide", "Maximum sash: 3000 mm high × 1000 mm wide", "Maximum sash load: 120 kg", "6–32 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-vertical-sliding-window",
+    family: "system-aluminium",
+    menuGroup: "window",
+    eyebrow: "Aluminium window system",
+    title: "Vertical Sliding Window",
+    description: "A classic sash look with a space-saving vertical opening.",
+    image: "/products/versatile-top-hung-window.jpg",
+    imageAlt: "Open window in a bright modern interior",
+    intro: "A vertically operated sash window suited to tall or narrow openings. A fixed upper light and sliding lower sash make ventilation easy to control without using extra room space.",
+    variants: [],
+    benefits: ["Designed for narrow, tall openings", "Sliding lower sash with fixed upper light", "Optional fixed fly screen", "Spiral balances and Espagnolette locking"],
+    specifications: ["58 mm or 90 mm outer-frame depth", "50/50 or 60/40 frame split", "Maximum frame: 1800 mm high × 1200 mm wide", "Maximum sash load: 13.5 kg per sash", "4–22 mm glazing; single or double glass"],
+  },
+  {
+    slug: "system-aluminium-pivot-window",
+    family: "system-aluminium",
+    menuGroup: "window",
+    eyebrow: "Aluminium window system",
+    title: "Pivot Window",
+    description: "A central pivot creates a distinctive, generous opening.",
+    image: "/products/tilt-turn-window.jpg",
+    imageAlt: "Modern window in a contemporary interior",
+    intro: "The sash rotates around a central pivot instead of side hinges. Choose a vertical or horizontal pivot direction for a distinctive opening and convenient access for cleaning.",
+    variants: [],
+    benefits: ["Vertical or horizontal pivot opening", "Sash rotation up to 180°", "Friction-controlled opening up to 30°", "Release mechanism supports cleaning access"],
+    specifications: ["45 mm outer-frame depth", "Maximum frame: 2100 mm high × 1600 mm wide", "Maximum sash: 2100 mm high × 1600 mm wide", "Maximum sash load: 120 kg", "6–32 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-tilt-turn-window",
+    family: "system-aluminium",
+    menuGroup: "window",
+    eyebrow: "Aluminium window system",
+    title: "Tilt & Turn Window",
+    description: "Two opening modes for controlled airflow and easy access.",
+    image: "/products/tilt-turn-window.jpg",
+    imageAlt: "Tilt and turn aluminium window in a modern interior",
+    intro: "Tilt the sash inward for controlled ventilation or turn it inward for a wider opening and convenient cleaning. Concealed hinges keep the closed-window appearance clean.",
+    variants: [],
+    benefits: ["Tilt position for draft-free ventilation", "Turn position for a wide opening", "Concealed hinges", "Multiple locking points"],
+    specifications: ["45 mm outer-frame depth", "Maximum frame: 3000 mm high × 1200 mm wide", "Maximum sash: 3000 mm high × 1000 mm wide", "Maximum sash load: 120 kg", "6–32 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-parallel-window",
+    family: "system-aluminium",
+    menuGroup: "window",
+    eyebrow: "Aluminium window system",
+    title: "Parallel Window",
+    description: "Secure ventilation with an inward or outward opening.",
+    image: "/products/casement-window.jpg",
+    imageAlt: "Modern aluminium window with a clean, minimal frame",
+    intro: "A parallel opening moves the sash away from the frame while keeping it aligned. This supports controlled airflow while maintaining a clean, contemporary appearance.",
+    variants: [],
+    benefits: ["Inward or outward opening", "Multi-point locking", "Smooth operation", "Designed for ventilation in demanding weather conditions"],
+    specifications: ["45 mm outer-frame depth", "Maximum frame: 2100 mm high × 1200 mm wide", "Maximum sash load: 200 kg", "6–32 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-perfection-slide-door",
+    family: "system-aluminium",
+    menuGroup: "door",
+    eyebrow: "Aluminium door system",
+    title: "Perfection Slide Door",
+    description: "Minimal sightlines for wide, light-filled openings.",
+    image: "/products/aluminium-sliding-door.jpg",
+    imageAlt: "Minimal aluminium sliding door opening onto a terrace",
+    intro: "The Perfection Slide system pairs a slender 20 mm central profile with large glazed areas. Thermal-break and non-thermal-break options support different project needs.",
+    variants: [],
+    benefits: ["20 mm central profile", "Thermal-break or non-thermal-break options", "Double-glazing compatible", "Designed for large, heavy sliding panels"],
+    specifications: ["156 mm outer-frame depth", "Maximum frame: 4500 mm high × 5800 mm wide", "Maximum sash: 4500 mm high × 2900 mm wide", "Maximum sash load: 500 kg", "6–40 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-70-series-sliding-door",
+    family: "system-aluminium",
+    menuGroup: "door",
+    eyebrow: "Aluminium door system",
+    title: "70 Series Sliding Door",
+    description: "Smooth inline movement with flexible panel layouts.",
+    image: "/products/aluminium-sliding-door.jpg",
+    imageAlt: "Aluminium sliding door system with large glass panels",
+    intro: "A slim sliding system available with thermal-break or non-thermal-break profiles. Two-, three-, and four-panel configurations bring daylight into living areas and connect them to the outdoors.",
+    variants: [],
+    benefits: ["Inline panels save opening space", "Smooth operation and multi-point locking", "Two-, three-, or four-panel layouts", "Optional mesh sash configurations"],
+    specifications: ["90 mm or 140 mm outer-frame depth", "Maximum frame: 3000 mm high × 3000 mm wide", "Maximum sash: 3000 mm high × 1500 mm wide", "Maximum sash load: 180 kg", "6–22 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-lift-slide-door",
+    family: "system-aluminium",
+    menuGroup: "door",
+    eyebrow: "Aluminium door system",
+    title: "Lift & Slide Door",
+    description: "Large panels lift off the track for easier movement.",
+    image: "/products/low-threshold-sliding-door.jpg",
+    imageAlt: "Large lift and slide aluminium door with a flush threshold",
+    intro: "A carriage mechanism lifts the panel as it opens, helping large doors move smoothly. Panel layouts and a flush sill option create a generous connection to outdoor spaces.",
+    variants: [],
+    benefits: ["Gear-assisted handling", "Heavy-duty tandem rollers", "Single or double handle options", "Optional flush sill for easier transitions"],
+    specifications: ["140 mm outer-frame depth", "Maximum frame: 4500 mm high × 5800 mm wide", "Maximum sash: 4500 mm high × 2900 mm wide", "Maximum sash load: 400 kg", "6–38 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-fold-slide-door",
+    family: "system-aluminium",
+    menuGroup: "door",
+    eyebrow: "Aluminium door system",
+    title: "Fold & Slide Door",
+    description: "Fold panels to the side for a wide, open threshold.",
+    image: "/products/slide-fold-door.jpg",
+    imageAlt: "Folding aluminium glass doors opening onto an outdoor space",
+    intro: "Bi-fold panels fold laterally and stack to one side, opening a broad passage between indoor and outdoor living areas while keeping the panels neatly out of the way.",
+    variants: [],
+    benefits: ["Two- to six-panel layouts", "Folds inward or outward", "High-security hinges and locking", "Smooth roller operation"],
+    specifications: ["45 mm outer-frame depth", "Maximum frame: 3000 mm high × 5800 mm wide", "Maximum sash: 3000 mm high × 1000 mm wide", "Maximum sash load: 120 kg", "6–32 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-casement-door",
+    family: "system-aluminium",
+    menuGroup: "door",
+    eyebrow: "Aluminium door system",
+    title: "Casement Door",
+    description: "A slender hinged door profile with expansive glazing.",
+    image: "/products/casement-door.jpg",
+    imageAlt: "Minimal aluminium casement door with full-height glazing",
+    intro: "A hinged aluminium door system with a 70 mm visible profile and concealed accessories. The larger glazed area and insulation design balance light, thermal performance, and a minimal appearance.",
+    variants: [],
+    benefits: ["70 mm visible profile with concealed accessories", "Large glazed surface", "Thermal and acoustic insulation", "Low-maintenance finish options"],
+    specifications: ["Frame heat transfer: Uf 1.4 / 2.56 W/m²K", "Sound insulation: 44 dB", "Airtightness: Class A4", "Watertightness: Class R7", "Wind resistance: 1500 N/m²; safety level 2250 N/m²"],
+  },
+  {
+    slug: "system-aluminium-facade-system",
+    family: "system-aluminium",
+    menuGroup: "door",
+    eyebrow: "Aluminium façade system",
+    title: "Facade System",
+    description: "A glazed mullion-and-transom system for expressive elevations.",
+    image: "https://images.pexels.com/photos/9901861/pexels-photo-9901861.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    imageAlt: "Glazed aluminium facade with a clean architectural grid",
+    intro: "A non-insulated aluminium mullion-and-transom system for vertical and sloped façades, roofs, cupolas, and other architectural forms. Cover caps and narrow face widths keep the exterior lines restrained.",
+    variants: [],
+    benefits: ["Vertical, sloped, and roof applications", "50 mm or 65 mm face widths", "Light penetration with standard insulating glass", "Low-maintenance system"],
+    specifications: ["100 mm or 135 mm frame depth", "Maximum opening frame: 2000 mm high × 2000 mm wide", "Maximum sash load: 200 kg", "5–40 mm glazing; single, double, or triple glass"],
+  },
+  {
+    slug: "system-aluminium-railing-system",
+    family: "system-aluminium",
+    menuGroup: "door",
+    eyebrow: "Aluminium railing system",
+    title: "Railing System",
+    description: "Glass railings that preserve light and open views.",
+    image: "https://images.pexels.com/photos/10420335/pexels-photo-10420335.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    imageAlt: "Modern home exterior with glass balcony railings",
+    intro: "A glass railing system designed to keep balconies and stairs visually open. Clear panels admit light, are easy to maintain, and pair with several handrail and bottom-rail options.",
+    variants: [],
+    benefits: ["Keeps views and daylight open", "Suitable for contemporary interiors", "Easy to clean and maintain", "Designed for safe, secure use"],
+    specifications: ["35 mm handrail option", "Three 34 mm / 35 mm handrail shapes", "60 mm or 120 mm bottom rail", "6–13.5 mm glazing"],
   },
 ];
 
@@ -296,21 +455,25 @@ export const PRODUCT_FAMILIES = {
     description: "Comfort, light, and dependable performance for everyday living.",
     intro:
       "Explore Veer Windows uPVC systems, from practical casement windows and ventilators to wide-opening slide and fold doors. Every system is made to measure and installed with care.",
-    image: "/sliders/1.png",
+    image: "/products/casement-window.jpg",
   },
   "system-aluminium": {
     slug: "system-aluminium",
     eyebrow: "System aluminium product range",
     title: "System Aluminium Series",
-    description: "Slim frames. Strong performance. Expansive views.",
+    description: "Explore aluminium windows, doors, facades, and railing systems.",
     intro:
-      "Our system aluminium range brings narrow sightlines, durable finishes, and generous glass areas to contemporary windows and doors.",
-    image: "/sliders/9.png",
+      "Explore 12 system aluminium options, from casement and tilt-and-turn windows to large-format sliding doors, glazed facades, and railings.",
+    image: "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&w=1800",
   },
 } as const;
 
 export function getProductsByFamily(family: Product["family"]) {
-  return PRODUCTS.filter((product) => product.family === family);
+  return PRODUCTS.filter(
+    (product) =>
+      product.family === family &&
+      !(family === "system-aluminium" && product.slug === "system-aluminium-series"),
+  );
 }
 
 export const GLASS_OPTIONS = [
@@ -323,38 +486,38 @@ export const GLASS_OPTIONS = [
   {
     name: "Toughened Glass",
     image: "/products/toughened-glass.jpg",
-    description: "Heat-treated safety glass engineered for greater strength and impact resistance.",
+    description: "Heat-treated for greater strength and safer breakage when damaged.",
     appearance: "bg-gradient-to-br from-emerald-100/70 via-white/40 to-emerald-300/60",
   },
   {
     name: "DGU Glass",
     image: "/products/dgu-glass.jpg",
-    description: "Double-glazed construction that supports thermal comfort and noise reduction.",
+    description: "Dual-sealed panes help reduce heat, outside noise, and condensation.",
     appearance: "bg-gradient-to-r from-slate-200 via-white to-slate-300",
   },
   {
     name: "Laminated Glass",
     image: "/products/laminated-glass.jpg",
-    description: "Bonded glass layers improve safety, security, and acoustic performance.",
+    description: "Bonded glass layers improve safety, security, and sound control.",
     appearance: "bg-gradient-to-br from-cyan-100 via-white/60 to-blue-200",
   },
   {
     name: "Pinhead Glass",
     image: "/products/pinhead-glass.jpg",
-    description: "Textured decorative glass that adds privacy while allowing softened daylight.",
+    description: "Textured glass admits light while gently obscuring visibility.",
     appearance:
       "bg-[radial-gradient(circle,_rgba(255,255,255,.9)_1px,_rgba(148,163,184,.35)_2px)] bg-[size:8px_8px]",
   },
   {
     name: "Frosted Glass",
     image: "/products/frosted-glass.jpg",
-    description: "Diffused glass for privacy in bathrooms, offices, and entrance areas.",
+    description: "Diffuses natural light while maintaining privacy in personal spaces.",
     appearance: "bg-gradient-to-br from-slate-100 via-slate-200 to-white",
   },
   {
     name: "Tinted Glass",
     image: "/products/tinted-glass.jpg",
-    description: "Reduces glare and solar heat while adding a composed exterior appearance.",
+    description: "Reduces glare and solar heat with a stylish coloured finish.",
     appearance: "bg-gradient-to-br from-slate-500 via-slate-300 to-sky-200",
   },
 ] as const;

@@ -9,7 +9,7 @@ import {
   LogoSliders,
   ProductsGrid,
   TextTestimonialsCarousel,
-  VideoStatsSection,
+  VideoSection,
   VideoTestimonialSection,
 } from "@/components/site/VeerWindowsSections";
 
@@ -33,11 +33,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="bg-background">
-      <Header />
+      <Header solid />
       <main>
         <Hero />
         <FeatureHighlights />
-        <VideoStatsSection />
+        <VideoSection />
         {/* <Services /> */}
         {/* <ProductsGrid /> */}
         <LogoSliders />

@@ -39,18 +39,18 @@ export function Footer() {
 
           <div>
             <h3 className="text-sm font-extrabold uppercase tracking-[0.18em] text-ink-foreground">
-              Services
+              Explore Systems
             </h3>
             <ul className="mt-6 grid gap-3 text-sm text-ink-foreground/65">
               {[
-                "Window Installation",
-                "Door Installation",
-                "Replacement Services",
-                "Custom Solutions",
-              ].map((item) => (
-                <li key={item}>
-                  <a href="/services" className="transition-colors hover:text-primary-soft">
-                    {item}
+                { label: "All Window & Door Systems", href: "/services" },
+                { label: "uPVC Collection", href: "/services/family/upvc" },
+                { label: "System Aluminium", href: "/services/family/system-aluminium" },
+                { label: "Our Process", href: "/services#process" },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <a href={href} className="transition-colors hover:text-primary-soft">
+                    {label}
                   </a>
                 </li>
               ))}

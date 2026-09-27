@@ -138,6 +138,10 @@ export function Hero() {
         </div>
       </div>
       <div
+        aria-hidden="true"
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-ink/40 via-ink/45 to-ink/70"
+      />
+      <div
         className="absolute right-6 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2 sm:right-10"
         onMouseEnter={() => setIsCarouselPaused(true)}
         onMouseLeave={() => setIsCarouselPaused(false)}
