@@ -72,6 +72,7 @@ const NAV: NavItem[] = [
     children: systemAluminiumProducts,
   },
   { label: "Blog", href: "/blog" },
+  { label: "Choose Your Style", href: "/choose-your-style" },
   { label: "Contact Us", href: "/contact" },
 ];
 
