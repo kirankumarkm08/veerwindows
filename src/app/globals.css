@@ -188,6 +188,11 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -328,6 +333,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .animate-kenburns,
   .animate-marquee {
     animation: none;

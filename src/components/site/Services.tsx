@@ -39,7 +39,7 @@ const PROCESS_STEPS = [
 export function Services() {
   return (
     <>
-      <section id="product-range" className="scroll-mt-24 bg-secondary py-16 sm:py-20">
+      <section id="product-range" className="bg-secondary py-16 sm:py-20">
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
@@ -59,7 +59,7 @@ export function Services() {
                 uPVC collection <ArrowUpRight className="ml-1 inline size-4" />
               </Link>
               <Link
-                href="/services/family/system-aluminium"
+                href="/services/system-aluminium-series"
                 className="border border-border bg-background px-4 py-3 text-xs font-extrabold uppercase tracking-[0.12em] transition-colors hover:border-primary hover:text-primary"
               >
                 Aluminium collection <ArrowUpRight className="ml-1 inline size-4" />
@@ -75,14 +75,7 @@ export function Services() {
                 as="article"
                 className="group overflow-hidden border border-border bg-background transition-colors hover:border-primary"
               >
-                <Link
-                  href={
-                    product.slug === "system-aluminium-series"
-                      ? "/services/family/system-aluminium"
-                      : `/services/${product.slug}`
-                  }
-                  className="block"
-                >
+                <Link href={`/services/${product.slug}`} className="block">
                   <div className="relative aspect-[16/9] overflow-hidden bg-surface">
                     <Image
                       src={product.image}
@@ -110,7 +103,7 @@ export function Services() {
         </div>
       </section>
 
-      <section id="process" className="scroll-mt-24 bg-background py-16 sm:py-20">
+      <section id="process" className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="max-w-2xl">
             <span className="eyebrow">

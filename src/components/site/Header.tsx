@@ -51,9 +51,11 @@ const systemAluminiumDoors: MenuEntry[] = [
 ].map(({ label, slug }) => ({ label, href: `/services/${slug}` }));
 
 const systemAluminiumProducts: MenuEntry[] = [
-  { label: "Sliding Windows & Doors", href: "/services/sliding-windows-doors" },
-  { label: "Casement Windows & Doors", href: "/services/system-aluminium-53-series-casement-window" },
-  { label: "Combination Windows", href: "/services/family/system-aluminium" },
+  { label: "Sliding Windows & Doors", href: "/services/system-aluminium-series" },
+  {
+    label: "Casement Windows & Doors",
+    href: "/services/system-aluminium-53-series-casement-window",
+  },
   { label: "Lift & Slide", href: "/services/system-aluminium-lift-slide-door" },
   { label: "Slide & Fold", href: "/services/system-aluminium-fold-slide-door" },
   { label: "Tilt & Turn", href: "/services/system-aluminium-tilt-turn-window" },
@@ -68,20 +70,23 @@ const NAV: NavItem[] = [
   },
   {
     label: "System Aluminium",
-    href: "/services/family/system-aluminium",
+    href: "/services/system-aluminium-series",
     children: systemAluminiumProducts,
   },
   { label: "Blog", href: "/blog" },
-  { label: "Choose Your Style", href: "/choose-your-style" },
+  { label: "Projects", href: "/projects" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 function isNavItemActive(label: string, pathname: string, href: string) {
   if (label === "uPVC") {
-    return pathname === "/services/family/upvc" || upvcProducts.some((product) => product.href === pathname);
+    return (
+      pathname === "/services/family/upvc" ||
+      upvcProducts.some((product) => product.href === pathname)
+    );
   }
   if (label === "System Aluminium") {
-    return pathname === "/services/family/system-aluminium" || pathname.startsWith("/services/system-aluminium-");
+    return pathname.startsWith("/services/system-aluminium-");
   }
 
   const itemPath = href.split("#")[0] || "/";
@@ -140,7 +145,10 @@ export function Header({ solid = false }: HeaderProps) {
                     )}
                   >
                     <span>{item.label}</span>
-                    <ChevronDown aria-hidden="true" className="size-4 shrink-0 text-current transition-transform duration-200 group-hover:rotate-180 group-focus-visible:rotate-180" />
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="size-4 shrink-0 text-current transition-transform duration-200 group-hover:rotate-180 group-focus-visible:rotate-180"
+                    />
                   </a>
                   <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-2 border border-border/70 bg-white py-2 opacity-0 shadow-[0_16px_40px_-18px_rgba(3,30,44,0.38)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:visible group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                     {item.groups.map((group) => (
@@ -171,24 +179,46 @@ export function Header({ solid = false }: HeaderProps) {
             }
 
             if (item.children) {
+              const menuTriggerClassName = cn(
+                "relative flex items-center gap-1 border-0 bg-transparent py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground/85 transition-colors hover:text-primary-soft",
+                "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary-soft after:transition-transform",
+                "hover:after:scale-x-100",
+                isActive && "text-primary-soft after:scale-x-100",
+              );
+
+              const menuTriggerContent = (
+                <>
+                  <span>{item.label}</span>
+                  <ChevronDown
+                    aria-hidden="true"
+                    className="size-4 shrink-0 text-current transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+                  />
+                </>
+              );
+
               return (
                 <div key={item.label} className="group relative">
-                  <a
-                    href={item.href}
-                    aria-haspopup="true"
-                    aria-current={isActive ? "page" : undefined}
-                    className={cn(
-                      "relative flex items-center gap-1 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground/85 transition-colors hover:text-primary-soft",
-                      "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary-soft after:transition-transform",
-                      "hover:after:scale-x-100",
-                      isActive && "text-primary-soft after:scale-x-100",
-                    )}
-                  >
-                    <span>{item.label}</span>
-                    <ChevronDown aria-hidden="true" className="size-4 shrink-0 text-current transition-transform duration-200 group-hover:rotate-180 group-focus-visible:rotate-180" />
-                  </a>
-                  <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-2 rounded-sm border border-border/70 bg-white py-1.5 opacity-0 shadow-[0_16px_40px_-18px_rgba(3,30,44,0.38)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:visible group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
-                    {item.children.map((child) => (
+                  {item.label === "System Aluminium" ? (
+                    <button
+                      type="button"
+                      aria-haspopup="true"
+                      aria-label="Open System Aluminium menu"
+                      className={cn(menuTriggerClassName, "cursor-pointer")}
+                    >
+                      {menuTriggerContent}
+                    </button>
+                  ) : (
+                    <a
+                      href={item.href}
+                      aria-haspopup="true"
+                      aria-current={isActive ? "page" : undefined}
+                      className={menuTriggerClassName}
+                    >
+                      {menuTriggerContent}
+                    </a>
+                  )}
+                  <div className="invisible absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 translate-y-2 rounded-sm border border-border/70 bg-white py-1.5 opacity-0 shadow-[0_16px_40px_-18px_rgba(3,30,44,0.38)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                    {item.children.map((child) =>
                       child.children?.length ? (
                         <div key={child.label} className="group/submenu relative">
                           <Link
@@ -219,8 +249,8 @@ export function Header({ solid = false }: HeaderProps) {
                         >
                           {child.label}
                         </Link>
-                      )
-                    ))}
+                      ),
+                    )}
                   </div>
                 </div>
               );
@@ -318,22 +348,30 @@ export function Header({ solid = false }: HeaderProps) {
                     )}
                   >
                     <span>{item.label}</span>
-                    <ChevronDown aria-hidden="true" className="size-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="size-4 shrink-0 transition-transform duration-200 group-open:rotate-180"
+                    />
                   </summary>
                   <div className="ml-4 border-l border-ink-foreground/15 pl-4">
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="block px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-primary-soft transition-colors hover:text-ink-foreground"
-                    >
-                      All {item.label}
-                    </Link>
+                    {item.label !== "System Aluminium" ? (
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="block px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-primary-soft transition-colors hover:text-ink-foreground"
+                      >
+                        All {item.label}
+                      </Link>
+                    ) : null}
                     {item.children.map((child) =>
                       child.children?.length ? (
                         <details key={child.label} className="group/nested">
                           <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-ink-foreground/70 transition-colors hover:text-primary-soft">
                             <span>{child.label}</span>
-                            <ChevronDown aria-hidden="true" className="size-3.5 shrink-0 transition-transform duration-200 group-open/nested:rotate-180" />
+                            <ChevronDown
+                              aria-hidden="true"
+                              className="size-3.5 shrink-0 transition-transform duration-200 group-open/nested:rotate-180"
+                            />
                           </summary>
                           <div className="ml-3 border-l border-ink-foreground/15 pl-2">
                             <Link

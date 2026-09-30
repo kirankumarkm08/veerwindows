@@ -10,11 +10,14 @@ import { getProductsByFamily, PRODUCT_FAMILIES } from "@/lib/products";
 type FamilyPageProps = { params: Promise<{ family: string }> };
 
 export function generateStaticParams() {
-  return Object.keys(PRODUCT_FAMILIES).map((family) => ({ family }));
+  return [{ family: "upvc" }];
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: FamilyPageProps): Promise<Metadata> {
   const { family } = await params;
+  if (family !== "upvc") return { title: "Product family not found | Veer Windows" };
   const config = PRODUCT_FAMILIES[family as keyof typeof PRODUCT_FAMILIES];
   if (!config) return { title: "Product family not found | Veer Windows" };
   return { title: `${config.title} | Veer Windows`, description: config.description };
@@ -22,6 +25,7 @@ export async function generateMetadata({ params }: FamilyPageProps): Promise<Met
 
 export default async function FamilyPage({ params }: FamilyPageProps) {
   const { family } = await params;
+  if (family !== "upvc") notFound();
   const config = PRODUCT_FAMILIES[family as keyof typeof PRODUCT_FAMILIES];
   if (!config) notFound();
 

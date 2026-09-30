@@ -78,7 +78,7 @@ export function About() {
                 high-level technical execution.
               </p>
               <a
-                href="/#portfolio"
+                href="/projects"
                 className="mt-8 inline-block border-2 border-foreground px-8 py-3.5 text-xs font-extrabold uppercase tracking-[0.16em] transition-colors hover:bg-foreground hover:text-background"
               >
                 Discover More

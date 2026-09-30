@@ -76,7 +76,10 @@ export function Footer() {
                 </span>
               </li>
             </ul>
-            <a href="mailto:hello@veerwindows.com" className="mt-6 inline-block border border-white/30 px-5 py-3 text-xs font-extrabold uppercase tracking-[0.14em] text-white transition-colors hover:border-primary-soft hover:text-primary-soft">
+            <a
+              href="/contact"
+              className="mt-6 inline-block border border-white/30 px-5 py-3 text-xs font-extrabold uppercase tracking-[0.14em] text-white transition-colors hover:border-primary-soft hover:text-primary-soft"
+            >
               Request a quote
             </a>
           </div>
@@ -90,7 +93,13 @@ export function Footer() {
                 ["Combination Windows", "/services/combination-windows"],
                 ["Tilt & Turn Windows", "/services/versatile-window-systems"],
                 ["Twin Sash Window", "/services/twin-sash-window"],
-              ].map(([label, href]) => <li key={label}><a href={href} className="transition-colors hover:text-primary-soft">{label}</a></li>)}
+              ].map(([label, href]) => (
+                <li key={label}>
+                  <a href={href} className="transition-colors hover:text-primary-soft">
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -102,7 +111,13 @@ export function Footer() {
                 ["Lift & Slide Door", "/services/lift-and-slide-door"],
                 ["Slide & Fold Systems", "/services/slide-fold-systems"],
                 ["Casement Doors", "/services/casement-windows-doors"],
-              ].map(([label, href]) => <li key={label}><a href={href} className="transition-colors hover:text-primary-soft">{label}</a></li>)}
+              ].map(([label, href]) => (
+                <li key={label}>
+                  <a href={href} className="transition-colors hover:text-primary-soft">
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -110,19 +125,27 @@ export function Footer() {
             <h3 className="text-lg font-bold text-white">System Aluminium</h3>
             <ul className="mt-5 grid gap-3 text-sm text-white/70">
               {[
-                ["All Aluminium Systems", "/services/family/system-aluminium"],
+                ["Aluminium Sliding Systems", "/services/system-aluminium-series"],
                 ["Casement Window", "/services/system-aluminium-53-series-casement-window"],
                 ["Sliding Door", "/services/system-aluminium-perfection-slide-door"],
                 ["Lift & Slide Door", "/services/system-aluminium-lift-slide-door"],
                 ["Facade System", "/services/system-aluminium-facade-system"],
-              ].map(([label, href]) => <li key={label}><a href={href} className="transition-colors hover:text-primary-soft">{label}</a></li>)}
+              ].map(([label, href]) => (
+                <li key={label}>
+                  <a href={href} className="transition-colors hover:text-primary-soft">
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 pt-6 text-xs uppercase tracking-[0.14em] text-white/50">
           <p>&copy; {new Date().getFullYear()} Veer Windows. All rights reserved.</p>
-          <a href="/services" className="transition-colors hover:text-white">Explore all systems</a>
+          <a href="/services" className="transition-colors hover:text-white">
+            Explore all systems
+          </a>
         </div>
       </div>
     </footer>

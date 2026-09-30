@@ -131,7 +131,7 @@ export function Hero() {
           </Reveal>
           <Reveal delay={360}>
             <a
-              href="#portfolio"
+              href="/services/family/upvc"
               className="btn-sweep-light mt-9 inline-block bg-primary-soft px-9 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft-foreground"
             >
               Explore Products
