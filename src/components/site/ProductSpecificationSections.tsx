@@ -64,8 +64,10 @@ export function ProductSpecificationSections() {
             className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden pb-4 [scrollbar-color:#9a793d_transparent] [scrollbar-width:thin]"
           >
             {FINISH_OPTIONS.map((finish, index) => (
-              <article
+              <Reveal
                 key={finish.name}
+                as="article"
+                delay={index * 45}
                 className="w-[72vw] max-w-[260px] shrink-0 snap-start border border-[#ddd6c8] bg-white p-3 sm:w-[230px]"
               >
                 <div
@@ -77,7 +79,7 @@ export function ProductSpecificationSections() {
                   {String(index + 1).padStart(2, "0")} / {finish.group}
                 </p>
                 <h3 className="mt-2 text-lg font-semibold leading-6 text-heading">{finish.name}</h3>
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -171,7 +173,12 @@ export function ProductSpecificationSections() {
               const Icon = PROCESS_ICONS[index]!;
 
               return (
-                <article key={step.number} className="bg-ink p-6 sm:p-8">
+                <Reveal
+                  key={step.number}
+                  as="article"
+                  delay={index * 80}
+                  className="bg-ink p-6 sm:p-8"
+                >
                   <div className="flex items-center justify-between">
                     <Icon aria-hidden="true" className="size-7 text-[#d4b16c]" strokeWidth={1.6} />
                     <span className="text-sm font-bold tracking-[0.16em] text-white/35">
@@ -183,7 +190,7 @@ export function ProductSpecificationSections() {
                   <p className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#d4b16c]">
                     <Check aria-hidden="true" className="size-4" /> Planned with care
                   </p>
-                </article>
+                </Reveal>
               );
             })}
           </div>

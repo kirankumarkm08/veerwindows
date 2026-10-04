@@ -87,12 +87,14 @@ function EditorialRangeHero({ product, familyHref }: { product: Product; familyH
   return (
     <section className="bg-[#f3eee4] pb-12 pt-24 text-heading sm:pb-16 sm:pt-28">
       <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
-        <Link
-          href={familyHref}
-          className="eyebrow w-fit text-heading/55 transition-colors hover:text-[#927239]"
-        >
-          <ChevronLeft aria-hidden="true" className="size-4" /> uPVC systems
-        </Link>
+        <Reveal from="left" className="w-fit">
+          <Link
+            href={familyHref}
+            className="eyebrow w-fit text-heading/55 transition-colors hover:text-[#927239]"
+          >
+            <ChevronLeft aria-hidden="true" className="size-4" /> uPVC systems
+          </Link>
+        </Reveal>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-14">
           <Reveal className="relative z-10 py-4 lg:py-10">
@@ -126,7 +128,11 @@ function EditorialRangeHero({ product, familyHref }: { product: Product; familyH
           </Reveal>
 
           <div className="grid min-h-[430px] grid-cols-[1.25fr_0.75fr] grid-rows-2 gap-3 sm:min-h-[560px] lg:min-h-[600px]">
-            <div className="relative row-span-2 min-h-[430px] overflow-hidden bg-[#dfd6c5] sm:min-h-[560px] lg:min-h-[600px]">
+            <Reveal
+              as="figure"
+              from="left"
+              className="relative row-span-2 min-h-[430px] overflow-hidden bg-[#dfd6c5] sm:min-h-[560px] lg:min-h-[600px]"
+            >
               <Image
                 src={product.image}
                 alt={product.imageAlt}
@@ -143,10 +149,12 @@ function EditorialRangeHero({ product, familyHref }: { product: Product; familyH
                   {product.variants[0]?.name ?? product.title}
                 </p>
               </div>
-            </div>
+            </Reveal>
             {product.variants.slice(0, 2).map((variant, index) => (
-              <div
+              <Reveal
+                as="figure"
                 key={variant.name}
+                delay={100 + index * 100}
                 className="group relative min-h-[208px] overflow-hidden bg-[#dfd6c5] sm:min-h-0"
               >
                 <Image
@@ -164,7 +172,7 @@ function EditorialRangeHero({ product, familyHref }: { product: Product; familyH
                     {variant.name}
                   </p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -185,15 +193,21 @@ function AluminiumFeatureHero({
   return (
     <section className="bg-[#f3eee4] pb-12 pt-24 text-heading sm:pb-16 sm:pt-28">
       <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
-        <Link
-          href={familyHref}
-          className="eyebrow w-fit text-heading/55 transition-colors hover:text-[#927239]"
-        >
-          <ChevronLeft aria-hidden="true" className="size-4" /> System Aluminium
-        </Link>
+        <Reveal from="left" className="w-fit">
+          <Link
+            href={familyHref}
+            className="eyebrow w-fit text-heading/55 transition-colors hover:text-[#927239]"
+          >
+            <ChevronLeft aria-hidden="true" className="size-4" /> System Aluminium
+          </Link>
+        </Reveal>
 
         <div className="mt-8 grid overflow-hidden bg-[#e8e2d7] lg:min-h-[600px] lg:grid-cols-[1.18fr_0.82fr]">
-          <div className="relative min-h-[340px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]">
+          <Reveal
+            as="figure"
+            from="left"
+            className="relative min-h-[340px] overflow-hidden sm:min-h-[480px] lg:min-h-[600px]"
+          >
             <Image
               src={product.image}
               alt={product.imageAlt}
@@ -219,7 +233,7 @@ function AluminiumFeatureHero({
                 />
               </div>
             ) : null}
-          </div>
+          </Reveal>
 
           <Reveal className="flex flex-col justify-center px-7 py-10 sm:px-12 sm:py-14 lg:px-14 lg:py-16">
             <p className="eyebrow text-[#927239]">{product.eyebrow}</p>
@@ -297,12 +311,14 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <section className="relative isolate overflow-hidden bg-[#062f42] pb-8 pt-24 text-white sm:pb-10 sm:pt-28 lg:pb-8 lg:pt-10">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_52%_115%,rgba(98,140,157,0.24),transparent_52%),linear-gradient(110deg,#062f42_0%,#0b3e54_55%,#052a3a_100%)]" />
           <div className="mx-auto max-w-[1700px] px-6 sm:px-10 lg:px-14">
-            <Link
-              href={familyHref}
-              className="eyebrow w-fit text-white/55 transition-colors hover:text-[#d5b56e]"
-            >
-              <ChevronLeft aria-hidden="true" className="size-4" /> {familyLabel}
-            </Link>
+            <Reveal from="left" className="w-fit">
+              <Link
+                href={familyHref}
+                className="eyebrow w-fit text-white/55 transition-colors hover:text-[#d5b56e]"
+              >
+                <ChevronLeft aria-hidden="true" className="size-4" /> {familyLabel}
+              </Link>
+            </Reveal>
 
             <div className="mt-6 grid gap-8 lg:mt-5 lg:min-h-[350px] lg:grid-cols-[1.08fr_1.42fr_0.62fr] lg:items-center lg:gap-7">
               <Reveal className="relative z-10 max-w-xl py-4 lg:py-5">
@@ -329,7 +345,11 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 </div>
               </Reveal>
 
-              <div className="relative min-h-[250px] overflow-hidden sm:min-h-[360px] lg:h-[350px] lg:min-h-0">
+              <Reveal
+                as="figure"
+                from="zoom"
+                className="relative min-h-[250px] overflow-hidden sm:min-h-[360px] lg:h-[350px] lg:min-h-0"
+              >
                 <Image
                   src={product.image}
                   alt={product.imageAlt}
@@ -344,11 +364,17 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 <p className="absolute bottom-4 left-4 text-[9px] font-bold uppercase tracking-[0.18em] text-white/85 sm:bottom-6 sm:left-6">
                   {familyLabel} · Made to measure
                 </p>
-              </div>
+              </Reveal>
 
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:gap-6">
                 {heroCallouts.map(({ description, image, title }, index) => (
-                  <div key={`${title}-${index}`} className="flex items-center gap-4 lg:gap-3">
+                  <Reveal
+                    as="article"
+                    key={`${title}-${index}`}
+                    delay={index * 100}
+                    from="right"
+                    className="flex items-center gap-4 lg:gap-3"
+                  >
                     <div className="relative size-[76px] shrink-0 overflow-hidden rounded-full border border-[#c6a257] bg-white/10 sm:size-[88px] lg:size-[92px]">
                       <Image
                         src={image}
@@ -370,7 +396,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
                         {description}
                       </p>
                     </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -382,16 +408,20 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <section id="configurations" className="bg-[#faf8f2] py-16 sm:py-24">
           <div className="mx-auto max-w-[1400px] px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_.75fr] lg:items-end">
-              <div>
-                <p className="eyebrow text-[#927239]"> Our range</p>
-                <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1] tracking-[-0.05em] text-heading sm:text-5xl lg:text-6xl">
-                  Available configurations.
-                </h2>
-              </div>
-              <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:justify-self-end">
-                Compare the available formats, then speak with our team to confirm dimensions,
-                operation, glazing, and finish for your project.
-              </p>
+              <Reveal from="left">
+                <div>
+                  <p className="eyebrow text-[#927239]"> Our range</p>
+                  <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1] tracking-[-0.05em] text-heading sm:text-5xl lg:text-6xl">
+                    Available configurations.
+                  </h2>
+                </div>
+              </Reveal>
+              <Reveal from="right" delay={120}>
+                <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:justify-self-end">
+                  Compare the available formats, then speak with our team to confirm dimensions,
+                  operation, glazing, and finish for your project.
+                </p>
+              </Reveal>
             </div>
 
             <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -410,24 +440,28 @@ export function ProductDetail({ product }: ProductDetailProps) {
       <section className="relative isolate overflow-hidden bg-[#f3eee3] text-heading">
         <div className="absolute inset-0 -z-10 opacity-45 [background:radial-gradient(circle_at_85%_15%,#e5d4ad_0,transparent_42%)]" />
         <div className="mx-auto flex max-w-[1400px] flex-col gap-8 px-6 py-14 sm:px-10 md:flex-row md:items-end md:justify-between lg:px-16 lg:py-16">
-          <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#927239]">
-              Let&apos;s build a brighter home
-            </p>
-            <h2 className="mt-4 text-4xl font-semibold leading-none tracking-[-0.045em] text-heading sm:text-5xl">
-              Book a consultation
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-6 text-heading/70">
-              Our team will help you select the right {product.title.toLowerCase()} for your home or
-              commercial project.
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex w-fit items-center gap-4 bg-[#9a793d] px-7 py-4 text-xs font-extrabold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#7d602f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9a793d]"
-          >
-            Get a consultation <ArrowRight aria-hidden="true" className="size-4" />
-          </Link>
+          <Reveal from="left">
+            <div>
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#927239]">
+                Let&apos;s build a brighter home
+              </p>
+              <h2 className="mt-4 text-4xl font-semibold leading-none tracking-[-0.045em] text-heading sm:text-5xl">
+                Book a consultation
+              </h2>
+              <p className="mt-4 max-w-xl text-sm leading-6 text-heading/70">
+                Our team will help you select the right {product.title.toLowerCase()} for your home
+                or commercial project.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal from="right">
+            <Link
+              href="/contact"
+              className="inline-flex w-fit items-center gap-4 bg-[#9a793d] px-7 py-4 text-xs font-extrabold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#7d602f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9a793d]"
+            >
+              Get a consultation <ArrowRight aria-hidden="true" className="size-4" />
+            </Link>
+          </Reveal>
         </div>
       </section>
     </main>
