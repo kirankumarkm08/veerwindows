@@ -678,73 +678,39 @@ export function getProductsByFamily(family: Product["family"]) {
   );
 }
 
-export const FINISH_OPTIONS = [
-  { name: "Nut Tree", group: "Natura", swatch: "linear-gradient(135deg,#4b2d20,#8d5a38,#3a2219)" },
+export const FINISH_COLLECTIONS = [
   {
-    name: "Golden Oak",
-    group: "Natura",
-    swatch: "linear-gradient(135deg,#8a5425,#c38a4a,#714019)",
-  },
-  { name: "Cognac", group: "Natura", swatch: "linear-gradient(135deg,#69381f,#a45e31,#4e2819)" },
-  {
-    name: "Black Brown",
-    group: "Natura",
-    swatch: "linear-gradient(135deg,#181411,#3d3029,#161311)",
-  },
-  { name: "Alux DB", group: "Natura", swatch: "linear-gradient(135deg,#4b4b49,#77736c,#393a39)" },
-  { name: "Wenge", group: "Natura", swatch: "linear-gradient(135deg,#241813,#5a3c30,#211511)" },
-  {
-    name: "Turner Oak Malt",
-    group: "Wooddec",
-    swatch: "linear-gradient(135deg,#b89872,#dfc5a3,#9c7651)",
+    name: "Natura finishes",
+    options: [
+      { name: "Nut Tree", image: "/finishes/natura-01.webp" },
+      { name: "Golden Oak / Cognac", image: "/finishes/natura-02.webp" },
+      { name: "Black Brown", image: "/finishes/natura-03.webp" },
+      { name: "Alux DB", image: "/finishes/natura-04.webp" },
+      { name: "Wenge", image: "/finishes/natura-05.webp" },
+      { name: "Mahagoni", image: "/finishes/natura-06.webp" },
+    ],
   },
   {
-    name: "Turner Oak Toffee",
-    group: "Wooddec",
-    swatch: "linear-gradient(135deg,#896343,#c39970,#6f4c34)",
+    name: "Wooddec finishes",
+    options: [
+      { name: "Turner Oak Malt", image: "/finishes/wooddec-01.webp" },
+      { name: "Turner Oak Toffee", image: "/finishes/wooddec-02.webp" },
+      { name: "Turner Oak Walnut", image: "/finishes/wooddec-03.webp" },
+      { name: "Turner Oak Amber", image: "/finishes/wooddec-04.webp" },
+      { name: "Sheffield Oak Alpine", image: "/finishes/wooddec-05.webp" },
+      { name: "Sheffield Oak Concrete", image: "/finishes/wooddec-06.webp" },
+    ],
   },
   {
-    name: "Turner Oak Walnut",
-    group: "Wooddec",
-    swatch: "linear-gradient(135deg,#5d402f,#956b4c,#473025)",
-  },
-  {
-    name: "Turner Oak Amber",
-    group: "Wooddec",
-    swatch: "linear-gradient(135deg,#9c6a36,#d1a063,#7e5129)",
-  },
-  {
-    name: "Sheffield Oak",
-    group: "Wooddec",
-    swatch: "linear-gradient(135deg,#b6a78d,#e0d6c4,#94846d)",
-  },
-  { name: "Concrete", group: "Wooddec", swatch: "linear-gradient(135deg,#777873,#aaa9a3,#666761)" },
-  {
-    name: "Sheffield Oak Alpine",
-    group: "Aludec",
-    swatch: "linear-gradient(135deg,#d4c9b6,#f0e8db,#b3a58f)",
-  },
-  {
-    name: "Anthracite Grey",
-    group: "Aludec",
-    swatch: "linear-gradient(135deg,#292d2f,#4b5153,#202426)",
-  },
-  { name: "Jet Black", group: "Aludec", swatch: "linear-gradient(135deg,#090a0a,#282a2b,#050606)" },
-  { name: "DB 703", group: "Aludec", swatch: "linear-gradient(135deg,#393b3b,#686a69,#2d2f2f)" },
-  {
-    name: "Umbra Grey",
-    group: "Aludec",
-    swatch: "linear-gradient(135deg,#514d47,#79736b,#403d38)",
-  },
-  {
-    name: "Window Grey",
-    group: "Aludec",
-    swatch: "linear-gradient(135deg,#777c7c,#a5aaaa,#666b6b)",
-  },
-  {
-    name: "Basalt Grey",
-    group: "Aludec",
-    swatch: "linear-gradient(135deg,#4c5355,#747c7e,#3c4345)",
+    name: "Aludec finishes",
+    options: [
+      { name: "Anthracite Grey", image: "/finishes/aludec-01.webp" },
+      { name: "Jet Black", image: "/finishes/aludec-02.webp" },
+      { name: "DB 703", image: "/finishes/aludec-03.webp" },
+      { name: "Umbra Grey", image: "/finishes/aludec-04.webp" },
+      { name: "Window Grey", image: "/finishes/aludec-05.webp" },
+      { name: "Basalt Grey", image: "/finishes/aludec-06.webp" },
+    ],
   },
 ] as const;
 

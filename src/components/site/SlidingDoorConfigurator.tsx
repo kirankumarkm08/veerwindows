@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactShadows, OrbitControls } from "@react-three/drei";
+import { ContactShadows, OrbitControls, useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   ArrowRight,
@@ -11,139 +11,43 @@ import {
   Rotate3D,
 } from "lucide-react";
 import Link from "next/link";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { startTransition, Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
+import { FINISH_COLLECTIONS } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
-const FRAME_FINISHES = [
-  {
-    id: "nut-tree",
-    label: "Nut Tree",
-    group: "Natura",
-    color: "#b98d65",
-    swatch: "linear-gradient(105deg, #c9a27d, #a97850 48%, #c0966d)",
-  },
-  {
-    id: "golden-oak-cognacse",
-    label: "Golden Oak Cognacse",
-    group: "Natura",
-    color: "#9a5b27",
-    swatch: "linear-gradient(105deg, #bc7938, #86501f 48%, #a7672d)",
-  },
-  {
-    id: "black-brown",
-    label: "Black Brown",
-    group: "Natura",
-    color: "#27140d",
-    swatch: "linear-gradient(105deg, #3b2117, #160b08 52%, #321b12)",
-  },
-  {
-    id: "alux-db",
-    label: "Alux DB",
-    group: "Natura",
-    color: "#554b43",
-    swatch: "linear-gradient(105deg, #655a50, #423b36 52%, #5d5148)",
-  },
-  {
-    id: "wenge",
-    label: "Wenge",
-    group: "Natura",
-    color: "#352117",
-    swatch: "linear-gradient(105deg, #493025, #25140e 52%, #3c271c)",
-  },
-  {
-    id: "mahagoni",
-    label: "Mahagoni",
-    group: "Natura",
-    color: "#6d2418",
-    swatch: "linear-gradient(105deg, #8e3524, #57170f 52%, #77291b)",
-  },
-  {
-    id: "turner-oak-malt",
-    label: "Turner Oak Malt",
-    group: "Wooddec",
-    color: "#ac8058",
-    swatch: "linear-gradient(105deg, #c49a70, #936641 50%, #b5885f)",
-  },
-  {
-    id: "turner-oak-toffee",
-    label: "Turner Oak Toffee",
-    group: "Wooddec",
-    color: "#7b4728",
-    swatch: "linear-gradient(105deg, #925c37, #68371f 50%, #85502d)",
-  },
-  {
-    id: "turner-oak-walnut",
-    label: "Turner Oak Walnut",
-    group: "Wooddec",
-    color: "#4f2818",
-    swatch: "linear-gradient(105deg, #64351f, #3a1a11 52%, #542918)",
-  },
-  {
-    id: "turner-oak-amber",
-    label: "Turner Oak Amber",
-    group: "Wooddec",
-    color: "#996027",
-    swatch: "linear-gradient(105deg, #b67935, #80501f 52%, #a26829)",
-  },
-  {
-    id: "sheffield-oak-alpine",
-    label: "Sheffield Oak Alpine",
-    group: "Wooddec",
-    color: "#dedbd4",
-    swatch: "linear-gradient(105deg, #f4f1eb, #d4d0c8 52%, #e9e5dd)",
-  },
-  {
-    id: "sheffield-oak-concrete",
-    label: "Sheffield Oak Concrete",
-    group: "Wooddec",
-    color: "#aaa5a0",
-    swatch: "linear-gradient(105deg, #c2beba, #97918c 52%, #b1aca6)",
-  },
-  {
-    id: "anthracite-grey",
-    label: "Anthracite Grey",
-    group: "Aludec",
-    color: "#2f3131",
-    swatch: "linear-gradient(135deg, #414343, #252727)",
-  },
-  {
-    id: "jet-black",
-    label: "Jet Black",
-    group: "Aludec",
-    color: "#0b0c0c",
-    swatch: "linear-gradient(135deg, #1b1c1c, #050505)",
-  },
-  {
-    id: "db-703",
-    label: "DB 703",
-    group: "Aludec",
-    color: "#3d3e3d",
-    swatch: "linear-gradient(135deg, #555654, #2d2e2d)",
-  },
-  {
-    id: "umbra-grey",
-    label: "Umbra Grey",
-    group: "Aludec",
-    color: "#625f57",
-    swatch: "linear-gradient(135deg, #77736a, #514f49)",
-  },
-  {
-    id: "window-grey",
-    label: "Window Grey",
-    group: "Aludec",
-    color: "#747778",
-    swatch: "linear-gradient(135deg, #8a8d8e, #646667)",
-  },
-  {
-    id: "basalt-grey",
-    label: "Basalt Grey",
-    group: "Aludec",
-    color: "#777570",
-    swatch: "linear-gradient(135deg, #8b8984, #66645f)",
-  },
-] as const;
+type FinishName = (typeof FINISH_COLLECTIONS)[number]["options"][number]["name"];
+
+const FINISH_IDS = {
+  "Nut Tree": "nut-tree",
+  "Golden Oak / Cognac": "golden-oak-cognacse",
+  "Black Brown": "black-brown",
+  "Alux DB": "alux-db",
+  Wenge: "wenge",
+  Mahagoni: "mahagoni",
+  "Turner Oak Malt": "turner-oak-malt",
+  "Turner Oak Toffee": "turner-oak-toffee",
+  "Turner Oak Walnut": "turner-oak-walnut",
+  "Turner Oak Amber": "turner-oak-amber",
+  "Sheffield Oak Alpine": "sheffield-oak-alpine",
+  "Sheffield Oak Concrete": "sheffield-oak-concrete",
+  "Anthracite Grey": "anthracite-grey",
+  "Jet Black": "jet-black",
+  "DB 703": "db-703",
+  "Umbra Grey": "umbra-grey",
+  "Window Grey": "window-grey",
+  "Basalt Grey": "basalt-grey",
+} as const satisfies Record<FinishName, string>;
+
+const FRAME_FINISHES = FINISH_COLLECTIONS.flatMap((collection) =>
+  collection.options.map((option) => ({
+    id: FINISH_IDS[option.name],
+    label: option.name,
+    group: collection.name.replace(/ finishes$/i, ""),
+    texture: option.image,
+  })),
+);
 
 const GLASS_TYPES = [
   {
@@ -187,16 +91,19 @@ type ConfiguratorPanel = "frame" | "glass" | "opening";
 function FrameBar({
   position,
   scale,
-  color,
+  texturePath,
 }: {
   position: [number, number, number];
   scale: [number, number, number];
-  color: string;
+  texturePath: string;
 }) {
+  const texture = useTexture(texturePath);
+  texture.colorSpace = THREE.SRGBColorSpace;
+
   return (
     <mesh position={position} castShadow receiveShadow>
       <boxGeometry args={scale} />
-      <meshStandardMaterial color={color} metalness={0.14} roughness={0.36} />
+      <meshStandardMaterial map={texture} metalness={0.08} roughness={0.52} />
     </mesh>
   );
 }
@@ -217,7 +124,8 @@ function DoorPanel({
   z: number;
 }) {
   const panelRef = useRef<THREE.Group>(null);
-  const finishColor = FRAME_FINISHES.find((option) => option.id === finish)?.color ?? "#f5f5f0";
+  const selectedFinish =
+    FRAME_FINISHES.find((option) => option.id === finish) ?? FRAME_FINISHES[0]!;
   const glass = GLASS_TYPES.find((option) => option.id === glassType) ?? GLASS_TYPES[0];
   const targetX = initialX + (open ? targetOffset : 0);
 
@@ -245,10 +153,26 @@ function DoorPanel({
         />
       </mesh>
 
-      <FrameBar position={[0, 1.78, 0.01]} scale={[1.98, 0.14, 0.12]} color={finishColor} />
-      <FrameBar position={[0, -1.78, 0.01]} scale={[1.98, 0.14, 0.12]} color={finishColor} />
-      <FrameBar position={[-0.92, 0, 0.01]} scale={[0.14, 3.7, 0.12]} color={finishColor} />
-      <FrameBar position={[0.92, 0, 0.01]} scale={[0.14, 3.7, 0.12]} color={finishColor} />
+      <FrameBar
+        position={[0, 1.78, 0.01]}
+        scale={[1.98, 0.14, 0.12]}
+        texturePath={selectedFinish.texture}
+      />
+      <FrameBar
+        position={[0, -1.78, 0.01]}
+        scale={[1.98, 0.14, 0.12]}
+        texturePath={selectedFinish.texture}
+      />
+      <FrameBar
+        position={[-0.92, 0, 0.01]}
+        scale={[0.14, 3.7, 0.12]}
+        texturePath={selectedFinish.texture}
+      />
+      <FrameBar
+        position={[0.92, 0, 0.01]}
+        scale={[0.14, 3.7, 0.12]}
+        texturePath={selectedFinish.texture}
+      />
 
       <mesh position={[0.78, -0.45, 0.1]} castShadow>
         <boxGeometry args={[0.1, 0.52, 0.08]} />
@@ -267,7 +191,8 @@ function SlidingDoorScene({
   finish: FinishId;
   glassType: GlassId;
 }) {
-  const finishColor = FRAME_FINISHES.find((option) => option.id === finish)?.color ?? "#f5f5f0";
+  const selectedFinish =
+    FRAME_FINISHES.find((option) => option.id === finish) ?? FRAME_FINISHES[0]!;
 
   return (
     <>
@@ -278,10 +203,26 @@ function SlidingDoorScene({
       <directionalLight position={[-4, 3, 2]} intensity={0.7} />
 
       <group position={[0, 0.05, 0]}>
-        <FrameBar position={[-2.05, 0, 0]} scale={[0.18, 4.05, 0.2]} color={finishColor} />
-        <FrameBar position={[2.05, 0, 0]} scale={[0.18, 4.05, 0.2]} color={finishColor} />
-        <FrameBar position={[0, 1.97, 0]} scale={[4.28, 0.18, 0.2]} color={finishColor} />
-        <FrameBar position={[0, -1.97, 0]} scale={[4.28, 0.2, 0.24]} color={finishColor} />
+        <FrameBar
+          position={[-2.05, 0, 0]}
+          scale={[0.18, 4.05, 0.2]}
+          texturePath={selectedFinish.texture}
+        />
+        <FrameBar
+          position={[2.05, 0, 0]}
+          scale={[0.18, 4.05, 0.2]}
+          texturePath={selectedFinish.texture}
+        />
+        <FrameBar
+          position={[0, 1.97, 0]}
+          scale={[4.28, 0.18, 0.2]}
+          texturePath={selectedFinish.texture}
+        />
+        <FrameBar
+          position={[0, -1.97, 0]}
+          scale={[4.28, 0.2, 0.24]}
+          texturePath={selectedFinish.texture}
+        />
 
         <DoorPanel
           initialX={-0.97}
@@ -352,7 +293,14 @@ export function SlidingDoorConfigurator() {
     return () => mediaQuery.removeEventListener("change", updateViewport);
   }, []);
 
-  const selectedFinish = FRAME_FINISHES.find((option) => option.id === finish) ?? FRAME_FINISHES[0];
+  useEffect(() => {
+    for (const option of FRAME_FINISHES) {
+      useTexture.preload(option.texture);
+    }
+  }, []);
+
+  const selectedFinish =
+    FRAME_FINISHES.find((option) => option.id === finish) ?? FRAME_FINISHES[0]!;
   const selectedGlass = GLASS_TYPES.find((option) => option.id === glassType) ?? GLASS_TYPES[0];
 
   const panels = [
@@ -373,7 +321,7 @@ export function SlidingDoorConfigurator() {
           Configure your sliding door
         </h2>
 
-        <div className="mx-auto max-w-[30rem] overflow-hidden rounded-[2.25rem] border-[7px] border-[#17191b] bg-[#17191b] shadow-[0_32px_90px_-42px_rgba(3,30,44,0.65)] lg:grid lg:max-w-none lg:grid-cols-[minmax(0,1fr)_28rem] lg:rounded-3xl lg:border lg:border-heading/10 lg:bg-white">
+        <div className="mx-auto w-full overflow-hidden bg-white shadow-[0_32px_90px_-42px_rgba(3,30,44,0.65)] lg:grid lg:max-w-none lg:grid-cols-[minmax(0,1fr)_28rem] lg:rounded-3xl lg:border lg:border-heading/10">
           <div
             className="relative h-[31rem] overflow-hidden bg-surface sm:h-[42rem] lg:h-[44rem]"
             aria-label="Interactive 3D model of a two-panel sliding door"
@@ -438,19 +386,7 @@ export function SlidingDoorConfigurator() {
             <div className="py-6">
               {activePanel === "frame" ? (
                 <div role="tabpanel">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-xl font-bold text-heading">Frame finish</p>
-                      <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                        Colours and finishes from the Veer Windows catalogue.
-                      </p>
-                    </div>
-                    <span className="shrink-0 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-primary">
-                      {FRAME_FINISHES.length} finishes
-                    </span>
-                  </div>
-
-                  <div className="mt-6 grid gap-7">
+                  <div className="grid gap-7">
                     {finishGroups.map((group) => (
                       <fieldset key={group}>
                         <legend className="text-[0.65rem] font-bold uppercase tracking-[0.17em] text-muted-foreground">
@@ -465,7 +401,7 @@ export function SlidingDoorConfigurator() {
                                   key={option.id}
                                   type="button"
                                   aria-pressed={selected}
-                                  onClick={() => setFinish(option.id)}
+                                  onClick={() => startTransition(() => setFinish(option.id))}
                                   className="group flex min-h-24 flex-col items-center gap-2 text-center text-[0.68rem] font-semibold leading-4 text-heading focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                                 >
                                   <span
@@ -475,7 +411,10 @@ export function SlidingDoorConfigurator() {
                                       selected &&
                                         "ring-2 ring-primary ring-offset-3 ring-offset-[#fbf8f2]",
                                     )}
-                                    style={{ background: option.swatch }}
+                                    style={{
+                                      backgroundImage: `url(${option.texture})`,
+                                      backgroundSize: "cover",
+                                    }}
                                   />
                                   <span>{option.label}</span>
                                 </button>

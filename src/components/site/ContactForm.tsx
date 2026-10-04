@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 
@@ -92,126 +91,98 @@ export function ContactForm() {
   }
 
   return (
-    <section className="section">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-6 lg:grid-cols-[1fr_1.2fr]">
-        <Reveal from="left">
-          <h2 className="text-3xl sm:text-4xl">Get in touch</h2>
-          <ul className="mt-8 grid gap-6 text-sm text-muted-foreground">
-            <li className="flex gap-4">
-              <MapPin className="mt-0.5 size-5 shrink-0 text-primary" />
-              <span>
-                <strong className="block text-foreground">Veer Windows</strong>
-                Sy No.05, Shed No-8, 2nd Cross Gangondanahalli, Post, Lakshmipura, Bengaluru,
-                Karnataka 562162
-              </span>
-            </li>
-            <li className="flex gap-4">
-              <Phone className="mt-0.5 size-5 shrink-0 text-primary" />
-              <span>
-                <strong className="block text-foreground">Toll-free</strong>
-                <a href="tel:08150995171" className="hover:text-primary">
-                  081509 95171
-                </a>
-              </span>
-            </li>
-            <li className="flex gap-4">
-              <Mail className="mt-0.5 size-5 shrink-0 text-primary" />
-              <span>
-                <strong className="block text-foreground">Email</strong>
-                <a href="mailto:hello@veerwindows.com" className="hover:text-primary">
-                  hello@veerwindows.com
-                </a>
-              </span>
-            </li>
-          </ul>
-        </Reveal>
-
-        <Reveal from="right">
-          <form
-            onSubmit={onSubmit}
-            noValidate
-            className="grid gap-6 border border-border bg-surface p-8 sm:grid-cols-2"
-          >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-[10000px] size-px overflow-hidden"
+    <Reveal
+      from="right"
+      className="relative bg-white p-5 shadow-[0_28px_80px_-32px_rgba(0,20,30,0.55)] sm:p-8 lg:p-9"
+    >
+      <form onSubmit={onSubmit} noValidate className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+        <div className="sm:col-span-2">
+          <p className="eyebrow text-[#a27e3d]">Free consultation</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-[-0.035em] text-heading sm:text-3xl">
+            Tell us what you need.
+          </h2>
+          <p className="mt-2 text-sm leading-6 text-[#71818a]">
+            Leave your details and our team will get back to you.
+          </p>
+        </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-[10000px] size-px overflow-hidden"
+        >
+          <label htmlFor="website">Leave this field empty</label>
+          <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </div>
+        {FIELDS.map((f) => (
+          <div key={f.name} className="grid gap-2">
+            <label
+              htmlFor={f.name}
+              className="text-xs font-extrabold uppercase tracking-[0.16em] text-foreground"
             >
-              <label htmlFor="website">Leave this field empty</label>
-              <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
-            </div>
-            {FIELDS.map((f) => (
-              <div key={f.name} className="grid gap-2">
-                <label
-                  htmlFor={f.name}
-                  className="text-xs font-extrabold uppercase tracking-[0.16em] text-foreground"
-                >
-                  {f.label}
-                </label>
-                <input
-                  id={f.name}
-                  name={f.name}
-                  type={f.type ?? "text"}
-                  required
-                  autoComplete={
-                    f.name === "name"
-                      ? "name"
-                      : f.name === "email"
-                        ? "email"
-                        : f.name === "phone"
-                          ? "tel"
-                          : "off"
-                  }
-                  aria-invalid={Boolean(errors[f.name])}
-                  aria-describedby={errors[f.name] ? `${f.name}-error` : undefined}
-                  className="h-12 border border-input bg-background px-4 text-sm outline-none transition-colors focus:border-primary aria-invalid:border-destructive"
-                />
-                {errors[f.name] && (
-                  <p id={`${f.name}-error`} className="text-xs font-semibold text-destructive">
-                    {errors[f.name]}
-                  </p>
-                )}
-              </div>
-            ))}
-            <div className="grid gap-2 sm:col-span-2">
-              <label
-                htmlFor="message"
-                className="text-xs font-extrabold uppercase tracking-[0.16em] text-foreground"
-              >
-                Your message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={6}
-                required
-                maxLength={1000}
-                aria-invalid={Boolean(errors.message)}
-                aria-describedby={errors.message ? "message-error" : undefined}
-                className="border border-input bg-background p-4 text-sm outline-none transition-colors focus:border-primary aria-invalid:border-destructive"
-              />
-              {errors.message && (
-                <p id="message-error" className="text-xs font-semibold text-destructive">
-                  {errors.message}
-                </p>
-              )}
-            </div>
-            <div className="sm:col-span-2">
-              {responseError && (
-                <p role="alert" className="mb-4 text-sm font-semibold text-destructive">
-                  {responseError}
-                </p>
-              )}
-              <button
-                type="submit"
-                disabled={sending}
-                className="btn-sweep bg-primary-deep px-8 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-white disabled:opacity-60"
-              >
-                {sending ? "Sending…" : "Send Message"}
-              </button>
-            </div>
-          </form>
-        </Reveal>
-      </div>
-    </section>
+              {f.label}
+            </label>
+            <input
+              id={f.name}
+              name={f.name}
+              type={f.type ?? "text"}
+              required
+              autoComplete={
+                f.name === "name"
+                  ? "name"
+                  : f.name === "email"
+                    ? "email"
+                    : f.name === "phone"
+                      ? "tel"
+                      : "off"
+              }
+              aria-invalid={Boolean(errors[f.name])}
+              aria-describedby={errors[f.name] ? `${f.name}-error` : undefined}
+              className="h-12 border border-[#dce3e3] bg-[#f7f9f8] px-4 text-sm text-heading outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15 aria-invalid:border-destructive"
+            />
+            {errors[f.name] && (
+              <p id={`${f.name}-error`} className="text-xs font-semibold text-destructive">
+                {errors[f.name]}
+              </p>
+            )}
+          </div>
+        ))}
+        <div className="grid gap-2 sm:col-span-2">
+          <label
+            htmlFor="message"
+            className="text-xs font-extrabold uppercase tracking-[0.16em] text-foreground"
+          >
+            Your message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            required
+            maxLength={1000}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? "message-error" : undefined}
+            className="min-h-28 border border-[#dce3e3] bg-[#f7f9f8] p-4 text-sm text-heading outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15 aria-invalid:border-destructive"
+          />
+          {errors.message && (
+            <p id="message-error" className="text-xs font-semibold text-destructive">
+              {errors.message}
+            </p>
+          )}
+        </div>
+        <div className="sm:col-span-2">
+          {responseError && (
+            <p role="alert" className="mb-4 text-sm font-semibold text-destructive">
+              {responseError}
+            </p>
+          )}
+          <button
+            type="submit"
+            disabled={sending}
+            className="btn-sweep w-full bg-primary-deep px-8 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-white transition-colors hover:bg-ink disabled:opacity-60 sm:w-auto"
+          >
+            {sending ? "Sending…" : "Send Message"}
+          </button>
+        </div>
+      </form>
+    </Reveal>
   );
 }

@@ -435,7 +435,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
         </section>
       ) : null}
 
-      <ProductSpecificationSections />
+      <ProductSpecificationSections product={product} />
 
       <section className="relative isolate overflow-hidden bg-[#f3eee3] text-heading">
         <div className="absolute inset-0 -z-10 opacity-45 [background:radial-gradient(circle_at_85%_15%,#e5d4ad_0,transparent_42%)]" />

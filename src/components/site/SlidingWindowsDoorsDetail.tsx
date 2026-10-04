@@ -165,7 +165,7 @@ export function SlidingWindowsDoorsDetail({ product }: SlidingWindowsDoorsDetail
         </div>
       </section>
 
-      <ProductSpecificationSections />
+      <ProductSpecificationSections product={product} />
 
       <section className="relative isolate overflow-hidden bg-ink py-12 text-white sm:py-16">
         <div className="absolute inset-y-0 right-0 -z-10 w-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_65%)]" />

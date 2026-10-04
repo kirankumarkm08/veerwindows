@@ -4,13 +4,17 @@ import { useRef } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Check, PencilRuler, Ruler, Search, Wrench } from "lucide-react";
 
-import { FINISH_OPTIONS, GLASS_OPTIONS, SERVICE_PROCESS_STEPS } from "@/lib/products";
+import {
+  FINISH_COLLECTIONS,
+  GLASS_OPTIONS,
+  SERVICE_PROCESS_STEPS,
+  type Product,
+} from "@/lib/products";
 import { Reveal } from "./Reveal";
 
 const PROCESS_ICONS = [Search, Ruler, PencilRuler, Wrench] as const;
 
-export function ProductSpecificationSections() {
-  const finishCarouselRef = useRef<HTMLDivElement>(null);
+export function ProductSpecificationSections({ product }: { product: Product }) {
   const glassCarouselRef = useRef<HTMLDivElement>(null);
 
   function scrollCarousel(carousel: HTMLDivElement | null, direction: -1 | 1) {
@@ -22,64 +26,69 @@ export function ProductSpecificationSections() {
 
   return (
     <>
-      <section id="finishes" className="bg-[#f5f1e8] py-16 sm:py-24">
+      <section id="finishes" className="bg-[#fbfaf6] py-16 sm:py-24">
         <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-16">
-          <Reveal className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <p className="eyebrow text-[#927239]">Choose a finish</p>
-              <h2 className="mt-5 max-w-xl text-4xl font-semibold leading-[0.98] tracking-[-0.05em] text-heading sm:text-5xl lg:text-6xl">
-                Finishes that complement your space.
+          <div className="grid gap-10 border-b border-[#d7e0e3] pb-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+            <Reveal from="left" className="max-w-xl">
+              <p className="eyebrow text-[#927239]">Colour, texture, character</p>
+              <h2 className="mt-5 font-serif text-5xl font-medium leading-[0.98] tracking-[-0.045em] text-heading sm:text-6xl">
+                Available colours &amp; finishes
               </h2>
-            </div>
-            <div className="flex flex-col gap-6 lg:items-end">
-              <p className="max-w-xl text-sm leading-7 text-muted-foreground">
-                The Veer catalogue offers three coordinated finish collections, from natural wood
-                tones to contemporary aluminium shades.
+              <p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
+                A curated range of timeless shades and textures to complement every space.
               </p>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => scrollCarousel(finishCarouselRef.current, -1)}
-                  aria-label="Show previous finishes"
-                  className="grid size-11 place-items-center border border-heading/20 bg-white text-heading transition-colors hover:border-heading hover:bg-heading hover:text-white"
-                >
-                  <ArrowLeft aria-hidden="true" className="size-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollCarousel(finishCarouselRef.current, 1)}
-                  aria-label="Show next finishes"
-                  className="grid size-11 place-items-center border border-heading/20 bg-white text-heading transition-colors hover:border-heading hover:bg-heading hover:text-white"
-                >
-                  <ArrowRight aria-hidden="true" className="size-4" />
-                </button>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+            <Reveal
+              as="figure"
+              from="right"
+              className="relative aspect-[16/8] min-h-56 overflow-hidden bg-[#e8e4da]"
+            >
+              <Image
+                src={product.image}
+                alt={product.imageAlt}
+                fill
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#fbfaf6]/15" />
+            </Reveal>
+          </div>
 
-          <div
-            ref={finishCarouselRef}
-            role="region"
-            aria-label="Available frame finishes"
-            className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden pb-4 [scrollbar-color:#9a793d_transparent] [scrollbar-width:thin]"
-          >
-            {FINISH_OPTIONS.map((finish, index) => (
-              <Reveal
-                key={finish.name}
-                as="article"
-                delay={index * 45}
-                className="w-[72vw] max-w-[260px] shrink-0 snap-start border border-[#ddd6c8] bg-white p-3 sm:w-[230px]"
+          <div className="mt-12 space-y-10 sm:mt-16 sm:space-y-12">
+            {FINISH_COLLECTIONS.map((collection, collectionIndex) => (
+              <section
+                key={collection.name}
+                aria-labelledby={`finish-collection-${collectionIndex}`}
               >
-                <div
-                  aria-hidden="true"
-                  className="aspect-[4/3] border border-black/5"
-                  style={{ background: finish.swatch }}
-                />
-                <p className="mt-4 text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#927239]">
-                  {String(index + 1).padStart(2, "0")} / {finish.group}
-                </p>
-                <h3 className="mt-2 text-lg font-semibold leading-6 text-heading">{finish.name}</h3>
-              </Reveal>
+                <Reveal from="left" className="mb-5 flex items-center gap-5 sm:mb-7">
+                  <h3
+                    id={`finish-collection-${collectionIndex}`}
+                    className="shrink-0 text-xs font-extrabold uppercase tracking-[0.16em] text-heading sm:text-sm"
+                  >
+                    {collection.name}
+                  </h3>
+                  <span aria-hidden="true" className="h-px flex-1 bg-[#9fb4bd]/70" />
+                </Reveal>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 sm:gap-x-5 lg:grid-cols-7">
+                  {collection.options.map((finish, index) => (
+                    <Reveal key={finish.name} as="article" delay={index * 45} className="min-w-0">
+                      <div className="relative aspect-[4/5] overflow-hidden border border-black/10 bg-[#e8e4da]">
+                        <Image
+                          src={finish.image}
+                          alt=""
+                          fill
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 14vw"
+                          className="object-cover"
+                        />
+                      </div>
+                      <h4 className="mt-3 text-sm font-medium leading-5 text-heading sm:text-base">
+                        {finish.name}
+                      </h4>
+                    </Reveal>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
         </div>

@@ -116,18 +116,18 @@ export function Header({ solid = false }: HeaderProps) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || solid
-          ? "border-b border-ink-foreground/10 bg-ink/95 backdrop-blur-md"
-          : "bg-transparent"
+          ? "border-b border-[#dce3e6] bg-white shadow-sm"
+          : "border-b border-transparent bg-white"
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6">
         <a href="/#home" className="flex items-center gap-3">
           <img
-            src="/veer-logo-white.png"
+            src="/veer-windows.png"
             alt="Veer Windows"
-            width={415}
-            height={193}
-            className="h-11 w-auto"
+            width={500}
+            height={500}
+            className="h-11 w-[118px] object-cover object-center"
           />
         </a>
 
@@ -143,10 +143,10 @@ export function Header({ solid = false }: HeaderProps) {
                     aria-haspopup="true"
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "relative flex items-center gap-1 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground/85 transition-colors hover:text-primary-soft",
-                      "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary-soft after:transition-transform",
+                      "relative flex items-center gap-1 py-2 text-xs font-bold uppercase tracking-[0.14em] text-heading transition-colors hover:text-[#a27e3d]",
+                      "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#a27e3d] after:transition-transform",
                       "hover:after:scale-x-100",
-                      isActive && "text-primary-soft after:scale-x-100",
+                      isActive && "text-[#a27e3d] after:scale-x-100",
                     )}
                   >
                     <span>{item.label}</span>
@@ -185,10 +185,10 @@ export function Header({ solid = false }: HeaderProps) {
 
             if (item.children) {
               const menuTriggerClassName = cn(
-                "relative flex items-center gap-1 border-0 bg-transparent py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground/85 transition-colors hover:text-primary-soft",
-                "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary-soft after:transition-transform",
+                "relative flex items-center gap-1 border-0 bg-transparent py-2 text-xs font-bold uppercase tracking-[0.14em] text-heading transition-colors hover:text-[#a27e3d]",
+                "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#a27e3d] after:transition-transform",
                 "hover:after:scale-x-100",
-                isActive && "text-primary-soft after:scale-x-100",
+                isActive && "text-[#a27e3d] after:scale-x-100",
               );
 
               const menuTriggerContent = (
@@ -267,10 +267,10 @@ export function Header({ solid = false }: HeaderProps) {
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "relative py-2 text-xs font-bold uppercase tracking-[0.14em] text-ink-foreground/85 transition-colors hover:text-primary-soft",
-                  "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary-soft after:transition-transform",
+                  "relative py-2 text-xs font-bold uppercase tracking-[0.14em] text-heading transition-colors hover:text-[#a27e3d]",
+                  "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-[#a27e3d] after:transition-transform",
                   "hover:after:scale-x-100",
-                  isActive && "text-primary-soft after:scale-x-100",
+                  isActive && "text-[#a27e3d] after:scale-x-100",
                 )}
               >
                 {item.label}
@@ -290,7 +290,7 @@ export function Header({ solid = false }: HeaderProps) {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="text-ink-foreground lg:hidden"
+            className="text-heading lg:hidden"
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
