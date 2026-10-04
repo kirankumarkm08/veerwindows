@@ -273,7 +273,9 @@ export function ProductDetail({ product }: ProductDetailProps) {
   const heroBenefits = HERO_FEATURES.map((feature, index) => ({
     ...feature,
     title:
-      product.benefits[index] ?? ["Made to measure", "Everyday comfort", "Built to last"][index],
+      product.benefits[index] ??
+      ["Made to measure", "Everyday comfort", "Built to last"][index] ??
+      feature.description,
   }));
   const heroCallouts = heroBenefits.slice(0, 2).map((benefit, index) => ({
     ...benefit,
