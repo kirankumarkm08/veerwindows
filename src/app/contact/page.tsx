@@ -30,10 +30,7 @@ export default function ContactPage() {
         </div>
         <div className="mx-auto max-w-[1400px] px-6">
           <Reveal>
-            <span className="eyebrow text-ink-foreground/60">
-              <span className="h-px w-8 bg-primary-soft" />
-              Contact Us
-            </span>
+            <span className="eyebrow text-ink-foreground/60"> Contact Us</span>
             <h1 className="mt-6 max-w-2xl text-4xl text-ink-foreground sm:text-6xl">
               Let&apos;s plan your windows and doors.
             </h1>

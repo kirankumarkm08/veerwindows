@@ -7,7 +7,7 @@ export function Blog({ posts }: { posts: BlogPost[] }) {
     <section id="blog" className="section">
       <div className="mx-auto max-w-[1400px] px-6">
         <Reveal as="span" className="eyebrow">
-          <span className="h-px w-8 bg-primary" />
+          {" "}
           Our Blog
         </Reveal>
         <h2 className="mt-6 max-w-3xl text-4xl sm:text-5xl">

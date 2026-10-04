@@ -48,6 +48,18 @@ export const PRODUCTS: Product[] = [
         description:
           "Elegant hinged panels offer effortless access, abundant daylight, and lasting performance.",
       },
+      {
+        name: "Ventilator Window",
+        image: "/products/ventilator-window.jpg",
+        description:
+          "A compact solution for kitchens and bathrooms, allowing fresh air while supporting privacy and moisture control.",
+      },
+      {
+        name: "Top-Hung Window",
+        image: "/products/top-hung-window.jpg",
+        description:
+          "Top hinges support outward opening, providing airflow while helping shield interiors from light rain.",
+      },
     ],
     benefits: [
       "Side-hinged opening",
@@ -261,8 +273,19 @@ export const PRODUCTS: Product[] = [
         description:
           "Dual opening allows secure tilted ventilation and a wide inward opening for easy access.",
       },
+      {
+        name: "Top-Hung Window",
+        image: "/products/top-hung-window.jpg",
+        description:
+          "Top hinges support outward opening, providing airflow while helping shield interiors from light rain.",
+      },
     ],
-    benefits: ["Tilted ventilation", "Wide inward opening", "A tilt-and-turn opening option"],
+    benefits: [
+      "Tilted ventilation",
+      "Wide inward opening",
+      "Top-hung airflow",
+      "Flexible opening options",
+    ],
   },
   {
     slug: "combination-windows",
@@ -292,6 +315,12 @@ export const PRODUCTS: Product[] = [
         image: "/products/ventilator-window.jpg",
         description:
           "A ventilator window option included in the catalogue's combination window range.",
+      },
+      {
+        name: "French Doors",
+        image: "/products/french-window-door.jpg",
+        description:
+          "Classic double doors open from the centre, bringing generous natural light and elegant access to gardens, patios, and balconies.",
       },
     ],
     benefits: [
@@ -648,6 +677,99 @@ export function getProductsByFamily(family: Product["family"]) {
       !(family === "system-aluminium" && product.slug === "system-aluminium-series"),
   );
 }
+
+export const FINISH_OPTIONS = [
+  { name: "Nut Tree", group: "Natura", swatch: "linear-gradient(135deg,#4b2d20,#8d5a38,#3a2219)" },
+  {
+    name: "Golden Oak",
+    group: "Natura",
+    swatch: "linear-gradient(135deg,#8a5425,#c38a4a,#714019)",
+  },
+  { name: "Cognac", group: "Natura", swatch: "linear-gradient(135deg,#69381f,#a45e31,#4e2819)" },
+  {
+    name: "Black Brown",
+    group: "Natura",
+    swatch: "linear-gradient(135deg,#181411,#3d3029,#161311)",
+  },
+  { name: "Alux DB", group: "Natura", swatch: "linear-gradient(135deg,#4b4b49,#77736c,#393a39)" },
+  { name: "Wenge", group: "Natura", swatch: "linear-gradient(135deg,#241813,#5a3c30,#211511)" },
+  {
+    name: "Turner Oak Malt",
+    group: "Wooddec",
+    swatch: "linear-gradient(135deg,#b89872,#dfc5a3,#9c7651)",
+  },
+  {
+    name: "Turner Oak Toffee",
+    group: "Wooddec",
+    swatch: "linear-gradient(135deg,#896343,#c39970,#6f4c34)",
+  },
+  {
+    name: "Turner Oak Walnut",
+    group: "Wooddec",
+    swatch: "linear-gradient(135deg,#5d402f,#956b4c,#473025)",
+  },
+  {
+    name: "Turner Oak Amber",
+    group: "Wooddec",
+    swatch: "linear-gradient(135deg,#9c6a36,#d1a063,#7e5129)",
+  },
+  {
+    name: "Sheffield Oak",
+    group: "Wooddec",
+    swatch: "linear-gradient(135deg,#b6a78d,#e0d6c4,#94846d)",
+  },
+  { name: "Concrete", group: "Wooddec", swatch: "linear-gradient(135deg,#777873,#aaa9a3,#666761)" },
+  {
+    name: "Sheffield Oak Alpine",
+    group: "Aludec",
+    swatch: "linear-gradient(135deg,#d4c9b6,#f0e8db,#b3a58f)",
+  },
+  {
+    name: "Anthracite Grey",
+    group: "Aludec",
+    swatch: "linear-gradient(135deg,#292d2f,#4b5153,#202426)",
+  },
+  { name: "Jet Black", group: "Aludec", swatch: "linear-gradient(135deg,#090a0a,#282a2b,#050606)" },
+  { name: "DB 703", group: "Aludec", swatch: "linear-gradient(135deg,#393b3b,#686a69,#2d2f2f)" },
+  {
+    name: "Umbra Grey",
+    group: "Aludec",
+    swatch: "linear-gradient(135deg,#514d47,#79736b,#403d38)",
+  },
+  {
+    name: "Window Grey",
+    group: "Aludec",
+    swatch: "linear-gradient(135deg,#777c7c,#a5aaaa,#666b6b)",
+  },
+  {
+    name: "Basalt Grey",
+    group: "Aludec",
+    swatch: "linear-gradient(135deg,#4c5355,#747c7e,#3c4345)",
+  },
+] as const;
+
+export const SERVICE_PROCESS_STEPS = [
+  {
+    number: "01",
+    title: "We visit",
+    description: "We inspect the site and understand the space, requirements, and project details.",
+  },
+  {
+    number: "02",
+    title: "We measure",
+    description: "We take accurate site dimensions to ensure the right fit for every opening.",
+  },
+  {
+    number: "03",
+    title: "We design",
+    description: "We plan and manufacture the selected system to the project specifications.",
+  },
+  {
+    number: "04",
+    title: "We install",
+    description: "Our team completes the installation with professional fitting and finishing.",
+  },
+] as const;
 
 export const GLASS_OPTIONS = [
   {

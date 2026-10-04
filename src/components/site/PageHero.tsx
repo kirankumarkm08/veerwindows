@@ -20,10 +20,7 @@ export function PageHero({ eyebrow, title, description, compact = false }: PageH
       </div>
       <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
-          <span className="eyebrow text-ink-foreground/60">
-            <span className="h-px w-8 bg-primary-soft" />
-            {eyebrow}
-          </span>
+          <span className="eyebrow text-ink-foreground/60"> {eyebrow}</span>
           <h1 className="mt-6 max-w-3xl text-4xl text-ink-foreground sm:text-6xl">{title}</h1>
           <p className="mt-6 max-w-2xl text-ink-foreground/70">{description}</p>
         </Reveal>

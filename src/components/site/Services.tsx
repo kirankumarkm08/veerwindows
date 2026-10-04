@@ -43,9 +43,7 @@ export function Services() {
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <span className="eyebrow">
-                <span className="h-px w-8 bg-primary" /> Product systems
-              </span>
+              <span className="eyebrow"> Product systems</span>
               <h2 className="mt-5 text-4xl sm:text-5xl">Explore product systems.</h2>
               <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
                 Browse our uPVC and system aluminium windows and doors.
@@ -106,9 +104,7 @@ export function Services() {
       <section id="process" className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="max-w-2xl">
-            <span className="eyebrow">
-              <span className="h-px w-8 bg-primary" /> How we work
-            </span>
+            <span className="eyebrow"> How we work</span>
             <h2 className="mt-5 text-4xl sm:text-5xl">A simple path to the right fit.</h2>
           </div>
 

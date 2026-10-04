@@ -1,177 +1,96 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Check,
-  ChevronLeft,
-  Frame,
-  House,
-  PanelsTopLeft,
-  ShieldCheck,
-  Sun,
-  Wind,
-} from "lucide-react";
+import { ArrowRight, ChevronLeft, Frame, House, Wind } from "lucide-react";
 
-import type { Product, ProductVariant } from "@/lib/products";
+import type { Product } from "@/lib/products";
+import { ProductSpecificationSections } from "./ProductSpecificationSections";
 import { Reveal } from "./Reveal";
 
 type SlidingWindowsDoorsDetailProps = { product: Product };
 
-const PRODUCT_SUMMARIES: Record<string, string> = {
-  "2-track-sliding-windows": "A clean, practical option for compact openings.",
-  "2-5-track-sliding-windows": "Greater flexibility with an extra panel option.",
-  "3-track-sliding-windows": "Maximum ventilation and wider outside views.",
-  "2-track-sliding-doors": "Elegant, space-efficient access for everyday living.",
-  "2-5-track-sliding-doors": "Wider openings with more layout flexibility.",
-  "3-track-sliding-doors": "An expansive option for connected indoor-outdoor spaces.",
-};
-
-function ProductCard({ variant, index }: { variant: ProductVariant; index: number }) {
-  const isDoor = variant.name.endsWith("Door");
-  const track = variant.name.replace(/ Track Sliding (Window|Door)$/, " Track");
-  const description = variant.slug ? PRODUCT_SUMMARIES[variant.slug] : variant.description;
-
-  return (
-    <Reveal delay={index * 55} className="h-full">
-      <article className="group flex h-full flex-col overflow-hidden border border-border bg-white transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_56px_-36px_rgba(23,42,50,0.45)]">
-        <div className="relative aspect-[4/5] overflow-hidden bg-[#ebe7df]">
-          <Image
-            src={variant.image}
-            alt={variant.name}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]"
-          />
-        </div>
-        <div className="flex flex-1 flex-col p-5">
-          <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">
-            Sliding {isDoor ? "doors" : "windows"}
-          </p>
-          <h3 className="mt-2 text-xl font-semibold tracking-[-0.03em] text-heading">{track}</h3>
-          <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{description}</p>
-          {variant.slug ? (
-            <Link
-              href={`/services/${variant.slug}`}
-              aria-label={`View ${variant.name}`}
-              className="mt-6 inline-flex size-9 items-center justify-center rounded-full border border-border text-heading transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-            >
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </Link>
-          ) : null}
-        </div>
-      </article>
-    </Reveal>
-  );
-}
-
 export function SlidingWindowsDoorsDetail({ product }: SlidingWindowsDoorsDetailProps) {
-  const windowVariants = product.variants.filter((variant) => variant.name.endsWith("Window"));
   const doorVariants = product.variants.filter((variant) => variant.name.endsWith("Door"));
-  const orderedVariants = [...windowVariants, ...doorVariants];
   const heroImage = doorVariants[0]?.image ?? product.image;
   const lifestyleImage = doorVariants.at(-1)?.image ?? heroImage;
+  const heroCallouts = product.benefits.slice(0, 2).map((title, index) => ({
+    title,
+    image: product.variants[index]?.image ?? heroImage,
+  }));
 
   return (
     <main className="bg-[#f7f4ed]">
-      <section className="relative isolate min-h-[760px] overflow-hidden bg-[#eee8dc] pt-24 sm:pt-28 lg:min-h-[820px]">
-        <Image
-          src={heroImage}
-          alt="Bright living room opening to a garden through sliding glass doors"
-          fill
-          priority
-          sizes="100vw"
-          className="-z-30 object-cover object-center lg:object-[62%_center]"
-        />
-        <div className="absolute inset-0 -z-20 bg-[#f4efe4]/88 lg:hidden" />
-        <div className="absolute inset-0 -z-20 hidden bg-[linear-gradient(90deg,rgba(244,239,228,0.99)_0%,rgba(244,239,228,0.96)_30%,rgba(244,239,228,0.62)_46%,rgba(244,239,228,0.03)_68%)] lg:block" />
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-[#f4efe4]/75 to-transparent lg:hidden" />
-
-        <div className="mx-auto flex min-h-[660px] max-w-[1500px] flex-col px-6 pb-12 pt-8 sm:px-10 lg:min-h-[712px] lg:px-16">
+      <section className="relative isolate overflow-hidden bg-[#062f42] pb-8 pt-24 text-white sm:pb-10 sm:pt-28 lg:pb-8 lg:pt-10">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_52%_115%,rgba(98,140,157,0.24),transparent_52%),linear-gradient(110deg,#062f42_0%,#0b3e54_55%,#052a3a_100%)]" />
+        <div className="mx-auto max-w-[1700px] px-6 sm:px-10 lg:px-14">
           <Link
             href="/services/family/upvc"
-            className="eyebrow w-fit text-foreground/65 transition-colors hover:text-primary"
+            className="eyebrow w-fit text-white/55 transition-colors hover:text-[#d0ad62]"
           >
             <ChevronLeft aria-hidden="true" className="size-4" /> uPVC systems
           </Link>
 
-          <Reveal className="my-auto max-w-[610px] py-10">
-            <p className="eyebrow text-[#8a6a31]">
-              <span className="mr-3 inline-block h-px w-8 bg-[#a27e3d]" />
-              Modern living spaces
-            </p>
-            <h1 className="mt-5 text-5xl font-semibold leading-[0.92] tracking-[-0.055em] text-heading sm:text-6xl lg:text-[5.3rem]">
-              Sliding Windows <span className="font-normal">&amp;</span> Doors
-            </h1>
-            <p className="mt-6 max-w-lg text-lg font-medium leading-7 text-foreground/85">
-              More light. More space. A more connected home.
-            </p>
-            <p className="mt-3 max-w-lg text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
-              Veer sliding windows and doors bring together elegant design, smooth performance, and
-              lasting everyday comfort.
-            </p>
-            <a
-              href="#track-options"
-              className="mt-8 inline-flex items-center gap-4 bg-[#a27e3d] px-7 py-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-heading focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a27e3d]"
-            >
-              Explore the range <ArrowRight aria-hidden="true" className="size-4" />
-            </a>
-          </Reveal>
-
-          <div className="grid max-w-[720px] gap-5 sm:grid-cols-3 sm:gap-7">
-            {[
-              {
-                title: "Brighter living spaces",
-                description: "Expansive glass for natural light",
-                icon: Sun,
-              },
-              {
-                title: "Flexible configurations",
-                description: "2, 2.5, and 3 track options",
-                icon: PanelsTopLeft,
-              },
-              {
-                title: "Built for everyday living",
-                description: "Durable, low-maintenance uPVC frames",
-                icon: ShieldCheck,
-              },
-            ].map(({ title, description, icon: Icon }) => (
-              <div
-                key={title}
-                className="flex gap-3 border-t border-heading/15 pt-4 sm:border-0 sm:pt-0"
-              >
-                <Icon aria-hidden="true" className="mt-0.5 size-7 shrink-0 text-[#a27e3d]" />
-                <div>
-                  <h2 className="text-sm font-semibold leading-5 text-heading">{title}</h2>
-                  <p className="mt-1 text-xs leading-5 text-muted-foreground">{description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="track-options" className="bg-[#faf8f2] py-16 sm:py-24">
-        <div className="mx-auto max-w-[1500px] px-6 sm:px-10 lg:px-16">
-          <div className="grid gap-6 lg:grid-cols-[1fr_0.55fr] lg:items-end">
-            <div>
-              <p className="eyebrow text-[#8a6a31]">
-                <span className="mr-3 inline-block h-px w-8 bg-[#a27e3d]" />
-                Our range
+          <div className="mt-6 grid gap-8 lg:mt-5 lg:min-h-[350px] lg:grid-cols-[1.08fr_1.42fr_0.62fr] lg:items-center lg:gap-7">
+            <Reveal className="relative z-10 max-w-xl py-4 lg:py-5">
+              <p className="eyebrow text-[#d0ad62]">{product.eyebrow}</p>
+              <h1 className="mt-4 text-5xl font-medium leading-[0.98] tracking-[-0.045em] text-[#f8f4eb] sm:text-6xl lg:text-[3.65rem] xl:text-[4rem]">
+                {product.title}
+              </h1>
+              <p className="mt-5 max-w-md text-lg font-medium leading-7 text-white/90 sm:text-xl">
+                More light. More space. A more connected home.
               </p>
-              <h2 className="mt-4 text-4xl font-semibold leading-[1] tracking-[-0.045em] text-heading sm:text-5xl">
-                Sliding Windows &amp; Doors
-              </h2>
-            </div>
-            <p className="max-w-lg text-sm leading-7 text-muted-foreground lg:justify-self-end">
-              Choose from our 2 track, 2.5 track, and 3 track options in both sliding windows and
-              sliding doors, designed for modern homes and larger openings.
-            </p>
-          </div>
+              <p className="mt-3 max-w-md text-sm leading-6 text-white/65 sm:text-base sm:leading-7">
+                Veer sliding windows and doors bring together elegant design, smooth performance,
+                and lasting everyday comfort.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <a
+                  href="#finishes"
+                  className="inline-flex items-center gap-3 bg-[#a27e3d] px-6 py-4 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#bd9a56] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d0ad62]"
+                >
+                  Explore the range <ArrowRight aria-hidden="true" className="size-4" />
+                </a>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white/90 transition-colors hover:text-[#d0ad62]"
+                >
+                  Get expert advice <ArrowRight aria-hidden="true" className="size-4" />
+                </Link>
+              </div>
+            </Reveal>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6 lg:gap-4">
-            {orderedVariants.map((variant, index) => (
-              <ProductCard key={variant.name} variant={variant} index={index} />
-            ))}
+            <div className="relative min-h-[250px] overflow-hidden sm:min-h-[360px] lg:h-[350px] lg:min-h-0">
+              <Image
+                src={heroImage}
+                alt={product.imageAlt}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 52vw"
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#062f42]/45 via-transparent to-[#062f42]/25 lg:from-[#062f42]/20 lg:to-[#062f42]/35" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#062f42]/75 to-transparent" />
+              <p className="absolute bottom-4 left-4 text-[9px] font-bold uppercase tracking-[0.18em] text-white/85 sm:bottom-6 sm:left-6">
+                uPVC windows &amp; doors · Made to measure
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:gap-6">
+              {heroCallouts.map(({ image, title }, index) => (
+                <div key={`${title}-${index}`} className="flex items-center gap-4 lg:gap-3">
+                  <div className="relative size-[76px] shrink-0 overflow-hidden rounded-full border border-[#c6a257] bg-white/10 sm:size-[88px] lg:size-[92px]">
+                    <Image src={image} alt="" fill sizes="92px" className="object-cover" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="mb-1 block text-[9px] font-extrabold tracking-[0.2em] text-[#d0ad62]">
+                      0{index + 1}
+                    </span>
+                    <h2 className="text-xs font-extrabold uppercase leading-5 tracking-[0.1em] text-white sm:text-sm">
+                      {title}
+                    </h2>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -189,9 +108,7 @@ export function SlidingWindowsDoorsDetail({ product }: SlidingWindowsDoorsDetail
 
         <div className="flex items-center px-6 py-14 sm:px-10 sm:py-20 lg:px-16">
           <Reveal className="max-w-xl">
-            <p className="eyebrow text-[#8a6a31]">
-              <span className="mr-3 inline-block h-px w-8 bg-[#a27e3d]" />A more open way to live
-            </p>
+            <p className="eyebrow text-[#8a6a31]"> A more open way to live</p>
             <h2 className="mt-5 text-4xl font-semibold leading-[1] tracking-[-0.045em] text-heading sm:text-5xl lg:text-6xl">
               Spaces that flow with life
             </h2>
@@ -232,6 +149,8 @@ export function SlidingWindowsDoorsDetail({ product }: SlidingWindowsDoorsDetail
           </Reveal>
         </div>
       </section>
+
+      <ProductSpecificationSections />
 
       <section className="relative isolate overflow-hidden bg-ink py-12 text-white sm:py-16">
         <div className="absolute inset-y-0 right-0 -z-10 w-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_65%)]" />

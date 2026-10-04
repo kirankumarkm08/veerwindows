@@ -15,7 +15,10 @@ export function ProductFamily({ title, intro, products }: ProductFamilyProps) {
   const productGroups =
     products[0]?.family === "system-aluminium"
       ? [
-          { label: "Windows", products: products.filter((product) => product.menuGroup === "window") },
+          {
+            label: "Windows",
+            products: products.filter((product) => product.menuGroup === "window"),
+          },
           { label: "Doors", products: products.filter((product) => product.menuGroup === "door") },
         ]
       : [{ label: "", products }];
@@ -26,7 +29,8 @@ export function ProductFamily({ title, intro, products }: ProductFamilyProps) {
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="max-w-3xl">
             <Reveal as="span" className="eyebrow">
-              <span className="h-px w-8 bg-primary" /> Product family
+              {" "}
+              Product family
             </Reveal>
             <Reveal as="h2" delay={100} className="mt-6 text-4xl sm:text-5xl lg:text-6xl">
               {title}

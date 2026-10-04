@@ -1,96 +1,157 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Reveal } from "./Reveal";
+import Link from "next/link";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+
+const SLIDE_DURATION_MS = 5500;
 
 const HERO_BACKGROUNDS = [
   {
     src: "/sliders/1.png",
-    caption: "Bring more daylight into the spaces you live in.",
+    title: "Open your home to more light.",
+    accent: "Live more beautifully.",
+    description:
+      "Expansive window and door systems that create brighter rooms and an effortless connection with the outdoors.",
   },
   {
     src: "/sliders/2.png",
-    caption: "Create a considered connection between indoors and out.",
+    title: "A clearer connection to outdoors.",
+    accent: "Beautifully framed.",
+    description:
+      "Thoughtfully designed openings bring natural light, fresh air, and uninterrupted views into everyday spaces.",
   },
   {
     src: "/sliders/4.png",
-    caption: "Choose an opening style that works for your home.",
+    title: "Designed around the way you live.",
+    accent: "Made to fit.",
+    description:
+      "Choose from practical opening styles and tailored configurations for homes, apartments, and commercial projects.",
   },
   {
     src: "/sliders/5.png",
-    caption: "Frame your view with windows made for everyday living.",
+    title: "Frame every view with confidence.",
+    accent: "Built to last.",
+    description:
+      "Precision engineered frames deliver smooth performance, dependable security, and lasting everyday comfort.",
   },
   {
     src: "/sliders/6.png",
-    caption: "Explore window and door systems for your next project.",
+    title: "Windows and doors for ambitious spaces.",
+    accent: "Made precise.",
+    description:
+      "Versatile uPVC and aluminium systems give architects and homeowners more freedom to shape distinctive spaces.",
   },
   {
     src: "/sliders/7.png",
-    caption: "Thoughtful details for a more comfortable space.",
+    title: "Comfort in every detail.",
+    accent: "Beauty in every line.",
+    description:
+      "Refined profiles, quality hardware, and careful installation come together in a finish made for daily living.",
   },
   {
     src: "/sliders/9.png",
-    caption: "Find the right balance of light, privacy, and openness.",
+    title: "Balance light, privacy, and openness.",
+    accent: "Your space, your way.",
+    description:
+      "Our team helps you select the right glass, frame, and opening system for comfort throughout the day.",
   },
-];
+] as const;
 
 export function Hero() {
   const [activeBackground, setActiveBackground] = useState(0);
-  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
 
   useEffect(() => {
-    if (isCarouselPaused) return;
+    const interval = window.setInterval(() => {
+      setActiveBackground((previous) => (previous + 1) % HERO_BACKGROUNDS.length);
+    }, SLIDE_DURATION_MS);
 
-    const interval = setInterval(() => {
-      setActiveBackground((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isCarouselPaused]);
+    return () => window.clearInterval(interval);
+  }, []);
 
   const goToPreviousBackground = () => {
-    setActiveBackground((prev) => (prev - 1 + HERO_BACKGROUNDS.length) % HERO_BACKGROUNDS.length);
+    setActiveBackground(
+      (previous) => (previous - 1 + HERO_BACKGROUNDS.length) % HERO_BACKGROUNDS.length,
+    );
   };
 
   const goToNextBackground = () => {
-    setActiveBackground((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
+    setActiveBackground((previous) => (previous + 1) % HERO_BACKGROUNDS.length);
   };
 
-  const activeSlide = HERO_BACKGROUNDS[activeBackground] ?? HERO_BACKGROUNDS[0]!;
+  const activeSlide = HERO_BACKGROUNDS[activeBackground] ?? HERO_BACKGROUNDS[0];
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-ink">
-      <div
-        className="absolute inset-0 overflow-hidden"
-      >
+    <section
+      id="home"
+      aria-roledescription="carousel"
+      aria-label="Veer Windows product highlights"
+      className="relative min-h-[780px] overflow-hidden bg-ink sm:min-h-[820px] lg:min-h-screen"
+    >
+      <div className="absolute inset-0 overflow-hidden">
         <div
-          className="flex h-full w-full transition-transform duration-500 ease-out"
+          className="flex h-full w-full transition-transform duration-1000 ease-[cubic-bezier(0.65,0,0.35,1)]"
           style={{ transform: `translateX(-${activeBackground * 100}%)` }}
         >
-          {HERO_BACKGROUNDS.map((image) => (
-            <div
-              key={image.src}
-              aria-hidden="true"
-              className="h-full min-w-full bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url("${image.src}")` }}
-            />
+          {HERO_BACKGROUNDS.map((image, index) => (
+            <div key={image.src} aria-hidden="true" className="h-full min-w-full overflow-hidden">
+              <div
+                className={`h-full w-full bg-cover bg-center bg-no-repeat transition-transform duration-[6000ms] ease-out motion-reduce:transform-none ${
+                  index === activeBackground ? "scale-[1.055]" : "scale-100"
+                }`}
+                style={{ backgroundImage: `url("${image.src}")` }}
+              />
+            </div>
           ))}
         </div>
       </div>
+
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-[1] bg-gradient-to-b from-ink/40 via-ink/45 to-ink/70"
+        className="absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(3,30,44,0.88)_0%,rgba(3,30,44,0.64)_38%,rgba(3,30,44,0.2)_72%,rgba(3,30,44,0.34)_100%)]"
       />
       <div
-        className="absolute right-6 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2 sm:right-10"
-        onMouseEnter={() => setIsCarouselPaused(true)}
-        onMouseLeave={() => setIsCarouselPaused(false)}
-      >
+        aria-hidden="true"
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-ink/20 via-transparent to-ink/85"
+      />
+
+      <div className="relative z-10 mx-auto flex min-h-[780px] max-w-[1400px] flex-col justify-center px-6 pb-24 pt-36 sm:min-h-[820px] sm:pt-40 lg:min-h-screen">
+        <div
+          key={activeSlide.src}
+          aria-live="polite"
+          className="animate-rise max-w-5xl pr-0 sm:pr-24"
+        >
+          <div>
+            <h1 className="max-w-5xl text-[clamp(3.4rem,7vw,7.25rem)] font-bold leading-[0.93] tracking-[-0.055em] text-white">
+              {activeSlide.title}
+              <span className="mt-2 block text-white/82">{activeSlide.accent}</span>
+            </h1>
+          </div>
+
+          <div>
+            <p className="mt-8 max-w-xl border-l border-primary-soft pl-5 text-base leading-7 text-white/78 sm:text-lg">
+              {activeSlide.description}
+            </p>
+          </div>
+
+          <div className="mt-9">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-5 bg-primary-soft px-8 py-4 text-xs font-black uppercase tracking-[0.16em] text-primary-soft-foreground transition-colors hover:bg-white"
+            >
+              Book a free consultation
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute right-5 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2 sm:right-8 lg:right-12">
         <button
           type="button"
           aria-label="Previous hero image"
           onClick={goToPreviousBackground}
-          className="flex size-11 items-center justify-center border border-ink-foreground/45 bg-ink/30 text-ink-foreground backdrop-blur-sm transition-colors hover:border-primary-soft hover:bg-primary-soft hover:text-primary-soft-foreground"
+          className="flex size-12 items-center justify-center border border-white/45 bg-ink/30 text-white backdrop-blur-md transition-colors hover:border-white hover:bg-white hover:text-heading sm:size-14"
         >
           <ChevronLeft className="size-5" />
         </button>
@@ -98,71 +159,10 @@ export function Hero() {
           type="button"
           aria-label="Next hero image"
           onClick={goToNextBackground}
-          className="flex size-11 items-center justify-center border border-ink-foreground/45 bg-ink/30 text-ink-foreground backdrop-blur-sm transition-colors hover:border-primary-soft hover:bg-primary-soft hover:text-primary-soft-foreground"
+          className="flex size-12 items-center justify-center bg-primary-soft text-primary-soft-foreground shadow-xl transition-colors hover:bg-white sm:size-14"
         >
           <ChevronRight className="size-5" />
         </button>
-      </div>
-
-      <div
-        className="relative z-10 mx-auto flex min-h-screen max-w-[1400px] flex-col justify-center px-6 pt-32 pb-16"
-        onMouseEnter={() => setIsCarouselPaused(true)}
-        onMouseLeave={() => setIsCarouselPaused(false)}
-      >
-        <div className="mx-auto max-w-4xl text-center">
-          <Reveal>
-            <img
-              src="/veer-logo-white.png"
-              alt="Veer Windows"
-              width={400}
-              height={120}
-              className="mx-auto mb-8 h-20 w-auto sm:h-24 lg:h-28"
-            />
-          </Reveal>
-          <Reveal delay={120}>
-            <h1 className="text-5xl text-ink-foreground sm:text-6xl lg:text-7xl">
-              Premium windows &amp; doors for modern living
-            </h1>
-          </Reveal>
-          <Reveal delay={240}>
-            <p className="mx-auto mt-6 max-w-2xl text-base text-ink-foreground/75">
-              Delivering quality craftsmanship, security, and style for homes and businesses.
-            </p>
-          </Reveal>
-          <Reveal delay={360}>
-            <a
-              href="/services/family/upvc"
-              className="btn-sweep-light mt-9 inline-block bg-primary-soft px-9 py-4 text-xs font-extrabold uppercase tracking-[0.16em] text-primary-soft-foreground"
-            >
-              Explore Products
-            </a>
-          </Reveal>
-        </div>
-
-        <div className="mt-auto grid gap-10 pt-20 lg:grid-cols-[1fr_auto] lg:items-end">
-          <Reveal key={activeSlide.src} delay={120} className="max-w-md">
-            <p className="border-l-2 border-primary-soft pl-4 text-xl font-semibold leading-tight text-ink-foreground sm:text-2xl">
-              {activeSlide.caption}
-            </p>
-          </Reveal>
-        </div>
-      </div>
-
-      <div className="absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
-        {HERO_BACKGROUNDS.map((image, index) => (
-          <button
-            key={image.src}
-            type="button"
-            aria-label={`Show hero image ${index + 1}`}
-            aria-current={index === activeBackground ? "true" : undefined}
-            onClick={() => setActiveBackground(index)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              index === activeBackground
-                ? "w-10 bg-primary-soft"
-                : "w-5 bg-ink-foreground/45 hover:bg-ink-foreground/80"
-            }`}
-          />
-        ))}
       </div>
     </section>
   );

@@ -34,10 +34,7 @@ export function Faq() {
     <section className="section bg-ink text-ink-foreground">
       <div className="mx-auto grid max-w-[1400px] gap-14 px-6 lg:grid-cols-[1fr_1.15fr]">
         <Reveal from="left">
-          <span className="eyebrow text-ink-foreground/60">
-            <span className="h-px w-8 bg-primary-soft" />
-            Frequently Asked Question
-          </span>
+          <span className="eyebrow text-ink-foreground/60"> Frequently Asked Question</span>
           <h2 className="mt-6 text-ink-foreground text-4xl sm:text-5xl">
             Everything about our installations.
           </h2>

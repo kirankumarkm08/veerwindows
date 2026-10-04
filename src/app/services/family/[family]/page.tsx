@@ -9,25 +9,32 @@ import { getProductsByFamily, PRODUCT_FAMILIES } from "@/lib/products";
 
 type FamilyPageProps = { params: Promise<{ family: string }> };
 
+const PRODUCT_FAMILY_SLUGS = ["upvc", "system-aluminium"] as const;
+type ProductFamilySlug = (typeof PRODUCT_FAMILY_SLUGS)[number];
+
+function isProductFamilySlug(family: string): family is ProductFamilySlug {
+  return PRODUCT_FAMILY_SLUGS.some((slug) => slug === family);
+}
+
 export function generateStaticParams() {
-  return [{ family: "upvc" }];
+  return PRODUCT_FAMILY_SLUGS.map((family) => ({ family }));
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: FamilyPageProps): Promise<Metadata> {
   const { family } = await params;
-  if (family !== "upvc") return { title: "Product family not found | Veer Windows" };
-  const config = PRODUCT_FAMILIES[family as keyof typeof PRODUCT_FAMILIES];
-  if (!config) return { title: "Product family not found | Veer Windows" };
+  if (!isProductFamilySlug(family)) {
+    return { title: "Product family not found | Veer Windows" };
+  }
+  const config = PRODUCT_FAMILIES[family];
   return { title: `${config.title} | Veer Windows`, description: config.description };
 }
 
 export default async function FamilyPage({ params }: FamilyPageProps) {
   const { family } = await params;
-  if (family !== "upvc") notFound();
-  const config = PRODUCT_FAMILIES[family as keyof typeof PRODUCT_FAMILIES];
-  if (!config) notFound();
+  if (!isProductFamilySlug(family)) notFound();
+  const config = PRODUCT_FAMILIES[family];
 
   return (
     <div className="bg-background">

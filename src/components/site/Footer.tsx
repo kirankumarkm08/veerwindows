@@ -108,6 +108,7 @@ export function Footer() {
             <ul className="mt-5 grid gap-3 text-sm text-white/70">
               {[
                 ["Sliding Windows & Doors", "/services/sliding-windows-doors"],
+                ["3D Sliding Door Designer", "/sliding-door-configurator"],
                 ["Lift & Slide Door", "/services/lift-and-slide-door"],
                 ["Slide & Fold Systems", "/services/slide-fold-systems"],
                 ["Casement Doors", "/services/casement-windows-doors"],

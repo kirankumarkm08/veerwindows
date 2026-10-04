@@ -20,10 +20,7 @@ export function ProjectsHero() {
 
       <div className="relative mx-auto grid max-w-[1400px] gap-10 px-6 pb-16 pt-36 sm:pb-20 sm:pt-40 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-20">
         <Reveal>
-          <span className="eyebrow text-primary">
-            <span className="h-px w-8 bg-primary" />
-            Veer Windows / Projects
-          </span>
+          <span className="eyebrow text-primary"> Veer Windows / Projects</span>
           <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
             Made to fit.
             <br />

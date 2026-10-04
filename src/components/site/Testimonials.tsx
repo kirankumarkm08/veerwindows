@@ -28,10 +28,7 @@ export function Testimonials() {
       <div className="mx-auto max-w-[1400px] px-6">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <Reveal from="left">
-            <span className="eyebrow">
-              <span className="h-px w-8 bg-primary" />
-              Testimonials
-            </span>
+            <span className="eyebrow"> Testimonials</span>
             <h2 className="mt-6 max-w-2xl text-4xl sm:text-5xl">What our clients say.</h2>
           </Reveal>
           <Reveal from="right" delay={140} className="flex items-center gap-4">

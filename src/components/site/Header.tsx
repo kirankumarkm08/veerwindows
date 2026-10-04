@@ -23,6 +23,7 @@ type NavItem = MenuEntry & {
 
 const upvcProducts: MenuEntry[] = [
   { label: "Sliding Windows & Doors", href: "/services/sliding-windows-doors" },
+  { label: "3D Sliding Door Designer", href: "/sliding-door-configurator" },
   { label: "Casement Windows & Doors", href: "/services/casement-windows-doors" },
   { label: "Combination Windows", href: "/services/combination-windows" },
   { label: "Ventilator Windows", href: "/services/combination-windows" },
@@ -70,11 +71,12 @@ const NAV: NavItem[] = [
   },
   {
     label: "System Aluminium",
-    href: "/services/system-aluminium-series",
+    href: "/services/family/system-aluminium",
     children: systemAluminiumProducts,
   },
   { label: "Blog", href: "/blog" },
   { label: "Projects", href: "/projects" },
+  { label: "Choose Color", href: "/sliding-door-configurator" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -86,7 +88,10 @@ function isNavItemActive(label: string, pathname: string, href: string) {
     );
   }
   if (label === "System Aluminium") {
-    return pathname.startsWith("/services/system-aluminium-");
+    return (
+      pathname === "/services/family/system-aluminium" ||
+      pathname.startsWith("/services/system-aluminium-")
+    );
   }
 
   const itemPath = href.split("#")[0] || "/";

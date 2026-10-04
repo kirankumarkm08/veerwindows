@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, PanelsTopLeft, Ruler, Wrench } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -21,37 +21,19 @@ export const metadata: Metadata = {
   },
 };
 
-const PROCESS_STEPS = [
-  {
-    title: "Measure",
-    description: "Precise site measurements for the right fit.",
-    Icon: Ruler,
-  },
-  {
-    title: "Craft",
-    description: "Custom uPVC and System Aluminium solutions.",
-    Icon: PanelsTopLeft,
-  },
-  {
-    title: "Install",
-    description: "Careful fabrication and professional installation.",
-    Icon: Wrench,
-  },
-] as const;
-
 export default function AboutPage() {
   return (
     <div className="bg-[#fbf9f4]">
       <main>
-        <section className="relative overflow-hidden bg-[#fbf9f4] pb-16 pt-28 text-heading sm:pb-20 sm:pt-32 lg:pb-24">
+        <section className="relative overflow-hidden bg-[#fbf9f4] pb-14 pt-28 text-heading sm:pb-16 sm:pt-32 lg:pb-20">
           <div className="absolute inset-x-0 top-0">
             <Header solid />
           </div>
 
-          <div className="mx-auto grid max-w-[1560px] items-center gap-12 px-6 sm:px-10 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16 lg:px-14 xl:gap-20">
-            <Reveal className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
-              <div className="absolute -left-5 -top-5 h-32 w-20 border-l-2 border-t-2 border-[#bb9657] sm:-left-7 sm:-top-7 sm:h-44 sm:w-24" />
-              <div className="relative aspect-[4/4.65] overflow-hidden bg-[#173a49]">
+          <div className="mx-auto grid max-w-[1400px] items-center gap-10 px-6 sm:px-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16 lg:px-14 xl:gap-20">
+            <Reveal className="relative mx-auto w-full max-w-[390px] lg:justify-self-center">
+              <div className="absolute -left-4 -top-4 h-28 w-16 border-l-2 border-t-2 border-[#bb9657] sm:-left-5 sm:-top-5 sm:h-36 sm:w-20" />
+              <div className="relative aspect-[4/4.25] overflow-hidden bg-[#173a49]">
                 <Image
                   src="/veerwindows-founder.png"
                   alt="Founder of VEER WINDOWS"
@@ -64,20 +46,16 @@ export default function AboutPage() {
                   aria-hidden="true"
                   className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#062e40]/90 via-[#062e40]/25 to-transparent"
                 />
-                <div className="absolute bottom-6 left-6 flex items-center gap-4 text-white sm:bottom-8 sm:left-8">
-                  <p className="text-xs font-extrabold uppercase tracking-[0.2em]">Founder</p>
-                  <span aria-hidden="true" className="h-px w-16 bg-[#c2a164]" />
+                <div className="absolute bottom-5 left-5 flex items-center gap-4 text-white sm:bottom-6 sm:left-6">
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.2em]">Founder</p>
                 </div>
               </div>
-              <div className="absolute -bottom-5 -right-5 h-24 w-24 border-b-2 border-r-2 border-[#bb9657] sm:-bottom-7 sm:-right-7 sm:h-32 sm:w-32" />
+              <div className="absolute -bottom-4 -right-4 h-20 w-20 border-b-2 border-r-2 border-[#bb9657] sm:-bottom-5 sm:-right-5 sm:h-24 sm:w-24" />
             </Reveal>
 
             <div className="relative z-10 mx-auto w-full max-w-[790px] lg:mx-0">
               <Reveal>
-                <p className="eyebrow text-[#587487]">
-                  <span className="mr-2 h-px w-10 bg-[#bb9657]" />
-                  Our company
-                </p>
+                <p className="eyebrow text-[#587487]"> Our company</p>
                 <h1 className="mt-7 max-w-[820px] text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-heading sm:text-6xl lg:text-[clamp(3.6rem,5vw,5.4rem)]">
                   <span className="block">Built on experience.</span>
                   <span className="mt-1 block">Made for your space.</span>
@@ -120,34 +98,10 @@ export default function AboutPage() {
                 </div>
               </Reveal>
 
-              <Reveal
-                delay={220}
-                className="grid max-w-[760px] divide-y divide-[#deded9] sm:grid-cols-3 sm:divide-x sm:divide-y-0"
-              >
-                {PROCESS_STEPS.map(({ title, description, Icon }) => (
-                  <div
-                    key={title}
-                    className="flex gap-4 py-5 sm:block sm:px-5 sm:first:pl-0 sm:last:pr-0 sm:py-5"
-                  >
-                    <Icon
-                      aria-hidden="true"
-                      className="mt-1 size-7 shrink-0 text-[#b38d4d] sm:size-9"
-                      strokeWidth={1.4}
-                    />
-                    <div className="sm:mt-4">
-                      <h2 className="text-xl font-semibold tracking-[-0.035em] text-heading sm:text-2xl">
-                        {title}
-                      </h2>
-                      <p className="mt-1 text-sm leading-6 text-[#6f8793]">{description}</p>
-                    </div>
-                  </div>
-                ))}
-              </Reveal>
-
               <Reveal delay={280}>
                 <a
                   href="#our-story"
-                  className="mt-5 inline-flex items-center gap-4 text-xs font-extrabold uppercase tracking-[0.18em] text-[#1c5870] transition-colors hover:text-[#a27e3d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  className="mt-7 inline-flex items-center gap-4 text-xs font-extrabold uppercase tracking-[0.18em] text-[#1c5870] transition-colors hover:text-[#a27e3d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 >
                   Explore our story
                   <ArrowRight
@@ -160,16 +114,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section
-          id="our-story"
-          className="border-t border-[#e0dfd9] bg-white py-16 sm:py-20"
-        >
+        <section id="our-story" className="border-t border-[#e0dfd9] bg-white py-16 sm:py-20">
           <div className="mx-auto grid max-w-[1400px] gap-8 px-6 sm:px-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20 lg:px-14">
             <Reveal>
-              <p className="eyebrow text-[#587487]">
-                <span className="mr-2 h-px w-9 bg-[#bb9657]" />
-                Our story
-              </p>
+              <p className="eyebrow text-[#587487]"> Our story</p>
               <h2 className="mt-5 max-w-md text-3xl font-semibold leading-tight tracking-[-0.045em] text-heading sm:text-4xl">
                 One team from measurement to installation.
               </h2>

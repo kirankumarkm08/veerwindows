@@ -201,10 +201,7 @@ export function VeerWindowsAbout() {
         </Reveal>
 
         <Reveal from="right" delay={120}>
-          <span className="eyebrow">
-            <span className="h-px w-8 bg-primary" />
-            About Us
-          </span>
+          <span className="eyebrow"> About Us</span>
           <h2 className="mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
             Welcome To Veer Windows
           </h2>
@@ -281,10 +278,7 @@ export function ProductsGrid() {
       <div className="mx-auto max-w-[1400px] px-6">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <Reveal from="left">
-            <span className="eyebrow">
-              <span className="h-px w-8 bg-primary" />
-              Product Range
-            </span>
+            <span className="eyebrow"> Product Range</span>
             <h2 className="mt-6 text-4xl sm:text-5xl lg:text-6xl">Our Products</h2>
           </Reveal>
           <Reveal from="right" delay={120} className="flex flex-wrap gap-3">
@@ -347,7 +341,8 @@ export function LogoSliders() {
         <Reveal className="min-w-0">
           <h2 className="text-3xl sm:text-4xl">Our Quality Partners</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-            Trusted brands. Proven performance. We work with partners who share our commitment to quality and performance.
+            Trusted brands. Proven performance. We work with partners who share our commitment to
+            quality and performance.
           </p>
           <div className="mt-7 min-w-0">
             <PartnerLogoMarquee items={PARTNER_LOGOS} />
@@ -363,10 +358,7 @@ export function TextTestimonialsCarousel() {
     <section className="section bg-secondary">
       <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
-          <span className="eyebrow">
-            <span className="h-px w-8 bg-primary" />
-            Testimonials
-          </span>
+          <span className="eyebrow"> Testimonials</span>
           <h2 className="mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
             Trusted by More Than 3k Clients
           </h2>
@@ -400,14 +392,8 @@ export function VideoTestimonialSection() {
     <section className="section">
       <div className="mx-auto max-w-5xl px-6 text-center">
         <Reveal>
-          <span className="eyebrow justify-center">
-            <span className="h-px w-8 bg-primary" />
-            Video Feedback
-            <span className="h-px w-8 bg-primary" />
-          </span>
-          <h2 className="mt-6 text-3xl sm:text-5xl">
-            A closer look at Veer Windows.
-          </h2>
+          <span className="eyebrow justify-center"> Video Feedback </span>
+          <h2 className="mt-6 text-3xl sm:text-5xl">A closer look at Veer Windows.</h2>
         </Reveal>
         <Reveal delay={140} className="mt-12 overflow-hidden bg-ink text-left">
           <div className="relative aspect-video w-full">
@@ -433,10 +419,7 @@ export function Ventures() {
         <Reveal className="bg-background p-8 sm:p-10">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <span className="eyebrow">
-                <span className="h-px w-8 bg-primary" />
-                Ventures
-              </span>
+              <span className="eyebrow"> Ventures</span>
               <h2 className="mt-5 text-4xl sm:text-5xl">Advanced Ventures</h2>
             </div>
             <BadgeCheck className="size-14 text-primary" />
