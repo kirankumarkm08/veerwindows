@@ -45,6 +45,7 @@ export function ProductSystemExplorer() {
       >
         {SYSTEMS.map((system) => {
           const isActive = system.id === activeSystem.id;
+          const isUpvc = system.id === "upvc-systems";
 
           return (
             <button
@@ -57,13 +58,15 @@ export function ProductSystemExplorer() {
               onClick={() => setActiveSystemId(system.id)}
               className={`relative min-h-16 px-6 py-4 text-left text-sm font-black uppercase tracking-[0.12em] transition-colors sm:text-center ${
                 isActive
-                  ? "bg-white text-heading"
+                  ? isUpvc
+                    ? "bg-[#d4b271] text-[#073852]"
+                    : "bg-white text-heading"
                   : "border-white/15 text-white/65 hover:bg-white/10 hover:text-white sm:border-l first:sm:border-l-0"
               }`}
             >
               {system.tab}
               <span
-                className={`absolute inset-x-0 bottom-0 h-1 bg-primary-soft transition-transform duration-300 ${
+                className={`absolute inset-x-0 bottom-0 h-1 ${isUpvc ? "bg-[#d4b271]" : "bg-primary-soft"} transition-transform duration-300 ${
                   isActive ? "scale-x-100" : "scale-x-0"
                 }`}
               />
@@ -90,7 +93,13 @@ export function ProductSystemExplorer() {
           <ul className="mt-8 grid gap-4 sm:grid-cols-2">
             {activeSystem.options.map((option) => (
               <li key={option} className="flex items-center gap-3 text-sm font-bold text-white/90">
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-primary-soft/50 text-primary-soft">
+                <span
+                  className={`flex size-7 shrink-0 items-center justify-center rounded-full border ${
+                    activeSystem.id === "upvc-systems"
+                      ? "border-[#d4b271]/70 text-[#d4b271]"
+                      : "border-primary-soft/50 text-primary-soft"
+                  }`}
+                >
                   <Check className="size-4" />
                 </span>
                 {option}
@@ -101,7 +110,11 @@ export function ProductSystemExplorer() {
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <Link
               href={activeSystem.href}
-              className="group inline-flex items-center gap-4 bg-primary-soft px-7 py-4 text-xs font-black uppercase tracking-[0.14em] text-primary-soft-foreground transition-colors hover:bg-white"
+              className={`group inline-flex items-center gap-4 px-7 py-4 text-xs font-black uppercase tracking-[0.14em] transition-colors ${
+                activeSystem.id === "upvc-systems"
+                  ? "bg-[#d4b271] text-[#073852] hover:bg-[#e1c58f]"
+                  : "bg-primary-soft text-primary-soft-foreground hover:bg-white"
+              }`}
             >
               {activeSystem.cta}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />

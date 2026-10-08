@@ -16,10 +16,10 @@ type CustomerReview = {
 };
 
 const PARTNER_LOGOS = [
-  { name: "DNV", image: "/companies/Screenshot 2026-08-11 231342.png" },
-  { name: "Wallplast by Trends", image: "/companies/Screenshot 2026-08-11 231353.png" },
-  { name: "Pego", image: "/companies/Screenshot 2026-08-11 231409.png" },
   { name: "Aluplast", image: "/companies/Screenshot 2026-08-11 231418.png" },
+  { name: "Wallplast by Trends", image: "/companies/Screenshot 2026-08-11 231353.png" },
+  { name: "DNV", image: "/companies/Screenshot 2026-08-11 231342.png" },
+  { name: "Pego", image: "/companies/Screenshot 2026-08-11 231409.png" },
   { name: "Saint-Gobain", image: "/companies/saint-gobain.jpg" },
 ];
 
@@ -142,39 +142,51 @@ export function HomeStorySection() {
 
 export function HomePartnersSection() {
   return (
-    <section className="bg-secondary py-16 sm:py-20">
-      <div className="mx-auto max-w-[1400px] px-6">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.65fr] lg:items-end">
+    <section className="bg-secondary py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-[1920px] px-6 sm:px-10 lg:px-[5%]">
+        <div className="grid gap-5 lg:grid-cols-[1.35fr_0.9fr] lg:items-center lg:gap-8">
           <Reveal from="left">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl">
+            <h2 className="max-w-5xl text-4xl sm:text-5xl lg:text-[clamp(3.5rem,3.2vw,4.25rem)]">
               Trusted brands. Proven performance.
             </h2>
           </Reveal>
           <Reveal from="right" delay={100}>
-            <p className="max-w-xl text-sm leading-6 text-muted-foreground lg:ml-auto">
+            <p className="max-w-2xl text-base leading-7 text-muted-foreground lg:ml-auto lg:text-[1.125rem] lg:leading-8">
               We work with global partners who share our commitment to quality, innovation, and
               dependable performance.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {PARTNER_LOGOS.map((partner, index) => (
-            <Reveal
-              key={partner.name}
-              delay={index * 70}
-              className="flex h-28 items-center justify-center border border-border bg-white px-5 transition-transform duration-300 hover:-translate-y-1"
-            >
-              <Image
-                src={partner.image}
-                alt={partner.name}
-                width={220}
-                height={84}
-                sizes="220px"
-                className="max-h-16 w-auto max-w-full object-contain"
-              />
-            </Reveal>
-          ))}
+        <div
+          className="group/marquee mt-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)] sm:mt-16 lg:mt-20"
+          aria-label="Our partners"
+        >
+          <div className="flex w-max animate-marquee-slow group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none">
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                className="flex shrink-0 gap-6"
+                aria-hidden={copy === 1 ? "true" : undefined}
+              >
+                {PARTNER_LOGOS.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="flex h-32 w-[min(72vw,360px)] shrink-0 items-center justify-center px-5 sm:h-36 sm:w-[min(42vw,360px)] lg:h-[154px] lg:w-[min(18vw,360px)]"
+                  >
+                    <Image
+                      src={partner.image}
+                      alt={partner.name}
+                      width={220}
+                      height={84}
+                      sizes="(min-width: 1024px) 18vw, 72vw"
+                      className="h-[84px] w-[220px] max-w-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

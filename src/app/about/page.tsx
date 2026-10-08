@@ -123,9 +123,12 @@ export default function AboutPage() {
               aria-hidden="true"
               className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#062e40]/80 to-transparent"
             />
-            <p className="absolute bottom-7 left-7 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white sm:bottom-9 sm:left-10">
-              Founder, Veer Windows
-            </p>
+            <div className="absolute bottom-7 left-7 sm:bottom-9 sm:left-10">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/75">
+                Founder, Veer Windows
+              </p>
+              <p className="mt-1 text-lg font-semibold tracking-tight text-white">Kiran Balapur</p>
+            </div>
           </Reveal>
 
           <div className="flex items-center px-6 py-14 sm:px-10 sm:py-16 lg:px-[clamp(2.5rem,7vw,8rem)] lg:py-20">

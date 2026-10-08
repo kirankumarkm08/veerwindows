@@ -127,7 +127,7 @@ export function Header({ solid = false }: HeaderProps) {
             alt="Veer Windows"
             width={500}
             height={500}
-            className="h-11 w-[118px] object-cover object-center"
+            className="h-[46px] w-[124px] object-cover object-center"
           />
         </a>
 

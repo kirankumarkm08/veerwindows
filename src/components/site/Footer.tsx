@@ -63,7 +63,16 @@ export function Footer() {
             <h3 className="text-lg font-bold text-white">Contact</h3>
             <ul className="mt-5 grid gap-4 text-sm leading-6 text-white/70">
               <li className="flex items-center gap-3">
-                <Phone className="size-4 text-primary-soft" /> 081509 95171
+                <Phone className="size-4 shrink-0 text-primary-soft" />
+                <a href="tel:+918150995171" className="transition-colors hover:text-white">
+                  081509 95171
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="size-4 shrink-0 text-primary-soft" />
+                <a href="tel:+917676525171" className="transition-colors hover:text-white">
+                  +91 76765 25171
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="size-4 text-primary-soft" /> hello@veerwindows.com
@@ -142,11 +151,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 pt-6 text-xs uppercase tracking-[0.14em] text-white/50">
+        <div className="flex flex-wrap items-center gap-4 pt-6 text-xs uppercase tracking-[0.14em] text-white/50">
           <p>&copy; {new Date().getFullYear()} Veer Windows. All rights reserved.</p>
-          <a href="/services" className="transition-colors hover:text-white">
-            Explore all systems
-          </a>
         </div>
       </div>
     </footer>
