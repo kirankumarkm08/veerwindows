@@ -12,7 +12,7 @@ const SYSTEMS = [
     title: "uPVC windows and doors for everyday comfort.",
     description:
       "Low-maintenance uPVC systems configured for insulation, controlled ventilation, secure access, and smooth everyday operation.",
-    image: "/products/2-track-door.jpg",
+    image: "/sliders/10.png",
     href: "/services/family/upvc",
     cta: "Explore uPVC systems",
     options: ["Casement windows", "Sliding windows", "Sliding doors", "Lift and slide"],
@@ -132,7 +132,11 @@ export function ProductSystemExplorer() {
         <div className="relative min-h-[360px] overflow-hidden lg:min-h-[610px]">
           <Image
             src={activeSystem.image}
-            alt={activeSystem.tab}
+            alt={
+              activeSystem.id === "upvc-systems"
+                ? "Golden framed sliding glass doors opening onto a garden"
+                : activeSystem.tab
+            }
             fill
             sizes="(min-width: 1024px) 58vw, 100vw"
             className="object-cover transition-transform duration-700 hover:scale-[1.025]"

@@ -119,10 +119,10 @@ export function Hero() {
         <div
           key={activeSlide.src}
           aria-live="polite"
-          className="animate-rise max-w-5xl pr-0 sm:pr-24"
+          className="animate-rise max-w-6xl pr-0 sm:pr-24"
         >
           <div>
-            <h1 className="max-w-5xl text-[clamp(3.4rem,7vw,7.25rem)] font-bold leading-[0.93] tracking-[-0.055em] text-white">
+            <h1 className="max-w-6xl text-[clamp(2.5rem,5vw,5.25rem)] font-bold leading-[0.98] tracking-[-0.045em] text-white">
               {activeSlide.title}
               <span className="mt-2 block text-white/82">{activeSlide.accent}</span>
             </h1>
