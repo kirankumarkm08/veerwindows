@@ -65,7 +65,7 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="size-4 shrink-0 text-primary-soft" />
                 <a href="tel:+918150995171" className="transition-colors hover:text-white">
-                  081509 95171
+                  +91 81509 95171
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -75,7 +75,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="size-4 text-primary-soft" /> hello@veerwindows.com
+                <Mail className="size-4 text-primary-soft" /> sales@veerwindows.com
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-primary-soft" />

@@ -111,7 +111,7 @@ export async function POST(request: Request) {
     if (error instanceof ContactEmailConfigurationError) {
       return jsonError(
         503,
-        "The contact form is temporarily unavailable. Please email hello@veerwindows.com.",
+        "The contact form is temporarily unavailable. Please email sales@veerwindows.com.",
       );
     }
 
@@ -121,7 +121,7 @@ export async function POST(request: Request) {
       });
       return jsonError(
         502,
-        "We couldn’t send your message right now. Please try again or email hello@veerwindows.com.",
+        "We couldn’t send your message right now. Please try again or email sales@veerwindows.com.",
       );
     }
 
