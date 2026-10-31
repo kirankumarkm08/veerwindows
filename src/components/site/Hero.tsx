@@ -167,12 +167,12 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute right-5 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2 sm:right-8 lg:right-12">
+      <div className="absolute bottom-5 right-5 z-20 flex flex-row gap-2 sm:bottom-auto sm:right-8 sm:top-1/2 sm:-translate-y-1/2 sm:flex-col lg:right-12">
         <button
           type="button"
           aria-label="Previous hero image"
           onClick={goToPreviousBackground}
-          className="flex size-12 items-center justify-center border border-white/45 bg-ink/30 text-white backdrop-blur-md transition-colors hover:border-white hover:bg-white hover:text-heading sm:size-14"
+          className="flex size-11 items-center justify-center border border-white/45 bg-ink/30 text-white backdrop-blur-md transition-colors hover:border-white hover:bg-white hover:text-heading sm:size-14"
         >
           <ChevronLeft className="size-5" />
         </button>
@@ -180,7 +180,7 @@ export function Hero() {
           type="button"
           aria-label="Next hero image"
           onClick={goToNextBackground}
-          className="flex size-12 items-center justify-center bg-primary-soft text-primary-soft-foreground shadow-xl transition-colors hover:bg-white sm:size-14"
+          className="flex size-11 items-center justify-center bg-primary-soft text-primary-soft-foreground shadow-xl transition-colors hover:bg-white sm:size-14"
         >
           <ChevronRight className="size-5" />
         </button>

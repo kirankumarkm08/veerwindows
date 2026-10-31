@@ -111,6 +111,32 @@ export function Header({ solid = false }: HeaderProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    const onResize = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) setOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
@@ -287,9 +313,11 @@ export function Header({ solid = false }: HeaderProps) {
           </Link>
           <button
             type="button"
-            aria-label="Toggle menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
             onClick={() => setOpen((v) => !v)}
-            className="text-heading lg:hidden"
+            className="grid size-11 shrink-0 place-items-center text-heading transition-colors hover:bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:hidden"
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
@@ -297,8 +325,11 @@ export function Header({ solid = false }: HeaderProps) {
       </div>
 
       {open && (
-        <div className="mx-6 bg-ink p-6 lg:hidden">
-          <nav className="grid gap-4">
+        <div
+          id="mobile-navigation"
+          className="absolute inset-x-0 top-full mx-4 max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-ink p-4 shadow-[0_18px_36px_-20px_rgba(3,30,44,0.7)] sm:mx-6 sm:p-6 lg:hidden"
+        >
+          <nav aria-label="Mobile navigation" className="grid gap-2">
             {NAV.map((item) => {
               const isActive = isNavItemActive(item.label, pathname, item.href);
 
