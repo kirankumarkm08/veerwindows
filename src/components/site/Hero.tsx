@@ -107,7 +107,7 @@ export function Hero() {
       id="home"
       aria-roledescription="carousel"
       aria-label="Veer Windows product highlights"
-      className="relative min-h-[780px] overflow-hidden bg-ink sm:min-h-[820px] lg:min-h-screen"
+      className="relative w-full min-w-0 min-h-[780px] overflow-hidden bg-ink sm:min-h-[820px] lg:min-h-screen"
     >
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -140,7 +140,7 @@ export function Hero() {
         <div
           key={activeSlide.src}
           aria-live="polite"
-          className="animate-rise max-w-6xl pr-0 sm:pr-24"
+          className="animate-rise w-full min-w-0 max-w-6xl pr-0 sm:pr-24"
         >
           <div>
             <h1 className="max-w-6xl text-[clamp(1.75rem,3vw,3rem)] font-bold leading-[1.02] tracking-[-0.045em] text-white">
