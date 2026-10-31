@@ -121,8 +121,47 @@ export default function AboutPage() {
 
         <section
           id="our-story"
-          className="scroll-mt-20 bg-[#f8f6f0] px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36"
+          className="scroll-mt-20 bg-[#073852] px-6 py-16 text-white sm:px-10 sm:py-20 lg:px-16"
         >
+          <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1fr_420px] lg:items-center lg:gap-20">
+            <Reveal>
+              <p className="eyebrow text-[#e0c27b]">Founder, Veer Windows</p>
+              <h2 className="mt-5 text-3xl font-semibold tracking-[-0.045em] text-white sm:text-4xl">
+                A personal commitment to better spaces.
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
+                Kiran Balapur, a Mechanical Engineer, brings nine years of comprehensive industry
+                experience to the company. His background spans sales leadership, technical
+                execution, and freelance consultancy.
+              </p>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
+                That hands-on experience informs our focus on careful product selection, clear
+                coordination, and a dependable installation experience.
+              </p>
+            </Reveal>
+            <Reveal
+              from="right"
+              delay={120}
+              className="mx-auto w-full max-w-[340px] lg:mx-0 lg:max-w-[420px]"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden bg-white/10">
+                <Image
+                  src="/veerwindows-founder.png"
+                  alt="Kiran Balapur, Founder of Veer Windows"
+                  fill
+                  sizes="(max-width: 640px) 85vw, (max-width: 1024px) 340px, 420px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <p className="mt-3 text-xs font-semibold tracking-wide text-white">Kiran Balapur</p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white/55">
+                Founder
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="scroll-mt-20 bg-[#f8f6f0] px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
           <div className="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
             <Reveal className="lg:sticky lg:top-28 lg:self-start">
               <p className="eyebrow text-[#927239]">Our story</p>
@@ -188,41 +227,6 @@ export default function AboutPage() {
                 </Reveal>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="bg-[#073852] px-6 py-16 text-white sm:px-10 sm:py-20 lg:px-16">
-          <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
-            <Reveal>
-              <p className="eyebrow text-[#e0c27b]">Founder, Veer Windows</p>
-              <h2 className="mt-5 text-3xl font-semibold tracking-[-0.045em] text-white sm:text-4xl">
-                A personal commitment to better spaces.
-              </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-                Kiran Balapur, a Mechanical Engineer, brings nine years of comprehensive industry
-                experience to the company. His background spans sales leadership, technical
-                execution, and freelance consultancy.
-              </p>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-                That hands-on experience informs our focus on careful product selection, clear
-                coordination, and a dependable installation experience.
-              </p>
-            </Reveal>
-            <Reveal from="right" delay={120} className="mx-auto w-full max-w-[260px] lg:mx-0">
-              <div className="relative aspect-[4/5] overflow-hidden bg-white/10">
-                <Image
-                  src="/veerwindows-founder.png"
-                  alt="Kiran Balapur, Founder of Veer Windows"
-                  fill
-                  sizes="(max-width: 1024px) 70vw, 260px"
-                  className="object-cover object-top"
-                />
-              </div>
-              <p className="mt-3 text-xs font-semibold tracking-wide text-white">Kiran Balapur</p>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white/55">
-                Founder
-              </p>
-            </Reveal>
           </div>
         </section>
 
