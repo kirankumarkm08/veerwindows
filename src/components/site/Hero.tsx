@@ -8,6 +8,27 @@ const SLIDE_DURATION_MS = 5500;
 
 const HERO_BACKGROUNDS = [
   {
+    src: "/sliders/modern-sliding-door-screen.png",
+    title: "Open your home to more light.",
+    accent: "Comfort, with a clearer view.",
+    description:
+      "Modern sliding doors bring natural light and fresh air into your home, with an insect screen for everyday comfort.",
+  },
+  {
+    src: "/sliders/woodgrain-sliding-window-screen.jpg",
+    title: "A warmer frame for every view.",
+    accent: "Designed around your home.",
+    description:
+      "Explore the rich look of woodgrain finishes with the smooth movement and practical protection of a sliding screen.",
+  },
+  {
+    src: "/sliders/twin-sash-window.jpg",
+    title: "Light, airflow, and added protection.",
+    accent: "Thoughtful in every detail.",
+    description:
+      "Twin sash windows combine glass, mesh, and grille in a practical design for comfortable everyday living.",
+  },
+  {
     src: "/sliders/1.png",
     title: "Open your home to more light.",
     accent: "Live more beautifully.",
