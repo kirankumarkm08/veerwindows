@@ -23,7 +23,6 @@ type NavItem = MenuEntry & {
 
 const upvcProducts: MenuEntry[] = [
   { label: "Sliding Windows & Doors", href: "/services/sliding-windows-doors" },
-  { label: "3D Sliding Door Designer", href: "/sliding-door-configurator" },
   { label: "Casement Windows & Doors", href: "/services/casement-windows-doors" },
   { label: "Combination Windows", href: "/services/combination-windows" },
   { label: "Ventilator Windows", href: "/services/combination-windows" },

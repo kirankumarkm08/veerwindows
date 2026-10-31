@@ -122,14 +122,14 @@ export function Hero() {
           className="animate-rise max-w-6xl pr-0 sm:pr-24"
         >
           <div>
-            <h1 className="max-w-6xl text-[clamp(2rem,3.5vw,3.75rem)] font-bold leading-[1.02] tracking-[-0.045em] text-white">
+            <h1 className="max-w-6xl text-[clamp(1.75rem,3vw,3rem)] font-bold leading-[1.02] tracking-[-0.045em] text-white">
               {activeSlide.title}
               <span className="mt-2 block text-white/82">{activeSlide.accent}</span>
             </h1>
           </div>
 
           <div>
-            <p className="mt-8 max-w-xl border-l border-primary-soft pl-5 text-base leading-7 text-white/78 sm:text-lg">
+            <p className="mt-6 max-w-xl border-l border-primary-soft pl-5 text-sm leading-6 text-white/78 sm:text-base sm:leading-7">
               {activeSlide.description}
             </p>
           </div>

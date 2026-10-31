@@ -52,7 +52,7 @@ export const PRODUCTS: Product[] = [
         name: "Ventilator Window",
         image: "/products/ventilator-window.jpg",
         description:
-          "A compact solution for kitchens and bathrooms, allowing fresh air while supporting privacy and moisture control.",
+          "A dedicated compact opening designed to support continuous air circulation in kitchens, bathrooms, and utility spaces. The ventilator format helps release warm, stale air while maintaining a neat window elevation.",
       },
       {
         name: "Top-Hung Window",
@@ -346,15 +346,20 @@ export const PRODUCTS: Product[] = [
   {
     slug: "twin-sash-window",
     family: "upvc",
-    eyebrow: "Special window system",
+    eyebrow: "Twin sash window system",
     title: "Twin Sash Window",
-    description: "A special window system in the uPVC range.",
-    image: "/products/versatile-top-hung-window.jpg",
-    imageAlt: "Window in a modern home",
+    description: "Glass, mesh, and grille in a practical window design.",
+    image: "/products/twin-sash-window.png",
+    imageAlt: "Twin sash window with glass, insect mesh, and grille shutters",
     intro:
-      "Twin Sash Window is listed in the Veer Windows uPVC special door and window systems range.",
+      "A Twin Sash Window combines an outer glass shutter, an inner mesh shutter, and a grille arrangement. It brings natural light, flexible ventilation, and everyday insect protection to modern spaces.",
     variants: [],
-    benefits: ["Twin sash window format", "Part of the uPVC special systems range"],
+    benefits: [
+      "Outer glass shutter and inner insect mesh",
+      "Grille arrangement for an additional physical barrier",
+      "Natural daylight and flexible ventilation",
+      "Smooth operation and easy maintenance",
+    ],
   },
   {
     slug: "advanced-door-systems",
