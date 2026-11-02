@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowDown, ArrowRight, Compass, Layers3, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import companyWindows from "@/assets/portfolio-2.jpg";
+import companyWindows from "@/assets/portfolio-3.jpg";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { Reveal } from "@/components/site/Reveal";
@@ -21,235 +20,187 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-const VALUES = [
+const PRINCIPLES = [
   {
-    number: "01",
+    number: "01.",
     title: "Thoughtful by design",
     description:
       "We help match each opening with a considered combination of frame, glass, and hardware.",
-    Icon: Compass,
   },
   {
-    number: "02",
+    number: "02.",
     title: "Made to fit",
     description:
       "Every project starts with the space itself, its measurements, and the way people use it.",
-    Icon: Layers3,
   },
   {
-    number: "03",
+    number: "03.",
     title: "Care through delivery",
     description:
       "From the first conversation through installation, we focus on a clear, dependable process.",
-    Icon: ShieldCheck,
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="overflow-hidden bg-[#f8f6f0] text-heading">
+    <div className="overflow-hidden bg-[#fbf7f0] text-[#25221f]">
       <Header solid />
-      <main>
-        <section className="relative isolate min-h-[720px] bg-[#082d3c] text-white lg:min-h-[calc(100svh-5rem)]">
-          <div className="absolute inset-0 -z-20">
-            <Image
-              src={companyWindows}
-              alt="Modern home with expansive windows opening onto the landscape"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-          </div>
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,30,44,0.94)_0%,rgba(3,30,44,0.78)_48%,rgba(3,30,44,0.24)_100%)]" />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#031e2c]/75 via-transparent to-[#031e2c]/20" />
+      <main className="px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pb-20">
+        <div className="mx-auto max-w-[1280px]">
+          <section
+            id="founder"
+            className="grid items-center gap-8 border-b border-[#e5ddd2] bg-[linear-gradient(110deg,#fbf7f0_0%,#fbf7f0_58%,#f8f2e9_100%)] pb-9 sm:gap-8 sm:grid-cols-[minmax(260px,1fr)_minmax(0,1.05fr)] lg:gap-16 lg:pb-12"
+          >
+            <Reveal className="relative mx-auto w-full max-w-[520px] sm:mx-0">
+              <div className="absolute -left-2 -top-2 h-14 w-24 bg-[#d5d1b4] sm:-left-3 sm:-top-3 sm:h-20 sm:w-32" />
+              <div className="relative overflow-hidden border border-white/70 bg-[#242523] shadow-[0_18px_48px_-32px_rgba(64,43,28,0.5)]">
+                <Image
+                  src="/veerwindows-founder.png"
+                  alt="Kiran Balapur, Founder of Veer Windows"
+                  width={572}
+                  height={800}
+                  priority
+                  sizes="(max-width: 639px) min(88vw, 520px), (max-width: 1023px) 45vw, 520px"
+                  className="block h-auto w-full"
+                />
+              </div>
+              <div className="absolute -bottom-3 left-0 min-w-[150px] bg-[#a9472d] px-5 py-2.5 text-white sm:min-w-[165px] sm:px-6">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] sm:text-xs">
+                  Kiran Balapur
+                </p>
+                <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/80">
+                  Founder
+                </p>
+              </div>
+            </Reveal>
 
-          <div className="mx-auto flex min-h-[720px] max-w-[1440px] flex-col justify-end px-6 pb-16 pt-32 sm:px-10 sm:pb-20 lg:min-h-[calc(100svh-5rem)] lg:px-16 lg:pb-24">
-            <Reveal className="max-w-4xl">
-              <p className="eyebrow text-[#e0c27b]">A better view starts here</p>
-              <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.06em] text-white sm:text-6xl lg:text-[clamp(4.5rem,8vw,7.5rem)]">
-                We make room
-                <br />
-                for better living.
-              </h1>
-              <p className="mt-7 max-w-xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+            <Reveal delay={120} className="max-w-[650px] md:justify-self-end">
+              <p className="eyebrow text-[#a9472d]">Founder, Veer Windows</p>
+              <div className="mt-3 flex gap-3 sm:gap-5">
+                <span
+                  aria-hidden="true"
+                  className="font-serif text-5xl leading-[0.8] text-[#a9472d]"
+                >
+                  “
+                </span>
+                <div>
+                  <h1 className="max-w-[620px] font-serif text-3xl font-medium leading-[1.02] tracking-[-0.035em] text-[#24211f] sm:text-4xl lg:text-[3.25rem]">
+                    A personal commitment to better spaces.
+                  </h1>
+                  <div className="mt-4 border-l border-[#d9b8a9] pl-4 text-[11px] leading-[1.65] text-[#48433e] sm:mt-5 sm:pl-5 sm:text-xs">
+                    <p>
+                      Kiran Balapur, a Mechanical Engineer, brings nine years of comprehensive
+                      industry experience to the company. His background spans sales leadership,
+                      technical execution, and freelance consultancy.
+                    </p>
+                    <p className="mt-3">
+                      That hands-on experience informs our focus on careful product selection, clear
+                      coordination, and a dependable installation experience.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </section>
+
+          <section className="grid items-center gap-8 py-12 sm:gap-10 sm:py-14 md:grid-cols-[0.78fr_1.22fr] lg:gap-16 lg:py-16">
+            <Reveal className="max-w-[390px]">
+              <div className="flex items-center gap-3">
+                <p className="eyebrow text-[#a9472d]">About Veer</p>
+              </div>
+              <h2 className="mt-4 font-serif text-4xl font-medium leading-[0.98] tracking-[-0.04em] sm:text-5xl">
+                A clearer view
+                <br className="hidden sm:block" /> of better living.
+              </h2>
+              <p className="mt-4 max-w-sm text-xs leading-6 text-[#5b554f] sm:text-sm">
                 VEER WINDOWS brings considered uPVC and System Aluminium windows and doors to homes
                 and workspaces across India.
               </p>
               <a
-                href="#our-story"
-                className="mt-9 inline-flex items-center gap-3 border border-white/45 px-5 py-3 text-[10px] font-extrabold uppercase tracking-[0.18em] text-white transition-colors hover:border-white hover:bg-white hover:text-heading focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                href="#principles"
+                className="mt-5 inline-flex items-center gap-2 border-b border-[#bd7259] pb-1 text-[9px] font-extrabold uppercase tracking-[0.16em] text-[#a9472d] transition-colors hover:text-[#76301f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a9472d]"
               >
-                Discover our story <ArrowDown aria-hidden="true" className="size-4" />
+                Our principles <ArrowRight aria-hidden="true" className="size-3.5" />
               </a>
             </Reveal>
 
-            <div className="mt-14 grid max-w-3xl grid-cols-2 border-t border-white/30 pt-5 sm:mt-20 sm:grid-cols-3">
-              <div className="border-r border-white/25 pr-4 sm:pr-8">
-                <p className="text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">
-                  2022
-                </p>
-                <p className="mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.16em] text-white/65 sm:text-[10px]">
-                  Established as Veer Infratech
-                </p>
-              </div>
-              <div className="pl-4 sm:border-r sm:border-white/25 sm:px-8">
-                <p className="text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">
-                  9+
-                </p>
-                <p className="mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.16em] text-white/65 sm:text-[10px]">
-                  Years of industry experience
-                </p>
-              </div>
-              <div className="col-span-2 mt-5 border-t border-white/25 pt-5 sm:col-span-1 sm:mt-0 sm:border-0 sm:pl-8 sm:pt-0">
-                <p className="text-lg font-semibold tracking-[-0.03em] text-white sm:text-xl">
-                  uPVC + Aluminium
-                </p>
-                <p className="mt-2 text-[9px] font-bold uppercase leading-4 tracking-[0.16em] text-white/65 sm:text-[10px]">
-                  Systems for modern spaces
-                </p>
-              </div>
-            </div>
-          </div>
-          <span
-            aria-hidden="true"
-            className="absolute right-8 top-1/2 hidden -rotate-90 text-[9px] font-bold uppercase tracking-[0.24em] text-white/65 xl:block"
-          >
-            VEER WINDOW SYSTEMS · INDIA
-          </span>
-        </section>
-
-        <section
-          id="our-story"
-          className="scroll-mt-20 bg-[#073852] px-6 py-16 text-white sm:px-10 sm:py-20 lg:px-16"
-        >
-          <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1fr_420px] lg:items-center lg:gap-20">
-            <Reveal>
-              <p className="eyebrow text-[#e0c27b]">Founder, Veer Windows</p>
-              <h2 className="mt-5 text-3xl font-semibold tracking-[-0.045em] text-white sm:text-4xl">
-                A personal commitment to better spaces.
-              </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-                Kiran Balapur, a Mechanical Engineer, brings nine years of comprehensive industry
-                experience to the company. His background spans sales leadership, technical
-                execution, and freelance consultancy.
-              </p>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-                That hands-on experience informs our focus on careful product selection, clear
-                coordination, and a dependable installation experience.
-              </p>
-            </Reveal>
             <Reveal
               from="right"
-              delay={120}
-              className="mx-auto w-full max-w-[340px] lg:mx-0 lg:max-w-[420px]"
+              delay={100}
+              className="relative min-w-0 md:justify-self-end md:w-full"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-white/10">
+              <div className="relative aspect-[1.52] overflow-hidden bg-[#ddd4c5]">
                 <Image
-                  src="/veerwindows-founder.png"
-                  alt="Kiran Balapur, Founder of Veer Windows"
+                  src={companyWindows}
+                  alt="Contemporary home with broad windows opening to a garden"
                   fill
-                  sizes="(max-width: 640px) 85vw, (max-width: 1024px) 340px, 420px"
-                  className="object-cover object-top"
+                  sizes="(max-width: 767px) 92vw, (max-width: 1024px) 55vw, 740px"
+                  className="object-cover"
                 />
               </div>
-              <p className="mt-3 text-xs font-semibold tracking-wide text-white">Kiran Balapur</p>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white/55">
-                Founder
-              </p>
+              <span
+                aria-hidden="true"
+                className="absolute -right-3 top-1/2 hidden -translate-y-1/2 rotate-90 text-[8px] font-bold uppercase tracking-[0.24em] text-[#635c53] xl:block"
+              >
+                A contemporary view · Veer Windows
+              </span>
             </Reveal>
-          </div>
-        </section>
+          </section>
 
-        <section className="scroll-mt-20 bg-[#f8f6f0] px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-          <div className="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
-            <Reveal className="lg:sticky lg:top-28 lg:self-start">
-              <p className="eyebrow text-[#927239]">Our story</p>
-              <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-heading/55">
-                From a clear idea
-                <br />
-                to a considered craft.
+          <section
+            aria-label="Veer Windows at a glance"
+            className="grid grid-cols-3 border-y border-[#e5ddd2] bg-[#f5f0e8] py-4 sm:py-5"
+          >
+            <div className="flex flex-col justify-center px-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6">
+              <p className="font-serif text-2xl leading-none sm:text-3xl">2022</p>
+              <p className="mt-1 max-w-[105px] text-[7px] font-bold uppercase leading-[1.45] tracking-[0.12em] text-[#686057] sm:mt-0 sm:text-[8px]">
+                Established as Veer Infratech
               </p>
-              <div className="mt-8 h-px w-16 bg-[#b18c4b]" />
-            </Reveal>
-            <Reveal delay={100}>
-              <h2 className="max-w-4xl text-4xl font-semibold leading-[1.02] tracking-[-0.055em] sm:text-5xl lg:text-6xl">
-                Good windows change how a space feels.
-              </h2>
-              <div className="mt-8 grid gap-6 text-base leading-7 text-[#5e7078] sm:grid-cols-2 sm:gap-10">
-                <p>
-                  Established in 2022 as Veer Infratech, we have grown into Veer Window Systems
-                  Private Limited, proudly operating under the brand VEER WINDOWS.
-                </p>
-                <p>
-                  Backed by more than nine years of industry experience, we bring product knowledge
-                  and practical project support to homeowners, builders, and architects.
-                </p>
-              </div>
-              <div className="mt-12 flex flex-wrap gap-3">
-                <span className="border border-[#d7d2c8] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.13em] text-heading/75">
-                  uPVC windows & doors
-                </span>
-                <span className="border border-[#d7d2c8] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.13em] text-heading/75">
-                  System Aluminium
-                </span>
-                <span className="border border-[#d7d2c8] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.13em] text-heading/75">
-                  Project installation
-                </span>
+            </div>
+            <div className="flex flex-col justify-center border-l border-[#ddd3c5] px-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6">
+              <p className="font-serif text-2xl leading-none sm:text-3xl">9+</p>
+              <p className="mt-1 max-w-[110px] text-[7px] font-bold uppercase leading-[1.45] tracking-[0.12em] text-[#686057] sm:mt-0 sm:text-[8px]">
+                Years of industry experience
+              </p>
+            </div>
+            <div className="flex flex-col justify-center border-l border-[#ddd3c5] px-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6">
+              <p className="font-serif text-lg leading-none sm:text-xl">uPVC + Aluminium</p>
+              <p className="mt-1 text-[7px] font-bold uppercase leading-[1.45] tracking-[0.12em] text-[#686057] sm:mt-0 sm:text-[8px]">
+                Windows and doors
+              </p>
+            </div>
+          </section>
+
+          <section id="principles" className="scroll-mt-24 pb-3">
+            <Reveal>
+              <div className="flex items-center gap-3">
+                <p className="eyebrow text-[#a9472d]">Our principles</p>
               </div>
             </Reveal>
-          </div>
-        </section>
-
-        <section className="bg-[#eae5da] px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
-          <div className="mx-auto max-w-[1280px]">
-            <Reveal className="max-w-2xl">
-              <p className="eyebrow text-[#927239]">What guides us</p>
-              <h2 className="mt-5 text-4xl font-semibold leading-[1.02] tracking-[-0.055em] sm:text-5xl">
-                Details matter. So does the experience.
-              </h2>
-            </Reveal>
-            <div className="mt-12 grid border-t border-[#c9c2b5] md:grid-cols-3">
-              {VALUES.map(({ number, title, description, Icon }, index) => (
+            <div className="mt-4 grid border-t border-[#e5ddd2] sm:grid-cols-3">
+              {PRINCIPLES.map((principle, index) => (
                 <Reveal
-                  key={number}
-                  delay={index * 100}
-                  className="border-b border-[#c9c2b5] py-8 md:border-r md:px-8 md:py-10 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
+                  key={principle.number}
+                  delay={index * 80}
+                  className="border-b border-[#e5ddd2] py-5 sm:border-b-0 sm:border-r sm:px-5 sm:first:pl-0 sm:last:border-r-0 sm:last:pr-0"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold tracking-[0.15em] text-[#927239]">
-                      {number}
+                  <div className="flex items-center gap-3">
+                    <span className="font-serif text-2xl leading-none text-[#a9472d]">
+                      {principle.number}
                     </span>
-                    <Icon aria-hidden="true" className="size-5 text-[#927239]" strokeWidth={1.5} />
+                    <span aria-hidden="true" className="h-px flex-1 bg-[#d7aa99]" />
                   </div>
-                  <h3 className="mt-9 text-2xl font-semibold tracking-[-0.04em]">{title}</h3>
-                  <p className="mt-3 max-w-sm text-sm leading-6 text-[#5e7078]">{description}</p>
+                  <h3 className="mt-2 font-serif text-xl font-medium leading-tight tracking-[-0.025em]">
+                    {principle.title}
+                  </h3>
+                  <p className="mt-2 max-w-sm text-[10px] leading-[1.55] text-[#686057] sm:text-[11px]">
+                    {principle.description}
+                  </p>
                 </Reveal>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="bg-[#f8f6f0] px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
-          <Reveal className="mx-auto flex max-w-[1280px] flex-col items-start justify-between gap-8 border-y border-[#d7d2c8] py-10 sm:flex-row sm:items-center sm:py-12">
-            <div>
-              <p className="eyebrow text-[#927239]">Let’s plan your next opening</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
-                Find the right fit for your space.
-              </h2>
-            </div>
-            <Link
-              href="/contact"
-              className="group inline-flex shrink-0 items-center gap-4 bg-[#9a793d] px-6 py-4 text-[10px] font-extrabold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7d602f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9a793d]"
-            >
-              Talk to our team
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition-transform group-hover:translate-x-1"
-              />
-            </Link>
-          </Reveal>
-        </section>
+          </section>
+        </div>
       </main>
       <Footer />
     </div>

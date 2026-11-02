@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const SLIDE_DURATION_MS = 5500;
@@ -9,6 +10,8 @@ const SLIDE_DURATION_MS = 5500;
 const HERO_BACKGROUNDS = [
   {
     src: "/sliders/modern-sliding-door-screen.png",
+    width: 1536,
+    height: 1024,
     title: "Open your home to more light.",
     accent: "Comfort, with a clearer view.",
     description:
@@ -16,6 +19,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/woodgrain-sliding-window-screen.jpg",
+    width: 1448,
+    height: 1086,
     title: "A warmer frame for every view.",
     accent: "Designed around your home.",
     description:
@@ -23,6 +28,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/twin-sash-window.jpg",
+    width: 1122,
+    height: 1402,
     title: "Light, airflow, and added protection.",
     accent: "Thoughtful in every detail.",
     description:
@@ -30,6 +37,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/1.png",
+    width: 1672,
+    height: 941,
     title: "Open your home to more light.",
     accent: "Live more beautifully.",
     description:
@@ -37,6 +46,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/2.png",
+    width: 1660,
+    height: 948,
     title: "A clearer connection to outdoors.",
     accent: "Beautifully framed.",
     description:
@@ -44,6 +55,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/4.png",
+    width: 1672,
+    height: 941,
     title: "Designed around the way you live.",
     accent: "Made to fit.",
     description:
@@ -51,6 +64,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/5.png",
+    width: 1672,
+    height: 941,
     title: "Frame every view with confidence.",
     accent: "Built to last.",
     description:
@@ -58,6 +73,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/6.png",
+    width: 1672,
+    height: 941,
     title: "Windows and doors for ambitious spaces.",
     accent: "Made precise.",
     description:
@@ -65,6 +82,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/7.png",
+    width: 1672,
+    height: 941,
     title: "Comfort in every detail.",
     accent: "Beauty in every line.",
     description:
@@ -72,6 +91,8 @@ const HERO_BACKGROUNDS = [
   },
   {
     src: "/sliders/9.png",
+    width: 1536,
+    height: 1024,
     title: "Balance light, privacy, and openness.",
     accent: "Your space, your way.",
     description:
@@ -107,50 +128,39 @@ export function Hero() {
       id="home"
       aria-roledescription="carousel"
       aria-label="Veer Windows product highlights"
-      className="relative w-full min-w-0 min-h-[780px] overflow-hidden bg-ink sm:min-h-[820px] lg:min-h-screen"
+      className="relative isolate flex min-h-[calc(100svh-5.5rem)] w-full min-w-0 flex-col justify-end overflow-hidden bg-[#031e2c]"
     >
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="flex h-full w-full transition-transform duration-1000 ease-[cubic-bezier(0.65,0,0.35,1)]"
-          style={{ transform: `translateX(-${activeBackground * 100}%)` }}
-        >
-          {HERO_BACKGROUNDS.map((image, index) => (
-            <div key={image.src} aria-hidden="true" className="h-full min-w-full overflow-hidden">
-              <div
-                className={`h-full w-full bg-cover bg-center bg-no-repeat transition-transform duration-[6000ms] ease-out motion-reduce:transform-none ${
-                  index === activeBackground ? "scale-[1.055]" : "scale-100"
-                }`}
-                style={{ backgroundImage: `url("${image.src}")` }}
-              />
-            </div>
-          ))}
-        </div>
+      <div
+        key={activeSlide.src}
+        aria-hidden="true"
+        className="absolute inset-0 z-0 overflow-hidden bg-[#031e2c]"
+      >
+        <Image
+          src={activeSlide.src}
+          alt=""
+          fill
+          priority={activeBackground === 0}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
       </div>
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(3,30,44,0.88)_0%,rgba(3,30,44,0.64)_38%,rgba(3,30,44,0.2)_72%,rgba(3,30,44,0.34)_100%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-[1] bg-gradient-to-b from-ink/20 via-transparent to-ink/85"
+        className="absolute inset-0 z-[1] bg-[linear-gradient(0deg,rgba(3,30,44,0.98)_0%,rgba(3,30,44,0.76)_42%,rgba(3,30,44,0.28)_76%,rgba(3,30,44,0.18)_100%)] lg:bg-[linear-gradient(90deg,rgba(3,30,44,0.9)_0%,rgba(3,30,44,0.66)_38%,rgba(3,30,44,0.16)_76%,rgba(3,30,44,0.3)_100%)]"
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[780px] max-w-[1400px] flex-col justify-center px-6 pb-24 pt-36 sm:min-h-[820px] sm:pt-40 lg:min-h-screen">
-        <div
-          key={activeSlide.src}
-          aria-live="polite"
-          className="animate-rise w-full min-w-0 max-w-6xl pr-0 sm:pr-24"
-        >
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5.5rem)] w-full max-w-[1400px] flex-col justify-end px-6 pb-32 pt-24 sm:px-10 lg:justify-center lg:px-12 lg:pb-28 lg:pt-32 xl:px-16">
+        <div key={activeSlide.src} aria-live="polite" className="w-full min-w-0 max-w-3xl">
           <div>
-            <h1 className="max-w-6xl text-[clamp(1.75rem,3vw,3rem)] font-bold leading-[1.02] tracking-[-0.045em] text-white">
+            <h1 className="max-w-3xl text-[clamp(2rem,5.2vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.045em] text-white">
               {activeSlide.title}
-              <span className="mt-2 block text-white/82">{activeSlide.accent}</span>
+              <span className="mt-2 block text-white/80">{activeSlide.accent}</span>
             </h1>
           </div>
 
           <div>
-            <p className="mt-6 max-w-xl border-l border-primary-soft pl-5 text-sm leading-6 text-white/78 sm:text-base sm:leading-7">
+            <p className="mt-6 max-w-xl border-l border-primary-soft/70 pl-5 text-sm leading-6 text-white/85 sm:text-base sm:leading-7">
               {activeSlide.description}
             </p>
           </div>
@@ -167,7 +177,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-5 right-5 z-20 flex flex-row gap-2 sm:bottom-auto sm:right-8 sm:top-1/2 sm:-translate-y-1/2 sm:flex-col lg:right-12">
+      <div className="absolute bottom-5 right-5 z-20 flex flex-row gap-2 sm:bottom-8 sm:right-8 lg:bottom-auto lg:right-8 lg:top-1/2 lg:-translate-y-1/2 lg:flex-col xl:right-12">
         <button
           type="button"
           aria-label="Previous hero image"
