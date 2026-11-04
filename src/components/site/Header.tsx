@@ -148,11 +148,11 @@ export function Header({ solid = false }: HeaderProps) {
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6">
         <a href="/#home" className="flex items-center gap-3">
           <img
-            src="/veer-windows.png"
+            src="/veer-wordmark.png"
             alt="Veer Windows"
-            width={500}
-            height={500}
-            className="h-[46px] w-[124px] object-cover object-center"
+            width={1536}
+            height={1038}
+            className="h-[52px] w-[124px] object-cover object-[50%_53%]"
           />
         </a>
 

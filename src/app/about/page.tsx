@@ -48,62 +48,9 @@ export default function AboutPage() {
       <main className="px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pb-20">
         <div className="mx-auto max-w-[1280px]">
           <section
-            id="founder"
-            className="grid items-center gap-8 border-b border-[#e5ddd2] bg-[linear-gradient(110deg,#fbf7f0_0%,#fbf7f0_58%,#f8f2e9_100%)] pb-9 sm:gap-8 sm:grid-cols-[minmax(260px,1fr)_minmax(0,1.05fr)] lg:gap-16 lg:pb-12"
+            id="about-veer"
+            className="grid items-center gap-8 py-10 sm:gap-10 sm:py-12 md:grid-cols-[0.78fr_1.22fr] lg:gap-16 lg:py-14"
           >
-            <Reveal className="relative mx-auto w-full max-w-[520px] sm:mx-0">
-              <div className="absolute -left-2 -top-2 h-14 w-24 bg-[#d5d1b4] sm:-left-3 sm:-top-3 sm:h-20 sm:w-32" />
-              <div className="relative overflow-hidden border border-white/70 bg-[#242523] shadow-[0_18px_48px_-32px_rgba(64,43,28,0.5)]">
-                <Image
-                  src="/veerwindows-founder.png"
-                  alt="Kiran Balapur, Founder of Veer Windows"
-                  width={572}
-                  height={800}
-                  priority
-                  sizes="(max-width: 639px) min(88vw, 520px), (max-width: 1023px) 45vw, 520px"
-                  className="block h-auto w-full"
-                />
-              </div>
-              <div className="absolute -bottom-3 left-0 min-w-[150px] bg-[#a9472d] px-5 py-2.5 text-white sm:min-w-[165px] sm:px-6">
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] sm:text-xs">
-                  Kiran Balapur
-                </p>
-                <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/80">
-                  Founder
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={120} className="max-w-[650px] md:justify-self-end">
-              <p className="eyebrow text-[#a9472d]">Founder, Veer Windows</p>
-              <div className="mt-3 flex gap-3 sm:gap-5">
-                <span
-                  aria-hidden="true"
-                  className="font-serif text-5xl leading-[0.8] text-[#a9472d]"
-                >
-                  “
-                </span>
-                <div>
-                  <h1 className="max-w-[620px] font-serif text-3xl font-medium leading-[1.02] tracking-[-0.035em] text-[#24211f] sm:text-4xl lg:text-[3.25rem]">
-                    A personal commitment to better spaces.
-                  </h1>
-                  <div className="mt-4 border-l border-[#d9b8a9] pl-4 text-[11px] leading-[1.65] text-[#48433e] sm:mt-5 sm:pl-5 sm:text-xs">
-                    <p>
-                      Kiran Balapur, a Mechanical Engineer, brings nine years of comprehensive
-                      industry experience to the company. His background spans sales leadership,
-                      technical execution, and freelance consultancy.
-                    </p>
-                    <p className="mt-3">
-                      That hands-on experience informs our focus on careful product selection, clear
-                      coordination, and a dependable installation experience.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </section>
-
-          <section className="grid items-center gap-8 py-12 sm:gap-10 sm:py-14 md:grid-cols-[0.78fr_1.22fr] lg:gap-16 lg:py-16">
             <Reveal className="max-w-[390px]">
               <div className="flex items-center gap-3">
                 <p className="eyebrow text-[#a9472d]">About Veer</p>
@@ -144,6 +91,62 @@ export default function AboutPage() {
               >
                 A contemporary view · Veer Windows
               </span>
+            </Reveal>
+          </section>
+
+          <section
+            id="founder"
+            className="grid items-start gap-8 border-y border-[#e5ddd2] bg-[linear-gradient(110deg,#fbf7f0_0%,#fbf7f0_58%,#f8f2e9_100%)] py-10 sm:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.2fr)] sm:gap-8 sm:py-12 lg:gap-16 lg:py-14"
+          >
+            <Reveal className="relative mx-auto w-[min(78vw,360px)] sm:mx-0 sm:w-full sm:max-w-[360px]">
+              <div className="absolute -left-2 -top-2 h-14 w-24 bg-[#d5d1b4] sm:-left-3 sm:-top-3 sm:h-20 sm:w-32" />
+              <div className="relative overflow-hidden border border-white/70 bg-[#242523] shadow-[0_18px_48px_-32px_rgba(64,43,28,0.5)]">
+                <Image
+                  src="/veerwindows-founder.png"
+                  alt="Kiran Balapur, Founder of Veer Windows"
+                  width={572}
+                  height={800}
+                  priority
+                  sizes="(max-width: 639px) min(78vw, 360px), (max-width: 1023px) 36vw, 360px"
+                  className="block h-auto w-full"
+                />
+              </div>
+              <div className="absolute -bottom-3 left-0 min-w-[150px] bg-[#a9472d] px-5 py-2.5 text-white sm:min-w-[165px] sm:px-6">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] sm:text-xs">
+                  Kiran Balapur
+                </p>
+                <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-white/80">
+                  Founder
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120} className="max-w-[650px] md:justify-self-end">
+              <p className="eyebrow text-[#a9472d]">Founder, Veer Windows</p>
+              <div className="mt-3 flex gap-3 sm:gap-5">
+                <span
+                  aria-hidden="true"
+                  className="font-serif text-5xl leading-[0.8] text-[#a9472d]"
+                >
+                  “
+                </span>
+                <div>
+                  <h1 className="max-w-[620px] font-serif text-3xl font-medium leading-[1.02] tracking-[-0.035em] text-[#24211f] sm:text-4xl lg:text-[3.25rem]">
+                    A personal commitment to better spaces.
+                  </h1>
+                  <div className="mt-4 border-l border-[#d9b8a9] pl-4 text-[11px] leading-[1.65] text-[#48433e] sm:mt-5 sm:pl-5 sm:text-xs">
+                    <p>
+                      Kiran Balapur, a Mechanical Engineer, brings nine years of comprehensive
+                      industry experience to the company. His background spans sales leadership,
+                      technical execution, and freelance consultancy.
+                    </p>
+                    <p className="mt-3">
+                      That hands-on experience informs our focus on careful product selection, clear
+                      coordination, and a dependable installation experience.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </Reveal>
           </section>
 

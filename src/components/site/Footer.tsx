@@ -31,11 +31,11 @@ export function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-6 border-b border-white/15 pb-8">
           <a href="/#home" aria-label="Veer Windows home">
             <img
-              src="/veer-logo-white.png"
+              src="/veer-wordmark.png"
               alt="Veer Windows"
-              width={415}
-              height={193}
-              className="h-14 w-auto"
+              width={1536}
+              height={1038}
+              className="h-16 w-[180px] object-cover object-[50%_53%] brightness-0 invert"
             />
             <p className="mt-6 max-w-sm text-sm text-ink-foreground/65">
               Precision-engineered windows and doors for homes, builders, and architects — surveyed,
