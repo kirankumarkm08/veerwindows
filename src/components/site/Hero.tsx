@@ -130,19 +130,24 @@ export function Hero() {
       aria-label="Veer Windows product highlights"
       className="relative isolate flex min-h-[calc(100svh-5.5rem)] w-full min-w-0 flex-col justify-end overflow-hidden bg-[#031e2c]"
     >
-      <div
-        key={activeSlide.src}
-        aria-hidden="true"
-        className="absolute inset-0 z-0 overflow-hidden bg-[#031e2c]"
-      >
-        <Image
-          src={activeSlide.src}
-          alt=""
-          fill
-          priority={activeBackground === 0}
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+      <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden bg-[#031e2c]">
+        <div
+          className="flex h-full w-full will-change-transform transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+          style={{ transform: `translateX(-${activeBackground * 100}%)` }}
+        >
+          {HERO_BACKGROUNDS.map((slide) => (
+            <div key={slide.src} className="relative h-full min-w-full">
+              <Image
+                src={slide.src}
+                alt=""
+                fill
+                priority={slide.src === HERO_BACKGROUNDS[0].src}
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       <div
@@ -151,9 +156,9 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5.5rem)] w-full max-w-[1400px] flex-col justify-end px-6 pb-32 pt-24 sm:px-10 lg:justify-center lg:px-12 lg:pb-28 lg:pt-32 xl:px-16">
-        <div key={activeSlide.src} aria-live="polite" className="w-full min-w-0 max-w-3xl">
+        <div key={activeSlide.src} aria-live="polite" className="hero-slide-content w-full min-w-0 max-w-3xl">
           <div>
-            <h1 className="max-w-3xl text-[clamp(1.75rem,4vw,3.5rem)] font-bold leading-[1.02] tracking-[-0.045em] text-white">
+            <h1 className="max-w-3xl text-[clamp(1.65rem,3.2vw,2.8rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">
               {activeSlide.title}
               <span className="mt-2 block text-white/80">{activeSlide.accent}</span>
             </h1>
