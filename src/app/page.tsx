@@ -3,12 +3,11 @@ import type { Metadata } from "next";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
-import { HomeProcessSection, WeFabricateSection } from "@/components/site/HomeProcessSections";
+import { HomeProcessSection } from "@/components/site/HomeProcessSections";
 import {
   HomeConsultationSection,
   HomePartnersSection,
   HomeStorySection,
-  HomeTestimonialsSection,
   ProductFamiliesSection,
 } from "@/components/site/HomeLandingSections";
 
@@ -36,11 +35,10 @@ export default function Home() {
       <main>
         <Hero />
         <ProductFamiliesSection />
-        <HomeProcessSection />
-        <WeFabricateSection />
         <HomeStorySection />
         <HomePartnersSection />
-        <HomeTestimonialsSection />
+        <HomeProcessSection />
+        {/* Temporarily hidden while the testimonials section is being reviewed. */}
         <HomeConsultationSection />
       </main>
       <Footer />

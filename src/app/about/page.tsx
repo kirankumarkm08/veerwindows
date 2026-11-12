@@ -152,24 +152,32 @@ export default function AboutPage() {
 
           <section
             aria-label="Veer Windows at a glance"
-            className="grid grid-cols-3 border-y border-[#e5ddd2] bg-[#f5f0e8] py-4 sm:py-5"
+            className="grid grid-cols-2 border-y border-[#e5ddd2] bg-[#f5f0e8] py-4 xl:grid-cols-4 sm:py-5"
           >
-            <div className="flex flex-col justify-center px-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6">
+            <div className="flex flex-col justify-center px-3 xl:flex-row xl:items-center xl:gap-4 xl:px-6">
               <p className="font-serif text-2xl leading-none sm:text-3xl">2022</p>
               <p className="mt-1 max-w-[105px] text-[7px] font-bold uppercase leading-[1.45] tracking-[0.12em] text-[#686057] sm:mt-0 sm:text-[8px]">
                 Established as Veer Infratech
               </p>
             </div>
-            <div className="flex flex-col justify-center border-l border-[#ddd3c5] px-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6">
+            <div className="flex flex-col justify-center border-l border-[#ddd3c5] px-3 xl:flex-row xl:items-center xl:gap-4 xl:px-6">
               <p className="font-serif text-2xl leading-none sm:text-3xl">9+</p>
               <p className="mt-1 max-w-[110px] text-[7px] font-bold uppercase leading-[1.45] tracking-[0.12em] text-[#686057] sm:mt-0 sm:text-[8px]">
                 Years of industry experience
               </p>
             </div>
-            <div className="flex flex-col justify-center border-l border-[#ddd3c5] px-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6">
-              <p className="font-serif text-lg leading-none sm:text-xl">uPVC + Aluminium</p>
+            <div className="flex flex-col justify-center border-t border-[#ddd3c5] px-3 pt-3 xl:flex-row xl:items-center xl:gap-4 xl:border-l xl:border-t-0 xl:px-6 xl:pt-0">
+              <p className="font-serif text-base leading-none sm:text-xl xl:whitespace-nowrap">
+                uPVC + Aluminium
+              </p>
               <p className="mt-1 text-[7px] font-bold uppercase leading-[1.45] tracking-[0.12em] text-[#686057] sm:mt-0 sm:text-[8px]">
                 Windows and doors
+              </p>
+            </div>
+            <div className="flex flex-col justify-center border-l border-t border-[#ddd3c5] px-3 pt-3 xl:flex-row xl:items-center xl:gap-4 xl:border-t-0 xl:px-6 xl:pt-0">
+              <p className="font-serif text-2xl leading-none sm:text-3xl">2026</p>
+              <p className="mt-1 max-w-[125px] text-[7px] font-bold uppercase leading-[1.45] tracking-[0.12em] text-[#686057] sm:mt-0 sm:text-[8px]">
+                Rebranded as Veer Windows
               </p>
             </div>
           </section>

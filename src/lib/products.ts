@@ -733,10 +733,15 @@ export const SERVICE_PROCESS_STEPS = [
   {
     number: "03",
     title: "We design",
-    description: "We plan and manufacture the selected system to the project specifications.",
+    description: "We plan a system around your opening, requirements, and chosen finishes.",
   },
   {
     number: "04",
+    title: "We fabricate",
+    description: "We manufacture the approved system to your project specifications.",
+  },
+  {
+    number: "05",
     title: "We install",
     description: "Our team completes the installation with professional fitting and finishing.",
   },
