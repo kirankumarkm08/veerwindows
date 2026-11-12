@@ -156,7 +156,11 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5.5rem)] w-full max-w-[1400px] flex-col justify-end px-6 pb-32 pt-24 sm:px-10 lg:justify-center lg:px-12 lg:pb-28 lg:pt-32 xl:px-16">
-        <div key={activeSlide.src} aria-live="polite" className="hero-slide-content w-full min-w-0 max-w-3xl">
+        <div
+          key={activeSlide.src}
+          aria-live="polite"
+          className="hero-slide-content w-full min-w-0 max-w-3xl"
+        >
           <div>
             <h1 className="max-w-3xl text-[clamp(1.65rem,3.2vw,2.8rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">
               {activeSlide.title}

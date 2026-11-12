@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
+import { HomeProcessSection, WeFabricateSection } from "@/components/site/HomeProcessSections";
 import {
   HomeConsultationSection,
   HomePartnersSection,
@@ -35,6 +36,8 @@ export default function Home() {
       <main>
         <Hero />
         <ProductFamiliesSection />
+        <HomeProcessSection />
+        <WeFabricateSection />
         <HomeStorySection />
         <HomePartnersSection />
         <HomeTestimonialsSection />

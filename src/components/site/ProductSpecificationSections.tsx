@@ -2,17 +2,10 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Check, PencilRuler, Ruler, Search, Wrench } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import {
-  FINISH_COLLECTIONS,
-  GLASS_OPTIONS,
-  SERVICE_PROCESS_STEPS,
-  type Product,
-} from "@/lib/products";
+import { FINISH_COLLECTIONS, GLASS_OPTIONS, type Product } from "@/lib/products";
 import { Reveal } from "./Reveal";
-
-const PROCESS_ICONS = [Search, Ruler, PencilRuler, Wrench] as const;
 
 export function ProductSpecificationSections({ product }: { product: Product }) {
   const glassCarouselRef = useRef<HTMLDivElement>(null);
@@ -164,44 +157,6 @@ export function ProductSpecificationSections({ product }: { product: Product }) 
                 </div>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-ink py-16 text-white sm:py-20">
-        <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-16">
-          <Reveal className="max-w-3xl">
-            <p className="eyebrow text-[#d4b16c]">How we work</p>
-            <h2 className="mt-5 text-4xl font-semibold leading-none tracking-[-0.045em] text-white sm:text-5xl">
-              One team, from first visit to final fit.
-            </h2>
-          </Reveal>
-
-          <div className="mt-12 grid gap-px overflow-hidden bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICE_PROCESS_STEPS.map((step, index) => {
-              const Icon = PROCESS_ICONS[index]!;
-
-              return (
-                <Reveal
-                  key={step.number}
-                  as="article"
-                  delay={index * 80}
-                  className="bg-ink p-6 sm:p-8"
-                >
-                  <div className="flex items-center justify-between">
-                    <Icon aria-hidden="true" className="size-7 text-[#d4b16c]" strokeWidth={1.6} />
-                    <span className="text-sm font-bold tracking-[0.16em] text-white/35">
-                      {step.number}
-                    </span>
-                  </div>
-                  <h3 className="mt-8 text-2xl font-semibold text-white">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-white/60">{step.description}</p>
-                  <p className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#d4b16c]">
-                    <Check aria-hidden="true" className="size-4" /> Planned with care
-                  </p>
-                </Reveal>
-              );
-            })}
           </div>
         </div>
       </section>
