@@ -10,7 +10,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import type { Product, ProductVariant } from "@/lib/products";
+import type { Product } from "@/lib/products";
 import { ProductSpecificationSections } from "./ProductSpecificationSections";
 import { Reveal } from "./Reveal";
 import { SlidingWindowsDoorsDetail } from "./SlidingWindowsDoorsDetail";
@@ -31,57 +31,6 @@ const HERO_FEATURES = [
     Icon: ShieldCheck,
   },
 ] as const;
-
-function VariantCard({
-  variant,
-  index,
-  isAluminium,
-}: {
-  variant: ProductVariant;
-  index: number;
-  isAluminium: boolean;
-}) {
-  const content = (
-    <article className="group flex h-full flex-col overflow-hidden border border-[#ddd7ca] bg-white transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-36px_rgba(22,43,51,0.55)]">
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#ebe5d9]">
-        <Image
-          src={variant.image}
-          alt={variant.name}
-          fill
-          unoptimized={isAluminium}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-6">
-        <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#927239]">
-          Configuration {String(index + 1).padStart(2, "0")}
-        </p>
-        <h3 className="mt-3 text-2xl font-semibold leading-tight tracking-[-0.035em] text-heading">
-          {variant.name}
-        </h3>
-        <p className="mt-3 text-sm leading-6 text-muted-foreground">{variant.description}</p>
-        {variant.slug ? (
-          <span className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.14em] text-heading transition-colors group-hover:text-[#927239]">
-            View configuration
-            <ArrowRight
-              aria-hidden="true"
-              className="size-4 transition-transform group-hover:translate-x-1"
-            />
-          </span>
-        ) : null}
-      </div>
-    </article>
-  );
-
-  return variant.slug ? (
-    <Link href={`/services/${variant.slug}`} className="block h-full">
-      {content}
-    </Link>
-  ) : (
-    content
-  );
-}
 
 function EditorialRangeHero({ product, familyHref }: { product: Product; familyHref: string }) {
   return (
@@ -113,7 +62,7 @@ function EditorialRangeHero({ product, familyHref }: { product: Product; familyH
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <a
-                href="#configurations"
+                href="#finishes"
                 className="inline-flex items-center gap-3 bg-[#9a793d] px-6 py-4 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#7d602f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9a793d]"
               >
                 Explore the range <ArrowDown aria-hidden="true" className="size-4" />
@@ -257,7 +206,7 @@ function AluminiumFeatureHero({
             </div>
             <div className="mt-7 flex flex-wrap items-center gap-5">
               <a
-                href={product.variants.length ? "#configurations" : "#finishes"}
+                href="#finishes"
                 className="inline-flex items-center gap-3 bg-heading px-6 py-4 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#927239] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading"
               >
                 Explore the range <ArrowDown aria-hidden="true" className="size-4" />
@@ -331,7 +280,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
                   <a
-                    href={product.variants.length ? "#configurations" : "#finishes"}
+                href="#finishes"
                     className="inline-flex items-center gap-3 bg-[#a9823f] px-6 py-4 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#bd9a56] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d0ad62]"
                   >
                     Explore the range <ArrowRight aria-hidden="true" className="size-4" />
@@ -403,37 +352,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
           </div>
         </section>
       )}
-
-      {product.variants.length > 0 ? (
-        <section id="configurations" className="bg-[#faf8f2] py-16 sm:py-24">
-          <div className="mx-auto max-w-[1400px] px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_.75fr] lg:items-end">
-              <Reveal from="left">
-                <div>
-                  <p className="eyebrow text-[#927239]"> Our range</p>
-                  <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1] tracking-[-0.05em] text-heading sm:text-5xl lg:text-6xl">
-                    Available configurations.
-                  </h2>
-                </div>
-              </Reveal>
-              <Reveal from="right" delay={120}>
-                <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:justify-self-end">
-                  Compare the available formats, then speak with our team to confirm dimensions,
-                  operation, glazing, and finish for your project.
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {product.variants.map((variant, index) => (
-                <Reveal key={variant.name} delay={index * 70} className="h-full">
-                  <VariantCard variant={variant} index={index} isAluminium={isAluminium} />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       <ProductSpecificationSections product={product} />
 

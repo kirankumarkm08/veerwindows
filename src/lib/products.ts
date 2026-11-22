@@ -398,9 +398,8 @@ export const PRODUCTS: Product[] = [
     eyebrow: "System aluminium sliding systems",
     title: "Sliding Windows & Doors",
     description: "Sliding openings for aluminium spaces.",
-    image:
-      "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&w=1800",
-    imageAlt: "Contemporary home with panoramic windows and glass doors",
+    image: "/products/system-aluminium/sliding-systems-showcase.png",
+    imageAlt: "Modern aluminium terrace with large sliding glass doors",
     intro:
       "The Veer Windows catalogue includes sliding windows and sliding doors in its system aluminium range. Explore each format and contact our team to confirm the configuration for your project.",
     variants: [
@@ -430,8 +429,8 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Aluminium window system",
     title: "53 Series Casement Window",
     description: "Everyday casement performance with a considered profile.",
-    image: "/products/casement-window.jpg",
-    imageAlt: "Aluminium casement window in a contemporary home",
+    image: "/products/system-aluminium/53-series-casement-window.png",
+    imageAlt: "53 Series aluminium casement window opening onto a garden",
     intro:
       "A value-focused aluminium casement system for residential and commercial projects, with ventilation, weather resistance, and glazing options for different requirements.",
     variants: [],
@@ -486,7 +485,7 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Aluminium window system",
     title: "Tilt & Turn Window",
     description: "Two opening modes for controlled airflow and easy access.",
-    image: "/products/tilt-turn-window.jpg",
+    image: "/products/system-aluminium/tilt-and-turn-window.png",
     imageAlt: "Tilt and turn aluminium window in a modern interior",
     intro:
       "Tilt the sash inward for controlled ventilation or turn it inward for a wider opening and convenient cleaning. Concealed hinges keep the closed-window appearance clean.",
@@ -524,8 +523,8 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Aluminium door system",
     title: "Perfection Slide Door",
     description: "Minimal sightlines for wide, light-filled openings.",
-    image: "/products/aluminium-sliding-door.jpg",
-    imageAlt: "Minimal aluminium sliding door opening onto a terrace",
+    image: "/products/system-aluminium/perfection-slide-door.png",
+    imageAlt: "Minimal aluminium sliding doors with a warm modern interior",
     intro:
       "The Perfection Slide system is presented as an aluminium sliding door option for wide glazed openings.",
     variants: [],
@@ -542,8 +541,8 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Aluminium door system",
     title: "70 Series Sliding Door",
     description: "Smooth inline movement with flexible panel layouts.",
-    image: "/products/aluminium-sliding-door.jpg",
-    imageAlt: "Aluminium sliding door system with large glass panels",
+    image: "/products/system-aluminium/70-series-sliding-door.png",
+    imageAlt: "Charcoal-framed aluminium sliding door in a contemporary living space",
     intro:
       "A slim sliding system available with thermal-break or non-thermal-break profiles. Two-, three-, and four-panel configurations bring daylight into living areas and connect them to the outdoors.",
     variants: [],
@@ -561,8 +560,8 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Aluminium door system",
     title: "Lift & Slide Door",
     description: "A Lift & Slide door option.",
-    image: "/products/low-threshold-sliding-door.jpg",
-    imageAlt: "Lift and slide door in a contemporary setting",
+    image: "/products/system-aluminium/lift-and-slide-door.png",
+    imageAlt: "Modern aluminium lift and slide glass doors",
     intro:
       "The Veer Windows catalogue lists Lift & Slide Door in its uPVC special systems range. It does not document a System Aluminium version, so confirm material availability and configuration with our team.",
     variants: [],
@@ -578,8 +577,8 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Aluminium door system",
     title: "Fold & Slide Door",
     description: "Fold panels to the side for a wide, open threshold.",
-    image: "/products/slide-fold-door.jpg",
-    imageAlt: "Folding aluminium glass doors opening onto an outdoor space",
+    image: "/products/system-aluminium/fold-and-slide-door.png",
+    imageAlt: "Modern aluminium bi-fold glass doors opening onto an outdoor space",
     intro:
       "Bi-fold panels fold laterally and stack to one side, opening a broad passage between indoor and outdoor living areas while keeping the panels neatly out of the way.",
     variants: [],
@@ -597,8 +596,8 @@ export const PRODUCTS: Product[] = [
     eyebrow: "Aluminium door system",
     title: "Casement Door",
     description: "A slender hinged door profile with expansive glazing.",
-    image: "/products/casement-door.jpg",
-    imageAlt: "Minimal aluminium casement door with full-height glazing",
+    image: "/products/system-aluminium/casement-door.png",
+    imageAlt: "Full-height aluminium casement glass door opening onto a garden",
     intro:
       "A hinged aluminium door system with a glazed format for residential and commercial spaces.",
     variants: [],
@@ -670,8 +669,7 @@ export const PRODUCT_FAMILIES = {
     description: "Explore the window and door systems in the aluminium range.",
     intro:
       "The Veer Windows catalogue shows system aluminium casement and sliding windows and doors, along with combination windows and slide and fold doors.",
-    image:
-      "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    image: "/products/system-aluminium/system-aluminium-range.png",
   },
 } as const;
 

@@ -16,11 +16,13 @@ type CustomerReview = {
 };
 
 const PARTNER_LOGOS = [
-  { name: "Aluplast", image: "/companies/Screenshot 2026-08-11 231418.png" },
-  { name: "Wallplast by Trends", image: "/companies/Screenshot 2026-08-11 231353.png" },
-  { name: "DNV", image: "/companies/Screenshot 2026-08-11 231342.png" },
-  { name: "Pego", image: "/companies/Screenshot 2026-08-11 231409.png" },
-  { name: "Saint-Gobain", image: "/companies/saint-gobain.jpg" },
+  { name: "Aluplast", image: "/companies/aluplast.webp" },
+  { name: "Wallplast by Trends", image: "/companies/wallplast.webp" },
+  { name: "DNV", image: "/companies/dnv.webp" },
+  { name: "Pego", image: "/companies/pego.webp" },
+  { name: "Siegenia", image: "/companies/siegenia.webp" },
+  { name: "Gretsch-Unitas (GU)", image: "/companies/gu-gretsch-unitas.webp" },
+  { name: "Saint-Gobain", image: "/companies/saint-gobain.webp" },
 ];
 
 const FEATURED_REVIEW: CustomerReview = {
